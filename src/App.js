@@ -7,13 +7,15 @@ import { Route, Routes } from "react-router-dom";
 /**
  * Internal Dependencies
  */
+import Four0Four from "./pages/404";
+
 import "./App.scss";
 
 const App = () => {
-  return (
+	return (
 		<Routes>
-			<Route exact path="/" element="Home" />
-			<Route path="*" element="404" />
+			<Route exact path="/" element={ Four0Four } />
+			<Route path="*" element={ Four0Four } />
 		</Routes>
 	);
 };

@@ -1,0 +1,30 @@
+.ico {
+	width: 30px;
+	height: auto;
+	position: absolute;
+	bottom: 100px;
+	transform: translate(-50%, -50%), scale(1);
+	animation: pulse 2s infinite;
+
+	@keyframes pulse {
+		0% {
+			transform: scale(0.75);
+		}
+
+		70% {
+			transform: scale(1);
+		}
+
+		100% {
+			transform: scale(0.75);
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		display: none;
+	}
+
+	@media only screen and (min-width: 768px) and (max-width: 1024px) {
+		bottom: 50px;
+	}
+}
