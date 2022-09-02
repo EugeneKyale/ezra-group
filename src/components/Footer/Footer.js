@@ -22,37 +22,20 @@ const Footer = () => {
 						alt="logo-white"
 					/>
 				</div>
-				<div className={ styles.footer__top_contact }>
+				<div className={ styles.footer__top_services }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Contact
+						Services
 					</h4>
-					<>
-						<p>
-							Nairobi, Kenya.
-						</p>
-
-						<a href="mailto:info@swahili.tours">
-							info@swahili.tours
-						</a>
-						<br />
-						<a href="tel:+254722143359">
-							( +254 ) 722 143 359
-						</a>
-					</>
-				</div>
-				<div className={ styles.footer__top_payment }>
-					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Payment Methods
-					</h4>
-					<div className={ styles.footer__top_payment_logos }>
-						{ MenuConfig.footer.paymentMethods.map( ( method ) => (
-							<img
-								key={ method.id }
-								src={ toAbsoluteUrl( method.logo ) }
-								alt={ method.title }
-							/>
-						))}
-					</div>
+					{ MenuConfig.footer.services.map( ( link ) => (
+						<div
+							key={ link.id }
+							className={ styles.footer__top_links }
+						>
+							<Link to={ link.page }>
+								{ link.title }
+							</Link>
+						</div>
+					))}
 				</div>
 				<div className={ styles.footer__top_quicklinks }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
@@ -69,11 +52,29 @@ const Footer = () => {
 						</div>
 					))}
 				</div>
+				<div className={ styles.footer__top_contact }>
+					<h4 className="wow fadeInUp" data-wow-delay=".3s">
+						Contact
+					</h4>
+					<>
+						<p>
+							Juba, Republic of South Sudan
+						</p>
+
+						<a href="mailto:info@jedcopower.com">
+							info@jedcopower.com
+						</a>
+						<br />
+						<a href="tel:+211924003703">
+							( +211 ) 924 003 703
+						</a>
+					</>
+				</div>
 			</div>
 
 			<div className={ styles.footer__copyright }>
 				<p>
-					© { new Date().getFullYear() } Swahili Tours
+					© { new Date().getFullYear() } Jedco Power
 				</p>
 				<p>
 					All Rights Reserved

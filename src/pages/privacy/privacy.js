@@ -7,19 +7,18 @@ import React from "react";
  * Internal Dependencies
  */
 import Layout from "../../components/Layout";
+import styles from "./privacy.module.scss";
 
-import "./404.scss";
-
-const Four0Four = () => {
+const Privacy = () => {
 	return (
-		<Layout pageTitle="404">
-			<main className="four0four">
+		<Layout pageTitle="Privacy Notice">
+			<div className={ styles.privacy }>
 				<h1 className="wow fadeInUp" data-wow-delay=".3s">
-					Oops, this page doesn't exist! ⚡️
+					Jedco Power Ltd. - Privacy Notice.
 				</h1>
-			</main>
+			</div>
 		</Layout>
 	);
 };
 
-export default Four0Four;
+export default Privacy;

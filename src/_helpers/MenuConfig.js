@@ -3,16 +3,21 @@ const MenuConfig = {
 		menuItem: [
 			{
 				id: 1,
-				title: "Packages",
-				page: "/packages",
+				title: "Home",
+				page: "/",
 			},
 			{
 				id: 2,
-				title: "Travel Guides",
-				page: "/guides",
+				title: "About",
+				page: "/about",
 			},
 			{
 				id: 3,
+				title: "Services",
+				page: "/services",
+			},
+			{
+				id: 4,
 				title: "Contact",
 				page: "/contact",
 			},
@@ -83,23 +88,23 @@ const MenuConfig = {
 				page: "/contact",
 			},
 		],
-		paymentMethods: [
+		services: [
 			{
 				id: 1,
-				title: "Visa",
-				logo: "/images/visa.png",
+				title: "Service One",
+				page: "/",
 			},
 			{
 				id: 2,
-				title: "Maestro",
-				logo: "/images/maestro.png",
+				title: "Service Two",
+				page: "/",
 			},
 			{
 				id: 3,
-				title: "Mpesa",
-				logo: "/images/mpesa.svg",
-			}
-		]
+				title: "Service Three",
+				page: "/",
+			},
+		],
 	}
 };
 
