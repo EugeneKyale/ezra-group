@@ -16,17 +16,19 @@ const Footer = () => {
 	return (
 		<footer className={ styles.footer }>
 			<div className={ styles.footer__top }>
-				<div className={ styles.footer__top_logo }>
-					<img
-						src={ `${ toAbsoluteUrl( "/logo-white.svg" ) }` }
-						alt="logo-white"
-					/>
-				</div>
-				<div className={ styles.footer__top_services }>
+				<div className={ styles.footer__top_about }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Services
+						About Us
 					</h4>
-					{ MenuConfig.footer.services.map( ( link ) => (
+					<p>
+					EZRA GROUP is a company founded in October 1986 in Ethiopia by two brothers.
+					</p>
+				</div>
+				<div className={ styles.footer__top_subsidiaries }>
+					<h4 className="wow fadeInUp" data-wow-delay=".3s">
+						Subsidiaries
+					</h4>
+					{ MenuConfig.footer.subsidiaries.map( ( link ) => (
 						<div
 							key={ link.id }
 							className={ styles.footer__top_links }
@@ -37,11 +39,11 @@ const Footer = () => {
 						</div>
 					))}
 				</div>
-				<div className={ styles.footer__top_quicklinks }>
+				<div className={ styles.footer__top_media }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Quicklinks
+						Media
 					</h4>
-					{ MenuConfig.footer.quicklinks.map( ( link ) => (
+					{ MenuConfig.footer.media.map( ( link ) => (
 						<div
 							key={ link.id }
 							className={ styles.footer__top_links }
@@ -74,10 +76,10 @@ const Footer = () => {
 
 			<div className={ styles.footer__copyright }>
 				<p>
-					© { new Date().getFullYear() } Ezra Group
+					© { new Date().getFullYear() } Ezra Group | All Rights Reserved
 				</p>
 				<p>
-					All Rights Reserved
+					Built by <a href="https://eugene.co.ke/" target="_blank" rel="noreferrer"> Eugene </a>
 				</p>
 			</div>
 		</footer>

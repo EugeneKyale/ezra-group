@@ -7,7 +7,7 @@
 	&__top {
 		padding: 60px $padding 30px;
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-columns: 1.5fr 1fr 1fr 1fr; 
 		grid-template-rows: 1fr;
 		gap: 50px;
 		grid-template-areas:
@@ -31,8 +31,6 @@
 
 		h4 {
 			margin-bottom: 20px;
-			text-transform: uppercase;
-			letter-spacing: 1px;
 		}
 
 		a {
@@ -46,19 +44,12 @@
 		&_links {
 			margin-bottom: 5px;
 		}
-
-		&_logo {
-			img {
-				height: 30px;
-				width: auto;
-				object-fit: contain;
-			}
-		}
 	}
 
 	&__copyright {
 		color: $white;
 		border-top: .5px $white solid;
+		font-size: clamp(16px, 1vw, 18px);
 		padding: 15px $padding;
 		display: flex;
 		justify-content: space-between;

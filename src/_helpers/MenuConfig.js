@@ -71,37 +71,37 @@ const MenuConfig = {
 		],
 	},
 	footer: {
-		quicklinks: [
+		media: [
 			{
 				id: 1,
-				title: "Privacy Policy",
-				page: "/privacy",
+				title: "Press Releases",
+				page: "/press-releases",
 			},
 			{
 				id: 2,
-				title: "Terms & Conditions",
-				page: "/terms",
+				title: "News",
+				page: "/news",
 			},
 			{
 				id: 3,
-				title: "Contact",
-				page: "/contact",
+				title: "Gallery",
+				page: "/gallery",
 			},
 		],
-		services: [
+		subsidiaries: [
 			{
 				id: 1,
-				title: "Service One",
+				title: "Lorem Ipsum",
 				page: "/",
 			},
 			{
 				id: 2,
-				title: "Service Two",
+				title: "Lorem Ipsum",
 				page: "/",
 			},
 			{
 				id: 3,
-				title: "Service Three",
+				title: "Lorem Ipsum",
 				page: "/",
 			},
 		],
