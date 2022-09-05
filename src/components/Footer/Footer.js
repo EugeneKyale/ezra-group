@@ -21,7 +21,7 @@ const Footer = () => {
 						About Us
 					</h4>
 					<p>
-					EZRA GROUP is a company founded in October 1986 in Ethiopia by two brothers.
+						EZRA GROUP is a company founded in October 1986 in Ethiopia by two brothers.
 					</p>
 				</div>
 				<div className={ styles.footer__top_subsidiaries }>
@@ -59,16 +59,20 @@ const Footer = () => {
 						Contact
 					</h4>
 					<>
-						<p>
-							Juba, Republic of South Sudan
+						<p>				
+							Garden No.18 Juba, South Sudan
 						</p>
 
-						<a href="mailto:info@ezragroup.com">
-							info@ezragroup.com
+						<a href="mailto:ezratrading1@gmail.com">				
+							ezratrading1@gmail.com
 						</a>
 						<br />
-						<a href="tel:+211924003703">
-							( +211 ) 924 003 703
+						<a href="tel:+211911008088">
+							( +211 ) 911 008 088
+						</a>
+						<br />
+						<a href="tel:+211922228062">
+							( +211 ) 922 228 062
 						</a>
 					</>
 				</div>
@@ -76,7 +80,7 @@ const Footer = () => {
 
 			<div className={ styles.footer__copyright }>
 				<p>
-					© { new Date().getFullYear() } Ezra Group | All Rights Reserved
+					© { new Date().getFullYear() } EZRA GROUP | All Rights Reserved
 				</p>
 				<p>
 					Built by <a href="https://eugene.co.ke/" target="_blank" rel="noreferrer"> Eugene </a>
