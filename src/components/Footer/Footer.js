@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 /**
  * Internal Dependencies
  */
-import { toAbsoluteUrl } from "../../_helpers/utils";
 import MenuConfig from "../../_helpers/MenuConfig";
 
 import styles from "./Footer.module.scss";
