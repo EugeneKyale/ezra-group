@@ -8,13 +8,13 @@
 
 /* WebKit/Blink Browsers */
 ::selection {
-    background: $primary;
+    background: $secondary;
     color: $white;
 }
 
 /* Gecko Browsers */
 ::-moz-selection {
-    background: $primary;
+    background: $secondary;
     color: $white;
 }
 
