@@ -13,11 +13,26 @@ const MenuConfig = {
 			},
 			{
 				id: 3,
-				title: "Services",
-				page: "/services",
+				title: "Subsidiaries",
+				page: "/subsidiaries",
 			},
 			{
 				id: 4,
+				title: "Projects",
+				page: "/projects",
+			},
+			{
+				id: 5,
+				title: "CSR",
+				page: "/csr",
+			},
+			{
+				id: 6,
+				title: "Media",
+				page: "/media",
+			},
+			{
+				id: 7,
 				title: "Contact",
 				page: "/contact",
 			},
