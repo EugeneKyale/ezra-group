@@ -61,8 +61,8 @@ const Footer = () => {
 							Juba, Republic of South Sudan
 						</p>
 
-						<a href="mailto:info@jedcopower.com">
-							info@jedcopower.com
+						<a href="mailto:info@ezragroup.com">
+							info@ezragroup.com
 						</a>
 						<br />
 						<a href="tel:+211924003703">
@@ -74,7 +74,7 @@ const Footer = () => {
 
 			<div className={ styles.footer__copyright }>
 				<p>
-					© { new Date().getFullYear() } Jedco Power
+					© { new Date().getFullYear() } Ezra Group
 				</p>
 				<p>
 					All Rights Reserved

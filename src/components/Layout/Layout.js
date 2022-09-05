@@ -19,7 +19,7 @@ export default function Layout( { pageTitle, children } ) {
 			<Header
 				color="transparent"
 				routes={ dashboardRoutes }
-				brand="Jedco Power"
+				brand="Ezra Group"
 				rightLinks={ <HeaderLinks /> }
 				fixed
 				changeColorOnScroll={{

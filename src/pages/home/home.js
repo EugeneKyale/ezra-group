@@ -13,7 +13,7 @@ import styles from "./home.module.scss";
 const Home = () => {
 
 	return (
-		<Layout pageTitle="Jedco Power - Home">
+		<Layout pageTitle="Ezra Group - Home">
 			<main className={ styles.home }>
 				Homepage
 			</main>
