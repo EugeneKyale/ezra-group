@@ -14,14 +14,16 @@ const Four0Four = () => {
 	return (
 		<Layout pageTitle="404">
 			<main className="four0four">
-				<lottie-player 
-					src="https://assets2.lottiefiles.com/packages/lf20_suhe7qtm.json"
-					background="transparent"
-					speed="1"
-					style={{ width: 500, height: 500 }}
-					loop
-					autoplay
-				/>
+				<div className="wow zoomIn" data-wow-delay=".3s">
+					<lottie-player
+						src="https://assets2.lottiefiles.com/packages/lf20_suhe7qtm.json"
+						background="transparent"
+						speed="1"
+						style={{ width: 500, height: 500 }}
+						loop
+						autoplay
+					/>
+				</div>
 			</main>
 		</Layout>
 	);
