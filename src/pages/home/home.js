@@ -19,6 +19,35 @@ const Home = () => {
 				<Hero 
 					backgroundImage="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80"
 				/>
+
+				<div className={ styles.home__about }>
+					<div className={ styles.home__about_left }>
+						<small>
+							We're Trusted
+						</small>
+						<h2>
+							Why Choose Our Solar Energy Platform
+						</h2>
+						<p>
+							We're a reliable energy partner to world wide businesses big and small. 
+							Benefit from our experience, expertise and ment to find energy savings designed specifically for your business. 
+							See how we can help a business like yours today.
+						</p>
+						<p>
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+						</p>
+						
+						<div className={ styles.home__about_left_bottom }>
+							<div className={ styles.home__about_left_bottom_box }>
+								We're trusted by more than <span> 30k </span> clients
+							</div>
+						</div>
+					</div>
+
+					<div className={ styles.home__about_right }>
+
+					</div>
+				</div>
 			</main>
 		</Layout>
 	);

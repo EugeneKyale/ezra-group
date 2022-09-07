@@ -1,6 +1,6 @@
 body {
-	font-family: 'Catamaran', sans-serif;
-	font-size: clamp(16px, 1.1vw, 18px);
+	font-family: $body-font;
+	font-size: clamp(18px, 1.3vw, 22px);
 	font-weight: 500;
 	color: $text;
 	line-height: 25px;
@@ -21,18 +21,18 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Smooch Sans', sans-serif;
+	font-family: $heading-font;
 	font-weight: 700;
 	letter-spacing: 1px;
-	line-height: 1;
+	line-height: .9;
 }
 
 h1 {
-	font-size: clamp(26px, 2.6vw, 55px);
+	font-size: clamp(80px, 6vw, 90px);
 }
 
 h2 {
-	font-size: clamp(25px, 2vw, 45px);
+	font-size: clamp(60px, 5vw, 80px);
 }
 
 h3 {
