@@ -22,22 +22,22 @@ const Home = () => {
 
 				<div className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
-						<small>
+						<small className="wow fadeInUp" data-wow-delay=".5s">
 							We're Trusted
 						</small>
-						<h2>
+						<h2 className="wow fadeInUp" data-wow-delay=".3s">
 							Why Choose Our Solar Energy Platform
 						</h2>
-						<p>
+						<p  className="wow fadeInUp" data-wow-delay=".5s">
 							We're a reliable energy partner to world wide businesses big and small. 
 							Benefit from our experience, expertise and ment to find energy savings designed specifically for your business. 
 							See how we can help a business like yours today.
 						</p>
-						<p>
+						<p  className="wow fadeInUp" data-wow-delay=".5s">
 							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
 						</p>
 						
-						<div className={ styles.home__about_left_bottom }>
+						<div className={ styles.home__about_left_bottom + ` wow zoomIn` } data-wow-delay=".5s">
 							<div className={ styles.home__about_left_bottom_box }>
 								We're trusted by more than <span> 30k </span> clients
 							</div>
