@@ -7,9 +7,25 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 50px $padding;
+
+		@media only screen and (max-width: 767px) {
+			display: block;
+		}
+
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+			display: block;
+		}
 		
 		&_left {
 			width: 50%;
+
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 100%;
+			}
 
 			small {
 				color: $secondary;
@@ -36,11 +52,15 @@
 					border-radius: 6px;
 					color: #fff;
 					font-family: $heading-font;
-					font-size: clamp(25px, 2.3vw, 35px);
+					font-size: clamp(35px, 2.3vw, 35px);
 					font-weight: 600;
 					line-height: 38px;
 					padding: 60px 30px;
 					width: 30%;
+
+					@media only screen and (max-width: 767px) {
+						width: 50%;
+					}
 
 					span {
 						color: $secondary;
@@ -75,10 +95,23 @@
 			align-items: center;
 			justify-content: center;
 
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 100%;
+			}
+
 			img {
 				height: auto;
 				width: 500px;
 				object-fit: contain;
+
+				@media only screen and (max-width: 767px) {
+					display: block;
+					width: 80vw;
+				}
 			}
 		}
 	}

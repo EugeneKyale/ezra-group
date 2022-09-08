@@ -29,17 +29,17 @@ const Home = () => {
 						<h2 className="wow fadeInUp" data-wow-delay=".3s">
 							Why Choose Our Solar Energy Platform
 						</h2>
-						<p  className="wow fadeInUp" data-wow-delay=".5s">
+						<p className="wow fadeInUp" data-wow-delay=".5s">
 							We're a reliable energy partner to world wide businesses big and small. 
 							Benefit from our experience, expertise and ment to find energy savings designed specifically for your business. 
 							See how we can help a business like yours today.
 						</p>
-						<p  className="wow fadeInUp" data-wow-delay=".5s">
+						<p className="wow fadeInUp" data-wow-delay=".5s">
 							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
 						</p>
 						
-						<div className={ styles.home__about_left_bottom } data-wow-delay=".5s">
-							<div className={ styles.home__about_left_bottom_box + ` wow zoomIn`  }>
+						<div className={ styles.home__about_left_bottom }>
+							<div className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } data-wow-delay=".5s">
 								We're trusted by more than <span> 30k </span> clients.
 							</div>
 						</div>
@@ -47,6 +47,7 @@ const Home = () => {
 
 					<div className={ styles.home__about_right }>
 						<img
+							className="wow fadeIn" data-wow-delay=".5s"
 							alt="Ico"
 							src={ toAbsoluteUrl( "images/img-1.jpg" ) }
 						/>
