@@ -8,6 +8,7 @@ import React from "react";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
+import { toAbsoluteUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
 
@@ -37,15 +38,18 @@ const Home = () => {
 							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
 						</p>
 						
-						<div className={ styles.home__about_left_bottom + ` wow zoomIn` } data-wow-delay=".5s">
-							<div className={ styles.home__about_left_bottom_box }>
-								We're trusted by more than <span> 30k </span> clients
+						<div className={ styles.home__about_left_bottom } data-wow-delay=".5s">
+							<div className={ styles.home__about_left_bottom_box + ` wow zoomIn`  }>
+								We're trusted by more than <span> 30k </span> clients.
 							</div>
 						</div>
 					</div>
 
 					<div className={ styles.home__about_right }>
-
+						<img
+							alt="Ico"
+							src={ toAbsoluteUrl( "images/img-1.jpg" ) }
+						/>
 					</div>
 				</div>
 			</main>
