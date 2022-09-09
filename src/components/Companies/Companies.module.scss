@@ -24,6 +24,12 @@
 			border: 1px solid $background;
 		}
 
+		img {
+			width: 30px;
+			height: 30px;
+			object-fit: contain;
+		}
+
 		h3 {
 			margin-top: 85px;
 			margin-bottom: 15px;
