@@ -15,7 +15,7 @@ import mockData from "./mock.json";
 
 const Home = () => {
 
-	const { about } = mockData;
+	const { about, companies } = mockData;
 
 	return (
 		<Layout pageTitle="EZRA GROUP - Home">
@@ -58,6 +58,28 @@ const Home = () => {
 							alt="Ico"
 							src={ toAbsoluteUrl( "images/img-1.jpg" ) }
 						/>
+					</div>
+				</div>
+
+				<div className={ styles.home__companies }>
+					<div className={ styles.home__companies_top }>
+						<small>
+							{ companies.tagline }
+						</small>
+						<h2 className="wow fadeInUp" data-wow-delay=".3s">
+							{ companies.title }
+						</h2>
+						<div
+							className="wow fadeInUp" 
+							data-wow-delay=".5s"
+							dangerouslySetInnerHTML={{
+								__html: companies.description
+							}}
+						/>
+					</div>
+
+					<div className={ styles.home__companies_cards }>
+
 					</div>
 				</div>
 			</main>

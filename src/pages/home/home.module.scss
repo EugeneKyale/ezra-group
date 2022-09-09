@@ -27,12 +27,6 @@
 				width: 100%;
 			}
 
-			small {
-				color: $secondary;
-				font-size: clamp(16px, 1.1vw, 18px);
-				text-transform: uppercase;
-			}
-
 			h2 {
 				margin: 10px 0 20px;
 			}
@@ -53,7 +47,7 @@
 					color: #fff;
 					font-family: $heading-font;
 					font-size: clamp(35px, 2.3vw, 35px);
-					font-weight: 600;
+					font-weight: 500;
 					line-height: 38px;
 					padding: 60px 30px;
 					width: 30%;
@@ -112,6 +106,52 @@
 					display: block;
 					width: 80vw;
 				}
+			}
+		}
+	}
+
+	&__companies {
+		padding: 50px $padding;
+
+		&_top {
+			text-align: center;
+			max-width: 50%;
+			margin: 0 auto;
+
+			@media only screen and (max-width: 767px) {
+				max-width: 100%;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				max-width: 100%;
+			}
+
+			h2 {
+				margin: 10px 0 20px;
+			}
+		}
+
+		&_cards {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-rows: 1fr;
+			gap: 50px;
+			grid-template-areas:
+				". . . .";
+	
+			@media only screen and (max-width: 767px) {
+				grid-template-columns: repeat(1, minmax(0, 1fr));
+				gap: 50px 0;
+				grid-template-areas:
+					".";
+			}
+	
+	
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 50px;
+				grid-template-areas:
+					". .";
 			}
 		}
 	}
