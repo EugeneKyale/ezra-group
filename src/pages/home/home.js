@@ -47,7 +47,7 @@ const Home = () => {
 
 					<div className={ styles.home__about_right }>
 						<img
-							className="wow fadeIn" data-wow-delay=".5s"
+							className="wow fadeInRight" data-wow-delay=".6s"
 							alt="Ico"
 							src={ toAbsoluteUrl( "images/img-1.jpg" ) }
 						/>
