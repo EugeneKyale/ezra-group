@@ -15,15 +15,15 @@ const Companies = ( { icon, title, description, page } ) => {
 		<div className={ styles.companies }>
 			<div className={ styles.companies__inner }>
 				{/* <img src="" alt="icon" /> */}
-				<h3>
+				<h3 className="wow fadeInUp" data-wow-delay=".3s">
 					<a href={ page }>
 						{ title }
 					</a>
 				</h3>
-				<p>
+				<p className="wow fadeInUp" data-wow-delay=".5s">
 					{ description }
 				</p>
-				{/* <Button variant="arrow" text="Read More" page={ page } /> */}
+				<Button variant="arrow" text="Read More" page={ page } />
 			</div>
 		</div>
 	);

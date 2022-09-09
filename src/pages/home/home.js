@@ -64,7 +64,7 @@ const Home = () => {
 
 				<div className={ styles.home__companies }>
 					<div className={ styles.home__companies_top }>
-						<small>
+						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ companies.tagline }
 						</small>
 						<h2 className="wow fadeInUp" data-wow-delay=".3s">

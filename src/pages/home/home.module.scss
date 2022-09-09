@@ -2,7 +2,7 @@
 
 .home {
 	&__about {
-		background-color: #f8fafe; // TODO: remove later
+		// background-color: #f8fafe; // TODO: remove later
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -133,7 +133,7 @@
 		}
 
 		&_cards {
-			padding: 50px 100px;
+			padding: 50px;
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			grid-template-rows: 1fr;

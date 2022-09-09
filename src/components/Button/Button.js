@@ -33,7 +33,7 @@ const Button = ( { variant, text, page, hashlink } ) => {
 					className={ `btn__${variant}` }
 					to={ page } 
 				>
-					{ text }
+					{ text } { variant === "arrow" && <span> &rarr; </span> } 
 				</Link>
 			) }
 		</>
