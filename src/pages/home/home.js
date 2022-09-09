@@ -8,6 +8,7 @@ import React from "react";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
+import Companies from "../../components/Companies";
 import { toAbsoluteUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
@@ -79,7 +80,17 @@ const Home = () => {
 					</div>
 
 					<div className={ styles.home__companies_cards }>
-
+						{ companies.cards.length &&
+							companies.cards.map( ( company, idx ) => (
+								<Companies
+									key={ idx }
+									icon={ company.icon }
+									title={ company.title }
+									description={ company.description }
+									page={ company.page }
+								/>
+							))
+						}
 					</div>
 				</div>
 			</main>

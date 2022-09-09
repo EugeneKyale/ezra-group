@@ -8,6 +8,44 @@
 	"companies": {
 		"tagline": "That's What We Do ",
 		"title": "Some Of Our Services",
-		"description": "<p>We adopt an individual approach with each and every client and our business model is built on the following key promises.</p>"
+		"description": "<p>We adopt an individual approach with each and every client and our business model is built on the following key promises.</p>",
+		"cards": [
+			{
+				"icon": "",
+				"title": "Solar Installation",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			},
+			{
+				"icon": "",
+				"title": "Maintenance",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			},
+			{
+				"icon": "",
+				"title": "Monitoring",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			},
+			{
+				"icon": "",
+				"title": "Solar Installation",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			},
+			{
+				"icon": "",
+				"title": "Maintenance",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			},
+			{
+				"icon": "",
+				"title": "Monitoring",
+				"description": "Lorem ipsum dolor sit ameet aenean commodo nec ligula lorem ipsum is are many variation",
+				"page": "/"
+			}
+		]
 	}
 }
