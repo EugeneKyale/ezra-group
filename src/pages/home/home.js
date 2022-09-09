@@ -11,8 +11,11 @@ import Hero from "../../components/Hero";
 import { toAbsoluteUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
+import mockData from "./mock.json";
 
 const Home = () => {
+
+	const { about } = mockData;
 
 	return (
 		<Layout pageTitle="EZRA GROUP - Home">
@@ -24,28 +27,32 @@ const Home = () => {
 				<div className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
-							We're Trusted
+							{ about.tagline }
 						</small>
 						<h2 className="wow fadeInUp" data-wow-delay=".3s">
-							Why Choose Our Solar Energy Platform
+							{ about.title }
 						</h2>
-						<p className="wow fadeInUp" data-wow-delay=".5s">
-							We're a reliable energy partner to world wide businesses big and small. 
-							Benefit from our experience, expertise and ment to find energy savings designed specifically for your business. 
-							See how we can help a business like yours today.
-						</p>
-						<p className="wow fadeInUp" data-wow-delay=".5s">
-							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-						</p>
+						<div
+							className="wow fadeInUp" 
+							data-wow-delay=".5s"
+							dangerouslySetInnerHTML={{
+								__html: about.description
+							}}
+						/>
 						
 						<div className={ styles.home__about_left_bottom }>
-							<div className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } data-wow-delay=".5s">
-								We're trusted by more than <span> 30k </span> clients.
-							</div>
+							<div
+								className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } 
+								data-wow-delay=".5s"
+								dangerouslySetInnerHTML={{
+									__html: about.box
+								}}
+							/>
 						</div>
 					</div>
 
 					<div className={ styles.home__about_right }>
+						{/* TODO: replace src */}
 						<img
 							className="wow fadeInRight" data-wow-delay=".6s"
 							alt="Ico"
