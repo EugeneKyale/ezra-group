@@ -20,7 +20,7 @@ const Hero = ( { title, backgroundImage } ) => {
 				)})`
 			}}
 		>
-			<h1>
+			<h1 className="wow fadeInUp" data-wow-delay=".3s">
 				{ title }
 			</h1>
 		</div>
