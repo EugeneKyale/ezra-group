@@ -1,4 +1,8 @@
 {
+	"hero": {
+		"title": "Welcome to Ezra Group",
+		"background_image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80"
+	},
 	"about": {
 		"tagline": "We're Trusted",
 		"title": "Why Choose Our Solar Energy Platform",

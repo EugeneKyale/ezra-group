@@ -9,7 +9,7 @@ import React from "react";
 import { toAbsoluteUrl } from "../../_helpers/utils";
 import styles from "./Hero.module.scss";
 
-const Hero = ( { backgroundImage } ) => {
+const Hero = ( { title, backgroundImage } ) => {
 
 	return (
 		<div
@@ -20,6 +20,9 @@ const Hero = ( { backgroundImage } ) => {
 				)})`
 			}}
 		>
+			<h1>
+				{ title }
+			</h1>
 		</div>
 	);
 };
