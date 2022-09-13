@@ -1,7 +1,6 @@
 @import "../../_globals/variables";
 
 .companies {
-	position: relative;
 	margin-bottom: 30px;
 
 	&__inner {
@@ -25,9 +24,22 @@
 		}
 
 		img {
-			width: 30px;
-			height: 30px;
+			width: 3.5vw;
+			height: auto;
 			object-fit: contain;
+			position: absolute;
+			top: 0;
+			left: 42.5%;
+
+			@media only screen and (max-width: 767px) {
+				width: 10vw;
+				left: 44%;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 6vw;
+				left: 42%;
+			}
 		}
 
 		h3 {
