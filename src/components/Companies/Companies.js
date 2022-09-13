@@ -7,6 +7,7 @@ import React from "react";
  * Internal Dependencies
  */
 import Button from "../Button";
+import { generateExcerpt } from "../../_helpers/utils";
 import styles from "./Companies.module.scss";
 
 const Companies = ( { icon, title, description, page } ) => {
@@ -21,7 +22,8 @@ const Companies = ( { icon, title, description, page } ) => {
 					</a>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
-					{ description }
+				{ generateExcerpt( description, 0, 110 ) }
+				{ description.length > 110 ? "..." : "" }
 				</p>
 				<Button variant="arrow" text="Read More" page={ page } />
 			</div>
