@@ -51,5 +51,29 @@
 				"page": "/ezra-apartments"
 			}
 		]
+	},
+	"stats": {
+		"cards": [
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/2781/2781885.png",
+				"title": "Renewable Sector",
+				"number": "No1"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
+				"title": "Installed Capacity",
+				"number": "30108+ mw"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/3251/3251076.png",
+				"title": "WTGs Installed",
+				"number": "15224+"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/427/427735.png",
+				"title": "Customers Globally",
+				"number": "1500+"
+			}
+		]
 	}
 }

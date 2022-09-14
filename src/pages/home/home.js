@@ -8,6 +8,7 @@ import React from "react";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
+import Stats from "../../components/Stats";
 import Companies from "../../components/Companies";
 import { toAbsoluteUrl } from "../../_helpers/utils";
 
@@ -16,7 +17,7 @@ import mockData from "./mock.json";
 
 const Home = () => {
 
-	const { hero, about, companies } = mockData;
+	const { hero, about, companies, stats } = mockData;
 
 	return (
 		<Layout pageTitle="EZRA GROUP - Home">
@@ -25,6 +26,21 @@ const Home = () => {
 					title={ hero.title }
 					backgroundImage={ hero.background_image }
 				/>
+
+				<div className={ styles.home__stats }>
+					<div className={ styles.home__stats_cards }>
+						{ stats.cards.length &&
+							stats.cards.map( ( stat, idx ) => (
+								<Stats
+									key={ idx }
+									icon={ stat.icon }
+									title={ stat.title }
+									number={ stat.number }
+								/>
+							))
+						}
+					</div>
+				</div>
 
 				<div className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
