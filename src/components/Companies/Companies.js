@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React from "react";
+import { Link } from "react-router-dom";
 
 /**
  * Internal Dependencies
@@ -17,9 +18,9 @@ const Companies = ( { icon, title, description, page } ) => {
 			<div className={ styles.companies__inner }>
 				<img className="wow zoomIn" data-wow-delay=".3s" src={ icon } alt="icon" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
-					<a href={ page }>
+					<Link to={ page }>
 						{ title }
-					</a>
+					</Link>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
 				{ generateExcerpt( description, 0, 110 ) }
