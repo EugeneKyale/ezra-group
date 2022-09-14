@@ -15,8 +15,8 @@ const Companies = ( { icon, title, description, page } ) => {
 	return (
 		<div className={ styles.companies }>
 			<div className={ styles.companies__inner }>
-				<img src={ icon } alt="icon" />
-				<h3 className="wow fadeInUp" data-wow-delay=".3s">
+				<img className="wow zoomIn" data-wow-delay=".3s" src={ icon } alt="icon" />
+				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					<a href={ page }>
 						{ title }
 					</a>
