@@ -12,7 +12,6 @@ import { generateExcerpt } from "../../_helpers/utils";
 import styles from "./Companies.module.scss";
 
 const Companies = ( { icon, title, description, page } ) => {
-
 	return (
 		<div className={ styles.companies }>
 			<div className={ styles.companies__inner }>
@@ -23,8 +22,8 @@ const Companies = ( { icon, title, description, page } ) => {
 					</Link>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
-				{ generateExcerpt( description, 0, 110 ) }
-				{ description.length > 110 ? "..." : "" }
+					{ generateExcerpt( description, 0, 110 ) }
+					{ description.length > 110 ? "..." : "" }
 				</p>
 				<Button variant="arrow" text="Read More" page={ page } />
 			</div>
