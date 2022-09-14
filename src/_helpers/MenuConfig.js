@@ -3,36 +3,31 @@ const MenuConfig = {
 		menuItem: [
 			{
 				id: 1,
-				title: "Home",
-				page: "/",
-			},
-			{
-				id: 2,
 				title: "About",
 				page: "/about",
 			},
 			{
-				id: 3,
+				id: 2,
 				title: "Subsidiaries",
 				page: "/subsidiaries",
 			},
 			{
-				id: 4,
+				id: 3,
 				title: "Projects",
 				page: "/projects",
 			},
 			{
-				id: 5,
+				id: 4,
 				title: "CSR",
 				page: "/csr",
 			},
 			{
-				id: 6,
+				id: 5,
 				title: "Media",
 				page: "/media",
 			},
 			{
-				id: 7,
+				id: 6,
 				title: "Contact",
 				page: "/contact",
 			},
