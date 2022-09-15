@@ -2,10 +2,10 @@
 
 .home {
 	&__stats {
-		padding: 70px $padding 20px;
+		padding: 50px $padding;
 
 		@media only screen and (max-width: 767px) {
-			padding: 50px 0 20px;
+			padding: 50px 0;
 		}
 
 		&_cards {

@@ -27,21 +27,6 @@ const Home = () => {
 					backgroundImage={ hero.background_image }
 				/>
 
-				<div className={ styles.home__stats }>
-					<div className={ styles.home__stats_cards }>
-						{ stats.cards.length &&
-							stats.cards.map( ( stat, idx ) => (
-								<Stats
-									key={ idx }
-									icon={ stat.icon }
-									title={ stat.title }
-									number={ stat.number }
-								/>
-							))
-						}
-					</div>
-				</div>
-
 				<div className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
@@ -105,6 +90,21 @@ const Home = () => {
 									title={ company.title }
 									description={ company.description }
 									page={ company.page }
+								/>
+							))
+						}
+					</div>
+				</div>
+
+				<div className={ styles.home__stats }>
+					<div className={ styles.home__stats_cards }>
+						{ stats.cards.length &&
+							stats.cards.map( ( stat, idx ) => (
+								<Stats
+									key={ idx }
+									icon={ stat.icon }
+									title={ stat.title }
+									number={ stat.number }
 								/>
 							))
 						}
