@@ -137,6 +137,7 @@ const Home = () => {
 							values.cards.map( ( value, idx ) => (
 								<Values
 									key={ idx }
+									idx={idx }
 									icon={ value.icon }
 									title={ value.title }
 									description={ value.description }

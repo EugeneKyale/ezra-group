@@ -8,11 +8,17 @@ import React from "react";
  */
 import styles from "./Values.module.scss";
 
-const Values = ( { icon, title, description } ) => {
+const Values = ( { idx, icon, title, description } ) => {
 	return (
 		<div className={ styles.values }>
 			<div className={ styles.values__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ icon } alt="icon" />
+				<div className={ styles.values__inner_top }>
+					<img className="wow zoomIn" data-wow-delay=".3s" src={ icon } alt="icon" />
+
+					<h1>
+						0{ idx + 1 }
+					</h1>
+				</div>
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					{ title }
 				</h3>
