@@ -81,9 +81,6 @@ const Footer = () => {
 				<p>
 					© { new Date().getFullYear() } EZRA GROUP | All Rights Reserved
 				</p>
-				<p>
-					Built by <a href="https://eugene.co.ke/" target="_blank" rel="noreferrer"> Eugene </a>
-				</p>
 			</div>
 		</footer>
 	);

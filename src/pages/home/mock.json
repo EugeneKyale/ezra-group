@@ -15,19 +15,19 @@
 		"description": "<p>Ezra Group is an umbrella company covering;</p>",
 		"cards": [
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/4515/4515457.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/1012/1012334.png",
 				"title": "Ezra Construction",
 				"description": "We offer traditional contracting services as well as preconstruction, construction management and design/ build services.",
 				"page": "/ezra-construction"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/2204/2204028.png",
 				"title": "E.L Construction",
 				"description": "We develop a comprehensive construction schedule outlining all material requirements and construction activities.",
 				"page": "/e.l-construction"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/3251/3251076.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/3733/3733928.png",
 				"title": "Ezra General Trading & Saba",
 				"description": "Ezra is the leading business enterprise in southern Sudan founded in 2003 at the town of Yei shortly after the peace agreement between the government of Sudan and SPLA.",
 				"page": "/ezra-general-trading-saba"
@@ -39,13 +39,13 @@
 				"page": "/ezra-juba-power"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2781/2781885.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/2107/2107330.png",
 				"title": "Ezra Transporters",
 				"description": "The company owns dry and bulk cargo trucks. It renders transport service from Kenya to Uganda and to Southern Sudan towns of Kaya, Yei and Juba.",
 				"page": "/ezra-transporters"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/6917/6917662.png",
 				"title": "Ezra Apartments",
 				"description": "Maintaining an accurate and up-to-date job cost accounting system is a key tool in the effective management of a project.",
 				"page": "/ezra-apartments"
@@ -55,24 +55,24 @@
 	"stats": {
 		"cards": [
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2781/2781885.png",
-				"title": "Renewable Sector",
-				"number": "No1"
+				"icon": "https://cdn-icons-png.flaticon.com/512/2823/2823444.png",
+				"title": "Completed Projects",
+				"number": "320"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
-				"title": "Installed Capacity",
-				"number": "30108+ mw"
+				"icon": "https://cdn-icons-png.flaticon.com/512/2967/2967324.png",
+				"title": "Clobal Customers",
+				"number": "72"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/3251/3251076.png",
-				"title": "WTGs Installed",
-				"number": "15224+"
+				"icon": "https://cdn-icons-png.flaticon.com/512/2107/2107330.png",
+				"title": "Vehicles Owned",
+				"number": "153"
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/427/427735.png",
-				"title": "Customers Globally",
-				"number": "1500+"
+				"icon": "https://cdn-icons-png.flaticon.com/512/7829/7829198.png",
+				"title": "Team Members",
+				"number": "114"
 			}
 		]
 	},
@@ -82,22 +82,22 @@
 		"description": "<p>Ezra Group is an umbrella company covering ; Ezra Construction, E.L Construction, Ezra General Trading & Saba, Ezra Juba Power, Ezra Transporters and Ezra Apartments</p>",
 		"cards": [
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/4515/4515457.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/1584/1584942.png",
 				"title": "A Commitment of Responsiveness",
-				"description": "There’s only one thing greater than our passion for construction. And that’s our dedication to the needs and desires of our customers."
+				"description": "There's only one thing greater than our passion for construction. And that’s our dedication to the needs and desires of our customers."
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/2204/2204028.png",
 				"title": "Earth Moving Equipment",
 				"description": "We have invested a substantial chunk of it capital into acquiring heavy duty machines and high-technology equipment."
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/3251/3251076.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/2564/2564090.png",
 				"title": "ECDG Construction Equipment",
 				"description": "ECDG has established a professionally run construction arm, equipped with modern technology and machinery with the ability to execute road projects."
 			},
 			{
-				"icon": "https://cdn-icons-png.flaticon.com/128/2781/2781885.png",
+				"icon": "https://cdn-icons-png.flaticon.com/512/2754/2754498.png",
 				"title": "Experienced Staff",
 				"description": "Our engineers, planners, supervisors, material suppliers have the knowledge and ability to plan, design, supervise and construct as per the clients' needs."
 			}
