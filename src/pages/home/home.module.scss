@@ -1,37 +1,6 @@
 @import "../../_globals/variables";
 
 .home {
-	&__stats {
-		padding: 50px $padding;
-
-		@media only screen and (max-width: 767px) {
-			padding: 50px 0;
-		}
-
-		&_cards {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			grid-template-rows: 1fr;
-			gap: 50px;
-			grid-template-areas:
-				". . . .";
-	
-			@media only screen and (max-width: 767px) {
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 50px 0;
-				grid-template-areas:
-					". .";
-			}
-	
-	
-			@media only screen and (min-width: 768px) and (max-width: 1024px) {
-				grid-template-columns: repeat(4, minmax(0, 1fr));
-				gap: 50px;
-				grid-template-areas:
-					". . . .";
-			}
-		}
-	}
 	&__about {
 		// background-color: #f8fafe; // TODO: remove later
 		display: flex;
@@ -187,6 +156,79 @@
 				grid-template-areas:
 					". .";
 				padding: 50px 0;
+			}
+		}
+	}
+
+	&__stats {
+		padding: 50px $padding;
+
+		@media only screen and (max-width: 767px) {
+			padding: 50px 0;
+		}
+
+		&_cards {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-rows: 1fr;
+			gap: 50px;
+			grid-template-areas:
+				". . . .";
+	
+			@media only screen and (max-width: 767px) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 50px 0;
+				grid-template-areas:
+					". .";
+			}
+	
+	
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 50px;
+				grid-template-areas:
+					". . . .";
+			}
+		}
+	}
+
+	&__values {
+		background-color: #eff4f2;
+		padding: 50px $padding;
+
+		&_top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+	
+			@media only screen and (max-width: 767px) {
+				display: block;
+			}
+
+			&_left {
+				width: 45%;
+
+				@media only screen and (max-width: 767px) {
+					width: 100%;
+				}
+
+				h2 {
+					@media only screen and (max-width: 767px) {
+						margin: 10px 0;
+					}
+				}
+			}
+
+			&_right {
+				width: 50%;
+
+				@media only screen and (max-width: 767px) {
+					width: 100%;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					width: 55%;
+				}
 			}
 		}
 	}

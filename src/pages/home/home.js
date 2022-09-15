@@ -17,7 +17,7 @@ import mockData from "./mock.json";
 
 const Home = () => {
 
-	const { hero, about, companies, stats } = mockData;
+	const { hero, about, companies, stats, values } = mockData;
 
 	return (
 		<Layout pageTitle="EZRA GROUP - Home">
@@ -27,7 +27,7 @@ const Home = () => {
 					backgroundImage={ hero.background_image }
 				/>
 
-				<div className={ styles.home__about }>
+				<section className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ about.tagline }
@@ -62,9 +62,9 @@ const Home = () => {
 							src={ toAbsoluteUrl( "images/img-1.jpg" ) }
 						/>
 					</div>
-				</div>
+				</section>
 
-				<div className={ styles.home__companies }>
+				<section className={ styles.home__companies }>
 					<div className={ styles.home__companies_top }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ companies.tagline }
@@ -94,9 +94,9 @@ const Home = () => {
 							))
 						}
 					</div>
-				</div>
+				</section>
 
-				<div className={ styles.home__stats }>
+				<section className={ styles.home__stats }>
 					<div className={ styles.home__stats_cards }>
 						{ stats.cards.length &&
 							stats.cards.map( ( stat, idx ) => (
@@ -109,7 +109,32 @@ const Home = () => {
 							))
 						}
 					</div>
-				</div>
+				</section>
+
+				<section className={ styles.home__values }>
+					<small className="wow fadeInUp" data-wow-delay=".5s">
+						{ values.tagline }
+					</small>
+					<div className={ styles.home__values_top }>
+						<div className={ styles.home__values_top_left }>
+							<h2 className="wow fadeInUp" data-wow-delay=".3s">
+								{ values.title }
+							</h2>
+						</div>
+
+						<div
+							className={ styles.home__values_top_right + " wow fadeInUp" } 
+							data-wow-delay=".5s"
+							dangerouslySetInnerHTML={{
+								__html: values.description
+							}}
+						/>
+					</div>
+
+					<div className={ styles.home__values_bottom }>
+
+					</div>
+				</section>
 			</main>
 		</Layout>
 	);
