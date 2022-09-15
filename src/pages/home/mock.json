@@ -79,6 +79,28 @@
 	"values": {
 		"tagline": "Why Choose Us",
 		"title": "Ezra Group Covers",
-		"description": "<p>Ezra Group is an umbrella company covering ; Ezra Construction, E.L Construction, Ezra General Trading & Saba, Ezra Juba Power, Ezra Transporters and Ezra Apartments</p>"
+		"description": "<p>Ezra Group is an umbrella company covering ; Ezra Construction, E.L Construction, Ezra General Trading & Saba, Ezra Juba Power, Ezra Transporters and Ezra Apartments</p>",
+		"cards": [
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/4515/4515457.png",
+				"title": "A Commitment of Responsiveness",
+				"description": "There’s only one thing greater than our passion for construction. And that’s our dedication to the needs and desires of our customers."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/2990/2990873.png",
+				"title": "Earth Moving Equipment",
+				"description": "We have invested a substantial chunk of it capital into acquiring heavy duty machines and high-technology equipment."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/3251/3251076.png",
+				"title": "ECDG Construction Equipment",
+				"description": "ECDG has established a professionally run construction arm, equipped with modern technology and machinery with the ability to execute road projects."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/2781/2781885.png",
+				"title": "Experienced Staff",
+				"description": "Our engineers, planners, supervisors, material suppliers have the knowledge and ability to plan, design, supervise and construct as per the clients' needs."
+			}
+		]
 	}
 }

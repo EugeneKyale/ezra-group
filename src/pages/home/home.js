@@ -10,6 +10,7 @@ import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
 import Companies from "../../components/Companies";
+import Values from "../../components/Values";
 import { toAbsoluteUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
@@ -131,8 +132,17 @@ const Home = () => {
 						/>
 					</div>
 
-					<div className={ styles.home__values_bottom }>
-
+					<div className={ styles.home__values_cards }>
+						{ values.cards.length &&
+							values.cards.map( ( value, idx ) => (
+								<Values
+									key={ idx }
+									icon={ value.icon }
+									title={ value.title }
+									description={ value.description }
+								/>
+							))
+						}
 					</div>
 				</section>
 			</main>
