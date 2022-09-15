@@ -43,7 +43,7 @@
 				&_box {
 					position: relative;
 					background-color: $accent;
-					border-radius: 6px;
+					border-radius: $border-radius;
 					color: #fff;
 					font-family: $heading-font;
 					font-size: clamp(35px, 2.3vw, 35px);
