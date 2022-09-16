@@ -33,8 +33,13 @@
 			margin-bottom: 10px;
 		}
 
+		p {
+			font-size: clamp(16px, 1.1vw, 18px);
+		}
+
 		a {
 			color: $white;
+			font-size: clamp(16px, 1.1vw, 18px);
 
 			&:hover {
 				color: $link;

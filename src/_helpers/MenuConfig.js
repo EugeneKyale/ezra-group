@@ -98,7 +98,7 @@ const MenuConfig = {
 				page: "/gallery",
 			},
 		],
-		subsidiaries: [
+		quicklinks: [
 			{
 				id: 1,
 				title: "Lorem Ipsum",
