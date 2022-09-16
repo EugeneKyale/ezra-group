@@ -1,13 +1,13 @@
 {
 	"hero": {
 		"title": "Welcome to Ezra Group",
-		"background_image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80"
+		"background_image": "https://images.unsplash.com/photo-1610477865545-37711c53144d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1447&q=80"
 	},
 	"about": {
-		"tagline": "We're Trusted",
-		"title": "Why Choose Our Solar Energy Platform",
-		"description": "<p>We're a reliable energy partner to world wide businesses big and small. Benefit from our experience, expertise and ment to find energy savings designed specifically for your business. See how we can help a business like yours today.</p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>",
-		"box": "We're trusted by more than <span> 30k </span> clients"
+		"tagline": "Who We Are",
+		"title": "An Integrated Trading and Construction Entity",
+		"description": "<p>EZRA Group is a compound company founded in October 1986 in Ethiopia by two brothers. It has since grown into a conglomerate that is involved in the Construction Industry, Transport, General Trading and Supplies.</p><p> In June, 2011, the umbrella holding company, Ezra Construction & development Group was registered here in South Sudan and is the regional headquarters. Previously, the company gained experience of more than two decades in Ethiopia and Eritrea having expertise in construction of feeder roads, rigid & flexible pavement roads as well as road bridges.</p>",
+		"box": "We're trusted by more than <span> 70 </span> clients globally."
 	},
 	"companies": {
 		"tagline": "Our Portfolio",
