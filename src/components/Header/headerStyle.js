@@ -6,7 +6,7 @@ const headerStyle = {
 		marginBottom: "20px",
 		color: "#555",
 		width: "100%",
-		backgroundColor: "#fff", //menu bg color on scroll
+		backgroundColor: "#080D1C", //menu bg color on scroll
 		boxShadow:
 			"0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
 		transition: "all 150ms ease 0s",
@@ -79,7 +79,7 @@ const headerStyle = {
 			"0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(233, 30, 99, 0.46)",
 	},
 	transparent: {
-		backgroundColor: "#fff", //menu bg color before scroll, was previously transparent
+		backgroundColor: "#080D1C", //menu bg color before scroll, was previously transparent
 		boxShadow: "none",
 		color: "#FFFFFF"
 	},
@@ -124,9 +124,9 @@ const headerStyle = {
 		paddingRight: "0px",
 		paddingLeft: "0",
 		transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)",
-		backgroundColor: "#FFF",
+		backgroundColor: "#080D1C",
 		"@media (max-width: 767px)": {
-			width: 200,
+			width: 250,
 		},
 		"@media only screen and (min-width: 768px) and (max-width: 1024px)": {
 			width: 400,
