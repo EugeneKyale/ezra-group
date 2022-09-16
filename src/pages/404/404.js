@@ -19,7 +19,6 @@ const Four0Four = () => {
 						src="https://assets2.lottiefiles.com/packages/lf20_suhe7qtm.json"
 						background="transparent"
 						speed="1"
-						style={{ width: 500, height: 500 }}
 						loop
 						autoplay
 					/>

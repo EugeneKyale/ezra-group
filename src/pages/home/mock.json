@@ -1,0 +1,106 @@
+{
+	"hero": {
+		"title": "Welcome to Ezra Group",
+		"background_image": "https://images.unsplash.com/photo-1610477865545-37711c53144d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1447&q=80"
+	},
+	"about": {
+		"tagline": "Who We Are",
+		"title": "An Integrated Trading and Construction Entity",
+		"description": "<p>EZRA Group is a compound company founded in October 1986 in Ethiopia by two brothers. It has since grown into a conglomerate that is involved in the Construction Industry, Transport, General Trading and Supplies.</p><p> In June, 2011, the umbrella holding company, Ezra Construction & development Group was registered here in South Sudan and is the regional headquarters. Previously, the company gained experience of more than two decades in Ethiopia and Eritrea having expertise in construction of feeder roads, rigid & flexible pavement roads as well as road bridges.</p>",
+		"box": "We're trusted by more than <span> 70 </span> clients globally."
+	},
+	"companies": {
+		"tagline": "Our Portfolio",
+		"title": "Our Subsidiaries",
+		"description": "<p>Ezra Group is an umbrella company covering;</p>",
+		"cards": [
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/1012/1012334.png",
+				"title": "Ezra Construction",
+				"description": "We offer traditional contracting services as well as preconstruction, construction management and design/ build services.",
+				"page": "/ezra-construction"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2204/2204028.png",
+				"title": "E.L Construction",
+				"description": "We develop a comprehensive construction schedule outlining all material requirements and construction activities.",
+				"page": "/e.l-construction"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/3733/3733928.png",
+				"title": "Ezra General Trading & Saba",
+				"description": "Ezra is the leading business enterprise in southern Sudan founded in 2003 at the town of Yei shortly after the peace agreement between the government of Sudan and SPLA.",
+				"page": "/ezra-general-trading-saba"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/128/427/427735.png",
+				"title": "Ezra Juba Power",
+				"description": "We have been in the industry of Power and Electricity since 2013, producing reinforced concrete poles, supplying and installing of transmission lines with all the accessories.",
+				"page": "/ezra-juba-power"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2107/2107330.png",
+				"title": "Ezra Transporters",
+				"description": "The company owns dry and bulk cargo trucks. It renders transport service from Kenya to Uganda and to Southern Sudan towns of Kaya, Yei and Juba.",
+				"page": "/ezra-transporters"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/6917/6917662.png",
+				"title": "Ezra Apartments",
+				"description": "Maintaining an accurate and up-to-date job cost accounting system is a key tool in the effective management of a project.",
+				"page": "/ezra-apartments"
+			}
+		]
+	},
+	"stats": {
+		"cards": [
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2823/2823444.png",
+				"title": "Completed Projects",
+				"number": "320"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2967/2967324.png",
+				"title": "Clobal Customers",
+				"number": "72"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2107/2107330.png",
+				"title": "Vehicles Owned",
+				"number": "153"
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/7829/7829198.png",
+				"title": "Team Members",
+				"number": "114"
+			}
+		]
+	},
+	"values": {
+		"tagline": "Why Choose Us",
+		"title": "Ezra Group Covers",
+		"description": "<p>Ezra Group is an umbrella company covering ; Ezra Construction, E.L Construction, Ezra General Trading & Saba, Ezra Juba Power, Ezra Transporters and Ezra Apartments</p>",
+		"cards": [
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/1584/1584942.png",
+				"title": "A Commitment of Responsiveness",
+				"description": "There's only one thing greater than our passion for construction. And that’s our dedication to the needs and desires of our customers."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2204/2204028.png",
+				"title": "Earth Moving Equipment",
+				"description": "We have invested a substantial chunk of it capital into acquiring heavy duty machines and high-technology equipment."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2564/2564090.png",
+				"title": "ECDG Construction Equipment",
+				"description": "ECDG has established a professionally run construction arm, equipped with modern technology and machinery with the ability to execute road projects."
+			},
+			{
+				"icon": "https://cdn-icons-png.flaticon.com/512/2754/2754498.png",
+				"title": "Experienced Staff",
+				"description": "Our engineers, planners, supervisors, material suppliers have the knowledge and ability to plan, design, supervise and construct as per the clients' needs."
+			}
+		]
+	}
+}

@@ -23,11 +23,11 @@ const Footer = () => {
 						EZRA GROUP is a company founded in October 1986 in Ethiopia by two brothers.
 					</p>
 				</div>
-				<div className={ styles.footer__top_subsidiaries }>
+				<div className={ styles.footer__top_quicklinks }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Subsidiaries
+						Quicklinks
 					</h4>
-					{ MenuConfig.footer.subsidiaries.map( ( link ) => (
+					{ MenuConfig.footer.quicklinks.map( ( link ) => (
 						<div
 							key={ link.id }
 							className={ styles.footer__top_links }
@@ -80,9 +80,6 @@ const Footer = () => {
 			<div className={ styles.footer__copyright }>
 				<p>
 					© { new Date().getFullYear() } EZRA GROUP | All Rights Reserved
-				</p>
-				<p>
-					Built by <a href="https://eugene.co.ke/" target="_blank" rel="noreferrer"> Eugene </a>
 				</p>
 			</div>
 		</footer>

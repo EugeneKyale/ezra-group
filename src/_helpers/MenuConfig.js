@@ -3,21 +3,31 @@ const MenuConfig = {
 		menuItem: [
 			{
 				id: 1,
-				title: "Home",
-				page: "/",
-			},
-			{
-				id: 2,
 				title: "About",
 				page: "/about",
 			},
 			{
+				id: 2,
+				title: "Subsidiaries",
+				page: "/subsidiaries",
+			},
+			{
 				id: 3,
-				title: "Services",
-				page: "/services",
+				title: "Projects",
+				page: "/projects",
 			},
 			{
 				id: 4,
+				title: "CSR",
+				page: "/csr",
+			},
+			{
+				id: 5,
+				title: "Media",
+				page: "/media",
+			},
+			{
+				id: 6,
 				title: "Contact",
 				page: "/contact",
 			},
@@ -88,7 +98,7 @@ const MenuConfig = {
 				page: "/gallery",
 			},
 		],
-		subsidiaries: [
+		quicklinks: [
 			{
 				id: 1,
 				title: "Lorem Ipsum",

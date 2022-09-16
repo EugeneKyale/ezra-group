@@ -1,13 +1,20 @@
 /* colors */
 $primary: #080D1C;
 $secondary: #FF4120;
+$accent: #1a4987;
 $link: #FF4120;
 $white: #FFF;
 $heading: #080D1C;
 $text: #03060D;
 $grey: #454545;
+$background: #eaedf3;
+$light-background: #f7f7f7;
+
+$body-font: 'Catamaran', sans-serif;
+$heading-font: 'Smooch Sans', sans-serif;
 
 $box-shadow: rgba(10, 10, 10, 0.2) 0px 7px 29px 0px;
+$border-radius: 6px;
 
 /* Fluid Layout */
 $padding: clamp(30px, 9vw, 250px);

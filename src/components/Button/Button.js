@@ -1,7 +1,13 @@
+/**
+ * External Dependencies
+ */
 import React from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 
+/**
+ * Internal Dependencies
+ */
 import "./Button.scss";
 
 const Button = ( { variant, text, page, hashlink } ) => {
@@ -27,7 +33,7 @@ const Button = ( { variant, text, page, hashlink } ) => {
 					className={ `btn__${variant}` }
 					to={ page } 
 				>
-					{ text }
+					{ text } { variant === "arrow" && <span> &rarr; </span> } 
 				</Link>
 			) }
 		</>
