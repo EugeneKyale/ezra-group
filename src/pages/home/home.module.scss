@@ -2,7 +2,7 @@
 
 .home {
 	&__about {
-		// background-color: #f8fafe; // TODO: remove later
+		background-color: #f8fafe; // TODO: remove later
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -111,7 +111,7 @@
 	}
 
 	&__companies {
-		background-color: #eff4f2;
+		background-color: $light-background;
 		padding: 50px $padding;
 
 		&_top {
@@ -193,7 +193,7 @@
 	}
 
 	&__values {
-		background-color: #eff4f2;
+		background-color: $light-background;
 		padding: 80px $padding 50px;
 
 		&_top {
