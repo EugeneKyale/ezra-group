@@ -77,8 +77,8 @@ export default function Header( props ) {
 		<Link to="/">
 			<img
 				alt="Logo"
-				src={ toAbsoluteUrl( "/logo.svg" ) }
-				style={{ height: "30px", width: "auto", objectFit: "contain" }}
+				src={ toAbsoluteUrl( "/logo.jpg" ) }
+				style={{ height: "50px", width: "auto", objectFit: "contain" }}
 			/>
 		</Link>
 	);

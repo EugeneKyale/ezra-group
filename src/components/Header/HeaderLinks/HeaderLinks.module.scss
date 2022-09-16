@@ -18,14 +18,14 @@
 
 		a,
 		&:visited {
-			color: $primary;
+			color: $white;
 			margin-left: 50px;
 			font-size: clamp(18px, 1vw, 20px);
 			font-weight: bold;
 			line-height: 1.48;
 
 			@media only screen and (max-width: 768px) {
-				color: $primary;
+				color: $white;
 				width: calc(100% - 30px);
 				margin-top: 8px;
 				text-align: left;
@@ -35,7 +35,7 @@
 			}
 
 			&:hover {
-				color: $primary;
+				color: $secondary;
 			}
 
 			&::after {
