@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const toAbsoluteUrl = ( pathname ) => process.env.PUBLIC_URL + pathname;
 
-export const baseUrl = "";
+export const baseUrl = "https://ezra-group-strapi-cms-bruq2.ondigitalocean.app/api/";
 
 /**
  * Convert any date into dd-mm-yyyy

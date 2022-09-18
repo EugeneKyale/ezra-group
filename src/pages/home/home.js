@@ -1,7 +1,8 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
 /**
  * Internal Dependencies
@@ -12,44 +13,60 @@ import Stats from "../../components/Stats";
 import Companies from "../../components/Companies";
 import Values from "../../components/Values";
 import { toAbsoluteUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
 import mockData from "./mock.json";
 
 const Home = () => {
+	const [ homeContent, setHomeContent ] = useState( [] );
+	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	const { hero, about, companies, stats, values } = mockData;
+	useEffect( () => {
+		axiosInstance({
+			method: 'get',
+			url: `home?populate[0]=Hero,About`
+		}).then( result => {
+			setHomeContent( result.data.data );
+		}).catch( error => {
+			console.log( error.message );
+			setErrorMessage( error.message );
+		});
+
+	}, []);
+
+	const { about, companies, stats, values } = mockData;
+	const content = homeContent.attributes;
 
 	return (
 		<Layout pageTitle="EZRA GROUP - Home">
 			<main className={ styles.home }>
 				<Hero
-					title={ hero.title }
-					backgroundImage={ hero.background_image }
+					title={ content && content.Hero.title }
+					backgroundImage={ content && content.Hero.backgroundImage }
 				/>
 
 				<section className={ styles.home__about }>
 					<div className={ styles.home__about_left }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ about.tagline }
+							{ content && content.About.tagline }
 						</small>
 						<h2 className="wow fadeInUp" data-wow-delay=".3s">
-							{ about.title }
+							{ content && content.About.title }
 						</h2>
-						<div
-							className="wow fadeInUp" 
-							data-wow-delay=".5s"
-							dangerouslySetInnerHTML={{
-								__html: about.description
-							}}
-						/>
+
+						<div className="wow fadeInUp" data-wow-delay=".5s">
+							<ReactMarkdown>
+								{ content && content.About.description }
+							</ReactMarkdown>
+						</div>
 						
 						<div className={ styles.home__about_left_bottom }>
 							<div
 								className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } 
 								data-wow-delay=".5s"
 								dangerouslySetInnerHTML={{
-									__html: about.box
+									__html: content && content.About.highlights
 								}}
 							/>
 						</div>
