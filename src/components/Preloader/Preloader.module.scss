@@ -1,0 +1,18 @@
+@import "../../_globals/variables";
+
+.preloader {
+	height: 50vh;
+	width: auto;
+	padding: 200px $padding 100px;
+
+	h3 {
+		font-size: clamp(40px, 3vw, 60px);
+		text-align: center;
+	}
+
+	&__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
