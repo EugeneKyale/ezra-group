@@ -13,7 +13,7 @@ import Stats from "../../components/Stats";
 import Companies from "../../components/Companies";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
-import { axiosInstance } from "../../_helpers/utils";
+import { axiosInstance, cmsUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
 import mockData from "./mock.json";
@@ -25,7 +25,7 @@ const Home = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `home?populate[0]=hero,about`
+			url: `home?populate=hero.backgroundImage,about.image`
 		}).then( result => {
 			setHomeContent( result.data.data );
 		}).catch( error => {
@@ -46,7 +46,7 @@ const Home = () => {
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ content?.hero.backgroundImage }
+						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
 					/>
 
 					<section className={ styles.home__about }>
@@ -76,11 +76,10 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__about_right }>
-							{/* TODO: replace src */}
 							<img
 								className="wow fadeInRight" data-wow-delay=".6s"
 								alt="illustration"
-								src={ content?.about.image }
+								src={ cmsUrl + content?.about.image.data.attributes.url }
 							/>
 						</div>
 					</section>
