@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
-import Companies from "../../components/Companies";
+import Subsidiaries from "../../components/Subsidiaries";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
 import { axiosInstance, cmsUrl } from "../../_helpers/utils";
@@ -20,21 +20,31 @@ import mockData from "./mock.json";
 
 const Home = () => {
 	const [ homeContent, setHomeContent ] = useState( [] );
+	const [ subsidiaries, setSubsidiaries ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `home?populate=hero.backgroundImage,about.image`
+			url: `home?populate=hero.backgroundImage,about.image,subsidiaries`
 		}).then( result => {
 			setHomeContent( result.data.data );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
 
+		axiosInstance({
+			method: 'get',
+			url: `subsidiaries?populate=icon`
+		}).then( result => {
+			setSubsidiaries( result.data.data );
+		}).catch( error => {
+			setErrorMessage( error.message );
+		});
+
 	}, []);
 
-	const { companies, stats, values } = mockData;
+	const { stats, values } = mockData;
 	const content = homeContent.attributes;
 
 	return (
@@ -84,32 +94,31 @@ const Home = () => {
 						</div>
 					</section>
 
-					<section className={ styles.home__companies }>
-						<div className={ styles.home__companies_top }>
+					<section className={ styles.home__subsidiaries }>
+						<div className={ styles.home__subsidiaries_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
-								{ companies.tagline }
+								{ content?.subsidiaries.tagline }
 							</small>
 							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ companies.title }
+								{ content?.subsidiaries.title }
 							</h2>
 							<div
 								className="wow fadeInUp" 
 								data-wow-delay=".5s"
 								dangerouslySetInnerHTML={{
-									__html: companies.description
+									__html: content?.subsidiaries.description
 								}}
 							/>
 						</div>
 
-						<div className={ styles.home__companies_cards }>
-							{ companies.cards.length &&
-								companies.cards.map( ( company, idx ) => (
-									<Companies
+						<div className={ styles.home__subsidiaries_cards }>
+							{ subsidiaries.length &&
+								subsidiaries.map( ( subsidiary, idx ) => (
+									<Subsidiaries
 										key={ idx }
-										icon={ company.icon }
-										title={ company.title }
-										description={ company.description }
-										page={ company.page }
+										icon={ subsidiary.attributes.icon.data.attributes.url }
+										title={ subsidiary.attributes.title }
+										description={ subsidiary.attributes.description }
 									/>
 								))
 							}
