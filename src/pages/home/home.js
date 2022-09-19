@@ -45,22 +45,22 @@ const Home = () => {
 				:
 				<main className={ styles.home }>
 					<Hero
-						title={ content && content.hero.title }
-						backgroundImage={ content && content.hero.backgroundImage }
+						title={ content?.hero.title }
+						backgroundImage={ content?.hero.backgroundImage }
 					/>
 
 					<section className={ styles.home__about }>
 						<div className={ styles.home__about_left }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
-								{ content && content.about.tagline }
+								{ content?.about.tagline }
 							</small>
 							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ content && content.about.title }
+								{ content?.about.title }
 							</h2>
 
 							<div className="wow fadeInUp" data-wow-delay=".5s">
 								<ReactMarkdown>
-									{ content && content.about.description }
+									{ content?.about.description }
 								</ReactMarkdown>
 							</div>
 							
@@ -69,7 +69,7 @@ const Home = () => {
 									className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } 
 									data-wow-delay=".5s"
 									dangerouslySetInnerHTML={{
-										__html: content && content.about.highlights
+										__html: content?.about.highlights
 									}}
 								/>
 							</div>
@@ -79,8 +79,8 @@ const Home = () => {
 							{/* TODO: replace src */}
 							<img
 								className="wow fadeInRight" data-wow-delay=".6s"
-								alt="image"
-								src={ content && content.about.image }
+								alt="illustration"
+								src={ content?.about.image }
 							/>
 						</div>
 					</section>
