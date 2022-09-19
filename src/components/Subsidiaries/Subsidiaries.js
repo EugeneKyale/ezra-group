@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
  * Internal Dependencies
  */
 import Button from "../Button/Button";
-import { generateExcerpt, cmsUrl } from "../../_helpers/utils";
+import { generateExcerpt, cmsUrl, slugify } from "../../_helpers/utils";
 import styles from "./Subsidiaries.module.scss";
 
-const Subsidiaries = ( { icon, title, description } ) => {
+const Subsidiaries = ( { id, icon, title, description } ) => {
 	return (
 		<div className={ styles.subsidiaries }>
 			<div className={ styles.subsidiaries__inner }>
 				<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + icon } alt={ title } />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
-					<Link to="">
+					<Link to={`/subsidiary/${slugify( title )}/${ id }`}>
 						{ title }
 					</Link>
 				</h3>
@@ -25,7 +25,7 @@ const Subsidiaries = ( { icon, title, description } ) => {
 					{ generateExcerpt( description, 0, 110 ) }
 					{ description.length > 110 ? "..." : "" }
 				</p>
-				<Button variant="arrow" text="Read More" page="" />
+				<Button variant="arrow" text="Read More" page={`/subsidiary/${slugify( title )}/${ id }`} />
 			</div>
 		</div>
 	);

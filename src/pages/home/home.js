@@ -113,9 +113,10 @@ const Home = () => {
 
 						<div className={ styles.home__subsidiaries_cards }>
 							{ subsidiaries.length &&
-								subsidiaries.map( ( subsidiary, idx ) => (
+								subsidiaries.map( ( subsidiary ) => (
 									<Subsidiaries
-										key={ idx }
+										key={ subsidiary.id }
+										id={ subsidiary.id }
 										icon={ subsidiary.attributes.icon.data.attributes.url }
 										title={ subsidiary.attributes.title }
 										description={ subsidiary.attributes.description }

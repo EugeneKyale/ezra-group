@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
  */
 import Home from "./pages/home";
 import About from "./pages/about";
+import Subsidiary from "./pages/subsidiary";
 import Privacy from "./pages/privacy";
 import Four0Four from "./pages/404";
 
@@ -19,6 +20,7 @@ const App = () => {
 		<Routes>
 			<Route exact path="/" element={ <Home /> } />
 			<Route exact path="/about" element={ <About /> } />
+			<Route exact path="/subsidiary/:slug/:id" element={ <Subsidiary /> } />
 			<Route exact path="/privacy" element={ <Privacy /> } />
 			<Route path="*" element={ <Four0Four /> } />
 		</Routes>
