@@ -13,7 +13,7 @@ import Stats from "../../components/Stats";
 import Companies from "../../components/Companies";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
-import { toAbsoluteUrl, axiosInstance } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
 import mockData from "./mock.json";
@@ -25,7 +25,7 @@ const Home = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `home?populate[0]=Hero,About`
+			url: `home?populate[0]=hero,about`
 		}).then( result => {
 			setHomeContent( result.data.data );
 		}).catch( error => {
@@ -45,22 +45,22 @@ const Home = () => {
 				:
 				<main className={ styles.home }>
 					<Hero
-						title={ content && content.Hero.title }
-						backgroundImage={ content && content.Hero.backgroundImage }
+						title={ content && content.hero.title }
+						backgroundImage={ content && content.hero.backgroundImage }
 					/>
 
 					<section className={ styles.home__about }>
 						<div className={ styles.home__about_left }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
-								{ content && content.About.tagline }
+								{ content && content.about.tagline }
 							</small>
 							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ content && content.About.title }
+								{ content && content.about.title }
 							</h2>
 
 							<div className="wow fadeInUp" data-wow-delay=".5s">
 								<ReactMarkdown>
-									{ content && content.About.description }
+									{ content && content.about.description }
 								</ReactMarkdown>
 							</div>
 							
@@ -69,7 +69,7 @@ const Home = () => {
 									className={ styles.home__about_left_bottom_box + ` wow zoomIn`  } 
 									data-wow-delay=".5s"
 									dangerouslySetInnerHTML={{
-										__html: content && content.About.highlights
+										__html: content && content.about.highlights
 									}}
 								/>
 							</div>
@@ -79,8 +79,8 @@ const Home = () => {
 							{/* TODO: replace src */}
 							<img
 								className="wow fadeInRight" data-wow-delay=".6s"
-								alt="Ico"
-								src={ toAbsoluteUrl( "images/img-1.jpg" ) }
+								alt="image"
+								src={ content && content.about.image }
 							/>
 						</div>
 					</section>
