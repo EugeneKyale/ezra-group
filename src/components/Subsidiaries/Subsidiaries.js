@@ -17,7 +17,7 @@ const Subsidiaries = ( { id, icon, title, description } ) => {
 			<div className={ styles.subsidiaries__inner }>
 				<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + icon } alt={ title } />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
-					<Link to={`/subsidiary/${slugify( title )}/${ id }`}>
+					<Link to={ `/subsidiary/${ slugify( title ) }/${ id }` }>
 						{ title }
 					</Link>
 				</h3>
@@ -25,7 +25,7 @@ const Subsidiaries = ( { id, icon, title, description } ) => {
 					{ generateExcerpt( description, 0, 110 ) }
 					{ description.length > 110 ? "..." : "" }
 				</p>
-				<Button variant="arrow" text="Read More" page={`/subsidiary/${slugify( title )}/${ id }`} />
+				<Button variant="arrow" text="Read More" page={ `/subsidiary/${ slugify( title ) }/${ id }` } />
 			</div>
 		</div>
 	);

@@ -1,30 +1,141 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
 
 /**
  * Internal Dependencies
  */
-import MenuConfig from "../../../_helpers/MenuConfig";
+import { axiosInstance, slugify } from "../../../_helpers/utils";
 
 import styles from "./HeaderLinks.module.scss";
 
 const HeaderLinks = () => {
+	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ openSubsidiaries, setOpenSubsidiaries ] = useState( false );
+	const anchorRef = useRef( null );
+
+	const handleToggle = () => {
+		setOpenSubsidiaries( ( prevOpen ) => ! prevOpen );
+	};
+
+	const handleClose = ( event ) => {
+		if ( anchorRef.current && anchorRef.current.contains( event.target ) ) {
+			return;
+		}
+
+		setOpenSubsidiaries( false );
+	};
+
+	const handleListKeyDown = ( event ) => {
+		if ( event.key === 'Tab' ) {
+		  event.preventDefault();
+		  setOpenSubsidiaries( false );
+		}
+	}
+
+	const prevOpen = useRef( openSubsidiaries );
+
+	useEffect( () => {
+		axiosInstance({
+			method: 'get',
+			url: `subsidiaries`
+		}).then( result => {
+			setSubsidiaries( result.data.data );
+		}).catch( error => {
+			console.log( error.message );
+		});
+	
+		if ( prevOpen.current === true && openSubsidiaries === false ) {
+		anchorRef.current.focus();
+		}
+
+		prevOpen.current = openSubsidiaries;
+
+	}, [ openSubsidiaries ] );
+
 	return (
 		<nav className={ styles.headerLinks }>
 			<div className={ styles.headerLinks__items }>
 				<div className={ styles.headerLinks__items }>
-					{ MenuConfig.header.menuItem.map( ( menu ) => (
-						<div key={ menu.id } className={ styles.footer__topLinks }>
-							<NavLink
-								to={ menu.page }
-							>
-								{ menu.title }
-							</NavLink>
-						</div>
-					))}
+					<div className={ styles.footer__topLinks }>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/about"
+						>
+							About
+						</NavLink>
+						<NavLink
+							ref={ anchorRef }
+							aria-controls={ openSubsidiaries ? 'menu-list-grow' : undefined }
+							aria-haspopup="true"
+							onClick={ handleToggle }
+							to={ false }
+						>
+							Subsidiaries <i className={ styles.headerLinks__arrowDown }></i>
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/projects"
+						>
+							Projects
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/csr"
+						>
+							CSR
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/contact"
+						>
+							Contact
+						</NavLink>
+					</div>
+
+					<Popper open={ openSubsidiaries } anchorEl={ anchorRef.current } role={ undefined } transition disablePortal>
+						{ ( { TransitionProps, placement } ) => (
+						<Grow
+							{ ...TransitionProps }
+							style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+						>
+							<Paper>
+								<ClickAwayListener onClickAway={ handleClose }>
+									<MenuList 
+										id="menu-list-grow" 
+										autoFocusItem={ openSubsidiaries } 
+										onKeyDown={ handleListKeyDown }
+									>
+										{ subsidiaries.length && subsidiaries.map( ( subsidiary ) => (
+											<MenuItem key={ subsidiary.id }>
+												<NavLink
+													activeClassName={ styles.headerLinks__menuActive }
+													to={ `/subsidiary/${ slugify( subsidiary.attributes.title ) }/${ subsidiary.id }` }
+													style={{
+														color: "#0c1e31",
+														fontSize: "16px",
+														fontWeight: "500",
+														margin: "0 15px"
+													}}
+												>
+													{ subsidiary.attributes.title }
+												</NavLink>
+											</MenuItem>
+										))}
+									</MenuList>
+								</ClickAwayListener>
+							</Paper>
+						</Grow>
+						)}
+					</Popper>
 				</div>
 			</div>
 
