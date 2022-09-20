@@ -16,17 +16,18 @@ import Preloader from "../../components/Preloader";
 import { axiosInstance, cmsUrl } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
-import mockData from "./mock.json";
 
 const Home = () => {
 	const [ homeContent, setHomeContent ] = useState( [] );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ statistics, setStatistics ] = useState( [] );
+	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `home?populate=hero.backgroundImage,about.image,subsidiaries`
+			url: `home?populate=hero.backgroundImage,about.image,subsidiaries,values`
 		}).then( result => {
 			setHomeContent( result.data.data );
 		}).catch( error => {
@@ -42,9 +43,26 @@ const Home = () => {
 			setErrorMessage( error.message );
 		});
 
+		axiosInstance({
+			method: 'get',
+			url: `statistics?populate=icon`
+		}).then( result => {
+			setStatistics( result.data.data );
+		}).catch( error => {
+			setErrorMessage( error.message );
+		});
+
+		axiosInstance({
+			method: 'get',
+			url: `values?populate=icon`
+		}).then( result => {
+			setValues( result.data.data );
+		}).catch( error => {
+			setErrorMessage( error.message );
+		});
+
 	}, []);
 
-	const { stats, values } = mockData;
 	const content = homeContent.attributes;
 
 	return (
@@ -128,13 +146,13 @@ const Home = () => {
 
 					<section className={ styles.home__stats }>
 						<div className={ styles.home__stats_cards }>
-							{ stats.cards.length &&
-								stats.cards.map( ( stat, idx ) => (
+							{ statistics.length &&
+								statistics.map( ( stat ) => (
 									<Stats
-										key={ idx }
-										icon={ stat.icon }
-										title={ stat.title }
-										number={ stat.number }
+										key={ stat.id }
+										icon={ stat.attributes.icon.data.attributes.url }
+										title={ stat.attributes.title }
+										number={ stat.attributes.number }
 									/>
 								))
 							}
@@ -143,33 +161,31 @@ const Home = () => {
 
 					<section className={ styles.home__values }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ values.tagline }
+							{ content?.values.tagline }
 						</small>
 						<div className={ styles.home__values_top }>
 							<div className={ styles.home__values_top_left }>
 								<h2 className="wow fadeInUp" data-wow-delay=".3s">
-									{ values.title }
+									{ content?.values.title }
 								</h2>
 							</div>
 
-							<div
-								className={ styles.home__values_top_right + " wow fadeInUp" } 
-								data-wow-delay=".5s"
-								dangerouslySetInnerHTML={{
-									__html: values.description
-								}}
-							/>
+							<div className={ styles.home__values_top_right + " wow fadeInUp" } data-wow-delay=".5s">
+								<ReactMarkdown>
+									{ content?.values.description }
+								</ReactMarkdown>
+							</div>
 						</div>
 
 						<div className={ styles.home__values_cards }>
-							{ values.cards.length &&
-								values.cards.map( ( value, idx ) => (
+							{ values.length &&
+								values.map( ( value, idx ) => (
 									<Values
-										key={ idx }
+										key={ value.id }
 										idx={idx }
-										icon={ value.icon }
-										title={ value.title }
-										description={ value.description }
+										icon={ value.attributes.icon.data.attributes.url }
+										title={ value.attributes.title }
+										description={ value.attributes.description }
 									/>
 								))
 							}

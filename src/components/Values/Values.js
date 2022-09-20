@@ -6,6 +6,7 @@ import React from "react";
 /**
  * Internal Dependencies
  */
+import { cmsUrl } from "../../_helpers/utils";
 import styles from "./Values.module.scss";
 
 const Values = ( { idx, icon, title, description } ) => {
@@ -13,7 +14,7 @@ const Values = ( { idx, icon, title, description } ) => {
 		<div className={ styles.values }>
 			<div className={ styles.values__inner }>
 				<div className={ styles.values__inner_top }>
-					<img className="wow zoomIn" data-wow-delay=".3s" src={ icon } alt="icon" />
+					<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + icon } alt={ title } />
 
 					<h1>
 						0{ idx + 1 }
