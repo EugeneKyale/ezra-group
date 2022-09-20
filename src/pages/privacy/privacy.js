@@ -14,7 +14,7 @@ const Privacy = () => {
 		<Layout pageTitle="Privacy Notice">
 			<div className={ styles.privacy }>
 				<h1 className="wow fadeInUp" data-wow-delay=".3s">
-					EZRA GROUP - Privacy Notice.
+					Ezra Group - Privacy Notice.
 				</h1>
 			</div>
 		</Layout>

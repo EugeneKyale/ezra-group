@@ -66,7 +66,7 @@ const Home = () => {
 	const content = homeContent.attributes;
 
 	return (
-		<Layout pageTitle="EZRA GROUP - Home">
+		<Layout pageTitle="Ezra Group - Home">
 			{
 				errorMessage ?
 				<Preloader />

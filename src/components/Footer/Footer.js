@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 /**
  * Internal Dependencies
  */
-import { axiosInstance } from "../../_helpers/utils";
+import { axiosInstance, toAbsoluteUrl } from "../../_helpers/utils";
 import MenuConfig from "../../_helpers/MenuConfig";
 
 import styles from "./Footer.module.scss";
@@ -41,18 +41,17 @@ const Footer = () => {
 						{ content?.footer.aboutText }
 					</p>
 				</div>
-				<div className={ styles.footer__top_quicklinks }>
+				<div className={ styles.footer__top_socials }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Quicklinks
+						Follow Us
 					</h4>
-					{ MenuConfig.footer.quicklinks.map( ( link ) => (
-						<div
-							key={ link.id }
-							className={ styles.footer__top_links }
-						>
-							<Link to={ link.page }>
-								{ link.title }
-							</Link>
+					{ MenuConfig.footer.socialPages.map( ( social ) => (
+						<div className={ styles.footer__top_socials_single } key={ social.id }>
+							<img
+							src={ toAbsoluteUrl( social.icon ) }
+							alt={ social.title }
+							/>
+							<a href={ social.url } target="_blank" rel="noopener noreferrer"> { social.title } </a>
 						</div>
 					))}
 				</div>
@@ -83,7 +82,7 @@ const Footer = () => {
 
 			<div className={ styles.footer__copyright }>
 				<p>
-					© { new Date().getFullYear() } EZRA GROUP | All Rights Reserved
+					© { new Date().getFullYear() } Ezra Group | All Rights Reserved
 				</p>
 			</div>
 		</footer>

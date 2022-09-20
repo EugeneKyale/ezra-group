@@ -34,7 +34,7 @@ const Subsidiary = () => {
 	const { title } = subsidiaryDetails;
 
 	return (
-		<Layout pageTitle="EZRA GROUP - Home">
+		<Layout pageTitle="Ezra Group - Home">
 			{
 				errorMessage ?
 				<Preloader />
