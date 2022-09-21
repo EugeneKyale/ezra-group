@@ -23,7 +23,7 @@ const Team = ( { photo, name, position, social } ) => {
 				<div className={ styles.team__inner_social }>
 					{ social.length &&
 						social.map( ( media ) => (
-							<a href={ media.url } target="_blank" rel="noreferrer">
+							<a className="wow zoomIn" data-wow-delay=".6s" href={ media.url } target="_blank" rel="noreferrer">
 								<img src={ cmsUrl + media.icon.data.attributes.url } alt={ media.title } />
 							</a>
 						))
