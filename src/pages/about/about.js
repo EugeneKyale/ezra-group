@@ -43,7 +43,7 @@ const About = () => {
 
 		axiosInstance({
 			method: 'get',
-			url: `teams?populate=photo&sort[0]=id:asc`
+			url: `teams?populate=photo,social.icon&sort[0]=id:asc`
 		}).then( result => {
 			setTeamMembers( result.data.data );
 		}).catch( error => {
@@ -170,6 +170,7 @@ const About = () => {
 										photo={ member.attributes.photo.data.attributes.url }
 										name={ member.attributes.name }
 										position={ member.attributes.position }
+										social={ member.attributes.social }
 									/>
 								))
 							}

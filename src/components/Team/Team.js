@@ -2,7 +2,6 @@
  * External Dependencies
  */
 import React from "react";
-import { Link } from "react-router-dom";
 
 /**
  * Internal Dependencies
@@ -10,7 +9,7 @@ import { Link } from "react-router-dom";
 import { cmsUrl } from "../../_helpers/utils";
 import styles from "./Team.module.scss";
 
-const Team = ( { photo, name, position } ) => {
+const Team = ( { photo, name, position, social } ) => {
 	return (
 		<div className={ styles.team }>
 			<div className={ styles.team__inner }>
@@ -21,6 +20,15 @@ const Team = ( { photo, name, position } ) => {
 				<p className="wow fadeInUp" data-wow-delay=".5s">
 					{ position }
 				</p>
+				<div className={ styles.team__inner_social }>
+					{ social.length &&
+						social.map( ( media ) => (
+							<a href={ media.url } target="_blank" rel="noreferrer">
+								<img src={ cmsUrl + media.icon.data.attributes.url } alt={ media.title } />
+							</a>
+						))
+					}
+				</div>
 			</div>
 		</div>
 	);
