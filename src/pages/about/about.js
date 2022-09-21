@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
+import Team from "../../components/Team";
 import Preloader from "../../components/Preloader";
 import { axiosInstance, cmsUrl } from "../../_helpers/utils";
 
@@ -17,6 +18,7 @@ import styles from "./about.module.scss";
 
 const About = () => {
 	const [ aboutContent, setAboutContent ] = useState( [] );
+	const [ teamMembers, setTeamMembers ] = useState( [] );
 	const [ statistics, setStatistics ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
@@ -35,6 +37,15 @@ const About = () => {
 			url: `statistics?populate=icon`
 		}).then( result => {
 			setStatistics( result.data.data );
+		}).catch( error => {
+			setErrorMessage( error.message );
+		});
+
+		axiosInstance({
+			method: 'get',
+			url: `teams?populate=photo&sort[0]=id:asc`
+		}).then( result => {
+			setTeamMembers( result.data.data );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
@@ -152,6 +163,16 @@ const About = () => {
 						</div>
 
 						<div className={ styles.about__team_cards }>
+							{ teamMembers.length &&
+								teamMembers.map( ( member ) => (
+									<Team
+										key={ member.id }
+										photo={ member.attributes.photo.data.attributes.url }
+										name={ member.attributes.name }
+										position={ member.attributes.position }
+									/>
+								))
+							}
 						</div>
 					</section>
 				</main>
