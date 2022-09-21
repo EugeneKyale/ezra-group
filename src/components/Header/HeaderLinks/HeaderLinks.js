@@ -46,7 +46,7 @@ const HeaderLinks = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `subsidiaries`
+			url: `subsidiaries?populate=icon&sort[0]=id:asc`
 		}).then( result => {
 			setSubsidiaries( result.data.data );
 		}).catch( error => {

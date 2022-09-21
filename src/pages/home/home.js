@@ -36,7 +36,7 @@ const Home = () => {
 
 		axiosInstance({
 			method: 'get',
-			url: `subsidiaries?populate=icon`
+			url: `subsidiaries?populate=icon&sort[0]=id:asc`
 		}).then( result => {
 			setSubsidiaries( result.data.data );
 		}).catch( error => {
