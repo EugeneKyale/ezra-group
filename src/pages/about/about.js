@@ -23,7 +23,7 @@ const About = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `about?populate=hero.backgroundImage,history.image`
+			url: `about?populate=hero.backgroundImage,history.image,mission.card.icon`
 		}).then( result => {
 			setAboutContent( result.data.data );
 		}).catch( error => {
@@ -92,6 +92,45 @@ const About = () => {
 									}
 								</div>
 							</div>
+						</div>
+					</section>
+
+					<section className={ styles.about__mission }>
+						<small className="wow fadeInUp" data-wow-delay=".5s">
+							{ content?.mission.tagline }
+						</small>
+						<div className={ styles.about__mission_top }>
+							<div className={ styles.about__mission_top_left }>
+								<h2 className="wow fadeInUp" data-wow-delay=".3s">
+									{ content?.mission.title }
+								</h2>
+							</div>
+
+							<div className={ styles.about__mission_top_right + " wow fadeInUp" } data-wow-delay=".5s">
+								<ReactMarkdown>
+									{ content?.mission.description }
+								</ReactMarkdown>
+							</div>
+						</div>
+
+						<div className={ styles.about__mission_cards }>
+							{ content?.mission.card.length &&
+								content?.mission.card.map( ( card ) => (
+									<div key={ card.id } className={ styles.about__mission_cards_component }>
+										<div className={ styles.about__mission_cards_component__inner }>
+											<div className={ styles.about__mission_cards_component__inner_top }>
+												<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + card.icon.data.attributes.url } alt={ card.title } />
+											</div>
+											<h3 className="wow fadeInUp" data-wow-delay=".4s">
+												{ card.title }
+											</h3>
+											<p className="wow fadeInUp" data-wow-delay=".5s">
+												{ card.description }
+											</p>
+										</div>
+									</div>
+								))
+							}
 						</div>
 					</section>
 				</main>
