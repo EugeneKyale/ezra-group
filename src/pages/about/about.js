@@ -23,7 +23,7 @@ const About = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `about?populate=hero.backgroundImage,history.image,mission.card.icon`
+			url: `about?populate=hero.backgroundImage,history.image,mission.card.icon,team`
 		}).then( result => {
 			setAboutContent( result.data.data );
 		}).catch( error => {
@@ -131,6 +131,27 @@ const About = () => {
 									</div>
 								))
 							}
+						</div>
+					</section>
+
+					<section className={ styles.about__team }>
+						<div className={ styles.about__team_top }>
+							<small className="wow fadeInUp" data-wow-delay=".5s">
+								{ content?.team.tagline }
+							</small>
+							<h2 className="wow fadeInUp" data-wow-delay=".3s">
+								{ content?.team.title }
+							</h2>
+							<div
+								className="wow fadeInUp" 
+								data-wow-delay=".5s"
+								dangerouslySetInnerHTML={{
+									__html: content?.team.description
+								}}
+							/>
+						</div>
+
+						<div className={ styles.about__team_cards }>
 						</div>
 					</section>
 				</main>
