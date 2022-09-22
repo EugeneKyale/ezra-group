@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 
 /**
@@ -31,7 +32,7 @@ const Subsidiary = () => {
 
 	}, [ subsidiaryId ]);
 
-	const { title } = subsidiaryDetails;
+	const { title, description } = subsidiaryDetails;
 
 	return (
 		<Layout pageTitle="Ezra Group - Home">
@@ -43,6 +44,11 @@ const Subsidiary = () => {
 					<h1>
 						{ title }
 					</h1>
+					<div className={ styles.subsidiary__inner }>
+						<ReactMarkdown>
+							{ description }
+						</ReactMarkdown>
+					</div>
 				</main>
 			}
 		</Layout>
