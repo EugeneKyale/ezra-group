@@ -1,7 +1,7 @@
 @import "../../_globals/variables";
 
 .footer {
-	background-color: $accent;
+	background-color: $heading;
 	color: #F1F1F1;
 
 	&__top {
@@ -30,7 +30,7 @@
 		}
 
 		h4 {
-			margin-bottom: 10px;
+			margin-bottom: 15px;
 		}
 
 		p {
@@ -45,6 +45,26 @@
 				color: $link;
 			}
 		}
+
+		&_socials {
+            &_single {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    object-fit: contain;
+                    margin: 0 10px 0 0;
+                }
+
+                a {
+                    color: $white;
+                    text-decoration: none;
+                }
+            }
+        }
 
 		&_links {
 			margin-bottom: 5px;

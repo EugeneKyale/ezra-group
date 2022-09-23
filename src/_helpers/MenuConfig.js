@@ -31,54 +31,7 @@ const MenuConfig = {
 				title: "Contact",
 				page: "/contact",
 			},
-		],
-		socialPages: [
-			{
-				id: 1,
-				title: "facebook",
-				url: "#",
-				icon: {
-					header: "/images/facebook.svg",
-					footer: "/images/facebook.webp",
-				},
-			},
-			{
-				id: 2,
-				title: "twitter",
-				url: "#",
-				icon: {
-					header: "/images/twitter.svg",
-					footer: "/images/twitter.webp",
-				},
-			},
-			{
-				id: 3,
-				title: "youtube",
-				url: "#",
-				icon: {
-					header: "/images/youtube.svg",
-					footer: "/images/youtube.webp",
-				},
-			},
-			{
-				id: 5,
-				title: "reddit",
-				url: "#",
-				icon: {
-					header: "/images/reddit.svg",
-					footer: "/images/reddit.webp",
-				},
-			},
-			{
-				id: 6,
-				title: "medium",
-				url: "#",
-				icon: {
-					header: "/images/medium.svg",
-					footer: "/images/medium.webp",
-				},
-			},
-		],
+		]
 	},
 	footer: {
 		media: [
@@ -114,6 +67,26 @@ const MenuConfig = {
 				title: "Lorem Ipsum",
 				page: "/",
 			},
+		],
+		socialPages: [
+			{
+				id: 1,
+				title: "Facebook",
+				url: "https://www.facebook.com/EzraGroupofCompanies/",
+				icon: "/icons/facebook.svg"
+			},
+			{
+				id: 2,
+				title: "Twitter",
+				url: "https://twitter.com/EzraCompanies",
+				icon: "/icons/twitter.svg"
+			},
+			{
+				id: 3,
+				title: "LinkedIn",
+				url: "#",
+				icon: "/icons/linkedin.svg"
+			}
 		],
 	}
 };

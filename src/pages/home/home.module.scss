@@ -2,7 +2,6 @@
 
 .home {
 	&__about {
-		background-color: #f8fafe; // TODO: remove later
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -110,7 +109,7 @@
 		}
 	}
 
-	&__companies {
+	&__subsidiaries {
 		background-color: $light-background;
 		padding: 50px $padding;
 
