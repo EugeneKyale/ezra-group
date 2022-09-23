@@ -20,7 +20,7 @@
 		&:visited {
 			color: $white;
 			margin-left: 50px;
-			font-size: clamp(18px, 1vw, 20px);
+			font-size: clamp(16px, 1vw, 20px);
 			font-weight: bold;
 			line-height: 1.48;
 
@@ -173,6 +173,8 @@
 
 	&__item {
 		padding-top: 10px !important;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-weight: 500 !important;
 	}
 
 	&__list {

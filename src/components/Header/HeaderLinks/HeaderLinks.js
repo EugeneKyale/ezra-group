@@ -129,7 +129,6 @@ const HeaderLinks = () => {
 													style={{
 														color: "#0c1e31",
 														fontSize: "16px",
-														fontWeight: "600",
 														margin: "0 15px"
 													}}
 												>
