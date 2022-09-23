@@ -34,8 +34,10 @@
 		}
 
 		p {
-			font-size: clamp(14px, 1.1vw, 18px);
-			font-weight: 500;
+			color: $secondary;
+			font-size: clamp(13px, .9vw, 17px);
+			font-weight: 600 ;
+			text-transform: uppercase;
 		}
 
 		h5 {

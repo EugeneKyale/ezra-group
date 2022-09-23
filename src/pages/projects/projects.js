@@ -21,7 +21,7 @@ const Projects = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `projects?populate=coverImage&sort[0]=id:asc`
+			url: `projects?populate=coverImage,category&sort[0]=id:asc`
 		}).then( result => {
 			setProjects( result.data.data );
 		}).catch( error => {
@@ -51,7 +51,7 @@ const Projects = () => {
 										id={ project.id }
 										coverImage={ project.attributes.coverImage.data.attributes.url }
 										title={ project.attributes.title }
-										category="Construction"
+										category={ project.attributes.category?.data.attributes.Title }
 									/>
 								))
 							}
