@@ -16,9 +16,19 @@ import styles from "./projects.module.scss";
 
 const Projects = () => {
 	const [ projects, setProjects ] = useState( [] );
+	const [ pageContent, setPageContent ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	useEffect( () => {
+		axiosInstance({
+			method: 'get',
+			url: `projects-page?populate=hero.backgroundImage`
+		}).then( result => {
+			setPageContent( result.data.data );
+		}).catch( error => {
+			setErrorMessage( error.message );
+		});
+		
 		axiosInstance({
 			method: 'get',
 			url: `projects?populate=coverImage,category&sort[0]=id:asc`
@@ -30,6 +40,8 @@ const Projects = () => {
 
 	}, []);
 
+	const content = pageContent.attributes;
+
 	return (
 		<Layout pageTitle="Projects">
 			{
@@ -38,8 +50,8 @@ const Projects = () => {
 				:
 				<main className={ styles.projects }>
 					<Hero
-						title="Our Projects"
-						backgroundImage={ cmsUrl + "/uploads/8_Road_Construction_9eaeac99e5.jpg" }
+						title={ content?.hero.title }
+						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
 					/>
 
 					<section className={ styles.projects__cards }>
