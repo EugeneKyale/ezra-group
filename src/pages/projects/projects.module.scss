@@ -1,0 +1,35 @@
+@import "../../_globals/variables";
+
+.projects {
+	&__cards {
+		background-color: $light-background;
+		padding: 50px $padding;
+
+		&_inner {
+			padding: 50px;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-rows: 1fr;
+			gap: 50px;
+			grid-template-areas:
+				". . .";
+	
+			@media only screen and (max-width: 767px) {
+				grid-template-columns: repeat(1, minmax(0, 1fr));
+				gap: 50px 0;
+				grid-template-areas:
+					".";
+				padding: 50px 0;
+			}
+	
+	
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 50px;
+				grid-template-areas:
+					". .";
+				padding: 50px 0;
+			}
+		}
+	}
+}

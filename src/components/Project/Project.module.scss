@@ -1,0 +1,45 @@
+@import "../../_globals/variables";
+
+.project {
+	height: 45vh;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 20px;
+	border-radius: $border-radius;
+
+	@media only screen and (max-width: 767px) {
+		height: 40vh;
+	}
+
+	@media only screen and (min-width: 768px) and (max-width: 1024px) {
+		height: 30vh;
+	}
+
+	&__inner {
+		background-color: $white;
+		padding: 10px 20px;
+		border-left: 5px solid $secondary;
+		border-radius: $border-radius;
+
+		a {
+			color: $heading;
+				
+			&:hover {
+				color: $heading;
+			}
+		}
+
+		p {
+			font-size: clamp(14px, 1.1vw, 18px);
+			font-weight: 500;
+		}
+
+		h5 {
+			font-weight: 700;
+		}
+	}
+}
