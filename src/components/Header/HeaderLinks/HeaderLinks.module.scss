@@ -164,4 +164,37 @@
 		}
 
 	}
+
+	&__icon {
+		height: 25px;
+		width: 25px;
+		object-fit: contain;
+	}
+
+	&__item {
+		padding-top: 10px !important;
+	}
+
+	&__list {
+		border-top: 3px solid $secondary;
+		border-radius: $border-radius;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 50%;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid $secondary;
+
+			@media only screen and (max-width: 768px) {
+				display: none;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				display: none;
+			}
+		}
+	}
 }

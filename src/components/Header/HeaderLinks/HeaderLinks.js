@@ -13,7 +13,7 @@ import MenuList from "@material-ui/core/MenuList";
 /**
  * Internal Dependencies
  */
-import { axiosInstance, slugify } from "../../../_helpers/utils";
+import { axiosInstance, slugify, cmsUrl } from "../../../_helpers/utils";
 
 import styles from "./HeaderLinks.module.scss";
 
@@ -79,7 +79,7 @@ const HeaderLinks = () => {
 							onClick={ handleToggle }
 							to={ false }
 						>
-							Subsidiaries <i className={ styles.headerLinks__arrowDown }></i>
+							Subsidiaries {/* <i className={ styles.headerLinks__arrowDown }></i> */}
 						</NavLink>
 						<NavLink
 							activeClassName={styles.headerLinks__menuActive}
@@ -109,20 +109,27 @@ const HeaderLinks = () => {
 						>
 							<Paper>
 								<ClickAwayListener onClickAway={ handleClose }>
-									<MenuList 
+									<MenuList
+										className={ styles.headerLinks__list } 
 										id="menu-list-grow" 
 										autoFocusItem={ openSubsidiaries } 
 										onKeyDown={ handleListKeyDown }
 									>
 										{ subsidiaries.length && subsidiaries.map( ( subsidiary ) => (
-											<MenuItem key={ subsidiary.id }>
+											<MenuItem key={ subsidiary.id } className={ styles.headerLinks__inner }>
+												<img
+													className={ styles.headerLinks__icon } 
+													src={ cmsUrl + subsidiary.attributes.icon.data.attributes.url } 
+													alt="menu-icon" 
+												/>
 												<NavLink
+													className={ styles.headerLinks__item }
 													activeClassName={ styles.headerLinks__menuActive }
 													to={ `/subsidiary/${ slugify( subsidiary.attributes.title ) }/${ subsidiary.id }` }
 													style={{
 														color: "#0c1e31",
 														fontSize: "16px",
-														fontWeight: "500",
+														fontWeight: "600",
 														margin: "0 15px"
 													}}
 												>
