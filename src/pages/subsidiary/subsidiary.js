@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
  * Internal Dependencies
  */
 import Layout from "../../components/Layout/Layout";
+import Hero from "../../components/Hero";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
@@ -23,7 +24,7 @@ const Subsidiary = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `subsidiaries/${ subsidiaryId }?populate=icon`
+			url: `subsidiaries/${ subsidiaryId }?populate=icon,coverImage`
 		}).then( result => {
 			setSubsidiaryDetails( result.data.data.attributes );
 		}).catch( error => {
@@ -32,7 +33,7 @@ const Subsidiary = () => {
 
 	}, [ subsidiaryId ]);
 
-	const { title, description } = subsidiaryDetails;
+	const { title, description, coverImage } = subsidiaryDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -41,9 +42,10 @@ const Subsidiary = () => {
 				<Preloader />
 				:
 				<main className={ styles.subsidiary }>
-					<h1>
-						{ title }
-					</h1>
+					<Hero
+						title={ title }
+						backgroundImage={ coverImage?.data.attributes.url }
+					/>
 					<div className={ styles.subsidiary__inner }>
 						<ReactMarkdown>
 							{ description }
