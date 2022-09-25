@@ -6,10 +6,10 @@ import React, { useState, useEffect } from "react";
 /**
  * Internal Dependencies
  */
-import Layout from "../../components/Layout/Layout";
-import Hero from "../../components/Hero/Hero";
-import Project from "../../components/Project/Project";
-import Preloader from "../../components/Preloader/Preloader";
+import Layout from "../../components/Layout";
+import Hero from "../../components/Hero";
+import Project from "../../components/Project";
+import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./projects.module.scss";

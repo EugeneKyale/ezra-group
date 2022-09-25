@@ -1,14 +1,9 @@
 @import "../../_globals/variables";
 
 .project {
-	margin-top: 80px;
-	padding: 50px $padding 100px;
-
-	h1 {
-		margin: 15px 0;
-	}
-
 	&__inner {
+		padding: 50px $padding 100px;
+
 		h2 {
 			font-size: clamp(30px, 2vw, 45px);
 			margin: 20px 0;

@@ -8,8 +8,9 @@ import { useParams } from "react-router-dom";
 /**
  * Internal Dependencies
  */
-import Layout from "../../components/Layout/Layout";
-import Preloader from "../../components/Preloader/Preloader";
+import Layout from "../../components/Layout";
+import Hero from "../../components/Hero";
+import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./project.module.scss";
@@ -32,7 +33,7 @@ const Project = () => {
 
 	}, [ projectId ]);
 
-	const { title, excerpt } = projectDetails;
+	const { title, excerpt, coverImage } = projectDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -41,9 +42,10 @@ const Project = () => {
 				<Preloader />
 				:
 				<main className={ styles.project }>
-					<h1>
-						{ title }
-					</h1>
+					<Hero
+						title={ title }
+						backgroundImage={ coverImage?.data.attributes.url }
+					/>
 					<div className={ styles.project__inner }>
 						<ReactMarkdown>
 							{ excerpt }
