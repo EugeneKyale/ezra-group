@@ -107,7 +107,7 @@ const HeaderLinks = () => {
 							{ ...TransitionProps }
 							style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
 						>
-							<Paper>
+							<Paper style={{ borderRadius: '6px' }}>
 								<ClickAwayListener onClickAway={ handleClose }>
 									<MenuList
 										className={ styles.headerLinks__list } 
