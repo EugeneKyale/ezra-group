@@ -9,30 +9,30 @@ import { useParams } from "react-router-dom";
  * Internal Dependencies
  */
 import Layout from "../../components/Layout/Layout";
-import Preloader from "../../components/Preloader";
+import Preloader from "../../components/Preloader/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
-import styles from "./subsidiary.module.scss";
+import styles from "./project.module.scss";
 
-const Subsidiary = () => {
-	const [ subsidiaryDetails, setSubsidiaryDetails ] = useState( [] );
+const Project = () => {
+	const [ projectDetails, setProjectDetails ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	let subsidiaryId = useParams().id;
+	let projectId = useParams().id;
 
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `subsidiaries/${ subsidiaryId }?populate=icon`
+			url: `projects/${ projectId }?populate=coverImage`
 		}).then( result => {
-			setSubsidiaryDetails( result.data.data.attributes );
+			setProjectDetails( result.data.data.attributes );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
 
-	}, [ subsidiaryId ]);
+	}, [ projectId ]);
 
-	const { title, description } = subsidiaryDetails;
+	const { title, excerpt } = projectDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -40,13 +40,13 @@ const Subsidiary = () => {
 				errorMessage ?
 				<Preloader />
 				:
-				<main className={ styles.subsidiary }>
+				<main className={ styles.project }>
 					<h1>
 						{ title }
 					</h1>
-					<div className={ styles.subsidiary__inner }>
+					<div className={ styles.project__inner }>
 						<ReactMarkdown>
-							{ description }
+							{ excerpt }
 						</ReactMarkdown>
 					</div>
 				</main>
@@ -55,4 +55,4 @@ const Subsidiary = () => {
 	);
 };
 
-export default Subsidiary;
+export default Project;
