@@ -3,8 +3,15 @@
 .four0four {
 	padding: 50px $padding;
 	min-height: 60vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin-top: 80px;
+
+	h3 {
+		text-align: center;
+	}
+
+	&__inner {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
