@@ -63,7 +63,7 @@ const About = () => {
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
 					/>
 
 					<section className={ styles.about__history }>

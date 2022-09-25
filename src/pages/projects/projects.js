@@ -10,7 +10,7 @@ import Layout from "../../components/Layout/Layout";
 import Hero from "../../components/Hero/Hero";
 import Project from "../../components/Project/Project";
 import Preloader from "../../components/Preloader/Preloader";
-import { axiosInstance, cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./projects.module.scss";
 
@@ -51,7 +51,7 @@ const Projects = () => {
 				<main className={ styles.projects }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
 					/>
 
 					<section className={ styles.projects__cards }>
