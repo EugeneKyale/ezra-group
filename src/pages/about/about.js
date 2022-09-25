@@ -136,7 +136,9 @@ const About = () => {
 												{ card.title }
 											</h3>
 											<p className="wow fadeInUp" data-wow-delay=".5s">
-												{ card.description }
+												<ReactMarkdown>
+													{ card.description }
+												</ReactMarkdown>
 											</p>
 										</div>
 									</div>

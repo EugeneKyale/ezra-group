@@ -47,8 +47,8 @@ const MenuConfig = {
 			},
 			{
 				id: 3,
-				title: "Gallery",
-				page: "/gallery",
+				title: "Corporate Videos",
+				page: "/corporate-videos",
 			},
 		],
 		quicklinks: [
