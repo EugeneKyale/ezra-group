@@ -199,4 +199,14 @@
 			}
 		}
 	}
+
+	&__inner {
+		&:hover {
+			background-color: $white;
+
+			a {
+				color: $secondary !important;
+			}
+		}
+	}
 }
