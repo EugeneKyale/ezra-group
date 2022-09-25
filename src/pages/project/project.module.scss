@@ -2,7 +2,7 @@
 
 .project {
 	&__inner {
-		padding: 50px $padding 100px;
+		padding: 50px $padding 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -16,7 +16,8 @@
 		}
 
 		&_left {
-			width: 55%;
+			width: 49%;
+			margin-right: 20px;
 
 			@media only screen and (max-width: 767px) {
 				width: 100%;
@@ -38,10 +39,12 @@
 		}
 
 		&_right {
-			width: 40%;
+			width: 49%;
+			margin-left: 20px;
 
 			@media only screen and (max-width: 767px) {
 				width: 100%;
+				margin-left: 0;
 				margin-bottom: 30px;
 			}
 
@@ -100,6 +103,63 @@
 					width: 30px;
 					height: 30px;
 					object-fit: contain;
+				}
+			}
+		}
+
+		&_bottom {
+			display: flex;
+			padding-bottom: 80px;
+
+			@media only screen and (max-width: 767px) {
+				display: block;
+			}
+
+			&_inner {
+				width: 49%;
+				margin-right: 20px;
+
+				@media only screen and (max-width: 767px) {
+					width: 100%;
+					margin-right: 0;
+				}
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					margin: 25px 0;
+				}
+
+				h2 {
+					font-size: clamp(23px, 1.8vw, 26px);
+				}
+
+				p {
+					text-align: justify;
+					margin: 15px 0;
+				}
+
+				img {
+					height: 350px;
+					width: 100%;
+					object-fit: cover;
+					border-radius: $border-radius;
+
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						height: 250px;
+					}
+				}
+
+				&:last-child {
+					margin-right: 0;
+					margin-left: 20px;
+
+					@media only screen and (max-width: 767px) {
+						margin-left: 0;
+					}
 				}
 			}
 		}
