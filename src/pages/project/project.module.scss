@@ -3,14 +3,105 @@
 .project {
 	&__inner {
 		padding: 50px $padding 100px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-		h2 {
-			font-size: clamp(30px, 2vw, 45px);
-			margin: 20px 0;
+		@media only screen and (max-width: 767px) {
+			flex-direction: column-reverse;
 		}
-	
-		P {
-			margin: 15px 0;		
+
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+			flex-direction: column-reverse;
+		}
+
+		&_left {
+			width: 55%;
+
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 100%;
+			}
+
+			h2 {
+				font-size: clamp(30px, 2vw, 45px);
+				margin: 20px 0;
+			}
+		
+			P {
+				margin: 15px 0;	
+				text-align: justify;	
+			}
+		}
+
+		&_right {
+			width: 40%;
+
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+				margin-bottom: 30px;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 100%;
+				margin-bottom: 30px;
+			}
+
+			&_card {
+				border: .5px solid $grey;
+				border-radius: $border-radius;
+				padding: 30px 20px;
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				grid-template-rows: 1fr;
+				gap: 30px 20px;
+				grid-template-areas:
+					". .";
+		
+				@media only screen and (max-width: 767px) {
+					padding: 30px 30px 30px 10px;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 30px 0;
+					grid-template-areas:
+						". .";
+				}
+		
+		
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					padding: 20px 50px 20px 0;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 20px 0;
+					grid-template-areas:
+						". .";
+				}
+
+				h3 {
+					font-size: clamp(16px, 1vw, 20px);
+					margin-bottom: 5px;
+					line-height: 1;
+
+					@media only screen and (max-width: 767px) {
+						font-size: clamp(13px, .8vw, 16px);
+					}
+				}
+
+				p {
+					font-size: clamp(14px, .9vw, 18px);
+
+					@media only screen and (max-width: 767px) {
+						font-size: clamp(13px, .8vw, 16px);
+					}
+				}
+
+				img {
+					width: 30px;
+					height: 30px;
+					object-fit: contain;
+				}
+			}
 		}
 	}
 }

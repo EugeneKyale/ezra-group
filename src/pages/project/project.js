@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
+import Stats from "../../components/Stats";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
@@ -24,7 +25,7 @@ const Project = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `projects/${ projectId }?populate=coverImage`
+			url: `projects/${ projectId }?populate=coverImage,infoCards.icon`
 		}).then( result => {
 			setProjectDetails( result.data.data.attributes );
 		}).catch( error => {
@@ -33,7 +34,7 @@ const Project = () => {
 
 	}, [ projectId ]);
 
-	const { title, excerpt, coverImage } = projectDetails;
+	const { title, excerpt, coverImage, infoCards } = projectDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -47,9 +48,25 @@ const Project = () => {
 						backgroundImage={ coverImage?.data.attributes.url }
 					/>
 					<div className={ styles.project__inner }>
-						<ReactMarkdown>
-							{ excerpt }
-						</ReactMarkdown>
+						<div className={ styles.project__inner_left }>
+							<ReactMarkdown>
+								{ excerpt }
+							</ReactMarkdown>
+						</div>
+
+						<div className={ styles.project__inner_right }>
+							<div className={ styles.project__inner_right_card }>
+								{ infoCards?.map( ( card ) => (
+										<Stats
+											key={ card.id }
+											icon={ card.icon.data.attributes.url }
+											title={ card.description }
+											number={ card.title }
+										/>
+									))
+								}
+							</div>
+						</div>
 					</div>
 				</main>
 			}
