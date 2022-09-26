@@ -24,7 +24,7 @@ const Subsidiary = () => {
 	useEffect( () => {
 		axiosInstance({
 			method: 'get',
-			url: `subsidiaries/${ subsidiaryId }?populate=icon,coverImage`
+			url: `subsidiaries/${ subsidiaryId }?populate=coverImage,services`
 		}).then( result => {
 			setSubsidiaryDetails( result.data.data.attributes );
 		}).catch( error => {
@@ -33,7 +33,7 @@ const Subsidiary = () => {
 
 	}, [ subsidiaryId ]);
 
-	const { title, description, coverImage } = subsidiaryDetails;
+	const { title, description, coverImage, services } = subsidiaryDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -47,9 +47,25 @@ const Subsidiary = () => {
 						backgroundImage={ coverImage?.data.attributes.url }
 					/>
 					<div className={ styles.subsidiary__inner }>
-						<ReactMarkdown>
-							{ description }
-						</ReactMarkdown>
+						<div className={ styles.subsidiary__inner_left }>
+							<div className={ styles.subsidiary__inner_left_top }>
+								<h3>
+									Services
+								</h3>
+								{ services?.map( ( service ) => (
+										<div key={ services.id } className={ styles.subsidiary__inner_left_top_services }>
+											{ service.service }  <span> &rarr; </span>
+										</div>
+									))
+								}
+							</div>
+						</div>
+
+						<div className={ styles.subsidiary__inner_right }>
+							<ReactMarkdown>
+								{ description }
+							</ReactMarkdown>
+						</div>
 					</div>
 				</main>
 			}
