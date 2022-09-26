@@ -12,6 +12,7 @@ import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
 import Preloader from "../../components/Preloader";
+import Gallery from "../../components/Gallery";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./project.module.scss";
@@ -79,6 +80,16 @@ const Project = () => {
 								</div>
 							))}
 						</div>
+					</div>
+
+					<div className={ styles.project__gallery }>
+						<small>
+							Project Gallery
+						</small>
+						<h2>
+							View Photo Gallery
+						</h2>
+						<Gallery />
 					</div>
 				</main>
 			}
