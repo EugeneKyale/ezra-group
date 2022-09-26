@@ -6,17 +6,16 @@ import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
-/**
- * Internal Dependencies
- */
-import { cmsUrl } from "../../_helpers/utils";
-import styles from "./Gallery.module.scss";
-
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
 
-const Gallery = ( { icon, title, number } ) => {
+/**
+ * Internal Dependencies
+ */
+import styles from "./Gallery.module.scss";
+
+const Gallery = ( { title } ) => {
 
 	const onInit = () => {
         console.log('lightGallery has been initialized');
