@@ -33,7 +33,7 @@ const Subsidiary = () => {
 
 	}, [ subsidiaryId ]);
 
-	const { title, description, coverImage, services } = subsidiaryDetails;
+	const { title, description, coverImage, services, cta } = subsidiaryDetails;
 
 	return (
 		<Layout pageTitle={ title }>
@@ -52,12 +52,21 @@ const Subsidiary = () => {
 								<h3>
 									Services
 								</h3>
-								{ services?.map( ( service ) => (
+								{ 
+									services?.map( ( service ) => (
 										<div key={ services.id } className={ styles.subsidiary__inner_left_top_services }>
 											{ service.service }  <span> &rarr; </span>
 										</div>
 									))
 								}
+							</div>
+
+							<div className={ styles.subsidiary__inner_left_bottom }>
+								<div className={ styles.subsidiary__inner_left_bottom_details }>
+									<ReactMarkdown>
+										{ cta }
+									</ReactMarkdown>
+								</div>
 							</div>
 						</div>
 
