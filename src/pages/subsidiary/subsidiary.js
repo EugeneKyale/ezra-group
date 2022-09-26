@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
  */
 import Layout from "../../components/Layout/Layout";
 import Hero from "../../components/Hero";
+import Gallery from "../../components/Gallery";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
@@ -75,6 +76,16 @@ const Subsidiary = () => {
 								{ description }
 							</ReactMarkdown>
 						</div>
+					</div>
+					
+					<div className={ styles.subsidiary__gallery }>
+						<small>
+							Gallery
+						</small>
+						<h2>
+							View Photo Gallery
+						</h2>
+						<Gallery />
 					</div>
 				</main>
 			}

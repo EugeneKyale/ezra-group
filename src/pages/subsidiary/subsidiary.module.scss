@@ -159,4 +159,16 @@
 			}
 		}
 	}
+
+	&__gallery {
+		padding: 0 $padding 100px;
+
+		small {
+			margin-left: 20px;
+		}
+
+		h2 {
+			margin: 10px 0 20px 20px;
+		}
+	}
 }
