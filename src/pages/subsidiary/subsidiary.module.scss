@@ -94,7 +94,11 @@
 						color: $white;
 						font-size: clamp(20px, 1.5vw, 25px);
 						margin: 20px 0;
-						line-height: 1.1;
+						line-height: 1.2;
+					}
+
+					h4 {
+						font-size: clamp(16px, 1vw, 20px);
 					}
 
 					p {
@@ -131,6 +135,7 @@
 			h5,
 			h6 {
 				margin: 25px 0;
+				line-height: 1.2;
 			}
 	
 			h2 {
