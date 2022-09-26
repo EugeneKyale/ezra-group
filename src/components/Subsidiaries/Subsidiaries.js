@@ -22,8 +22,8 @@ const Subsidiaries = ( { id, icon, title, description } ) => {
 					</Link>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
-					{ generateExcerpt( description, 0, 95 ) }
-					{ description.length > 95 ? "..." : "" }
+					{ generateExcerpt( description, 0, 120 ) }
+					{ description.length > 120 ? "..." : "" }
 				</p>
 				<Button variant="arrow" text="Read More" page={ `/subsidiary/${ slugify( title ) }/${ id }` } />
 			</div>
