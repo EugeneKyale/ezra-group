@@ -25,14 +25,25 @@ const Home = () => {
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	useEffect( () => {
+
 		axiosInstance({
 			method: 'get',
-			url: `home?populate=hero.backgroundImage,about.image,subsidiaries,values`
+			url: `pages/12`
 		}).then( result => {
-			setHomeContent( result.data.data );
+			setHomeContent( result.data );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
+
+
+		// axiosInstance({
+		// 	method: 'get',
+		// 	url: `home?populate=hero.backgroundImage,about.image,subsidiaries,values`
+		// }).then( result => {
+		// 	setHomeContent( result.data.data );
+		// }).catch( error => {
+		// 	setErrorMessage( error.message );
+		// });
 
 		axiosInstance({
 			method: 'get',
@@ -63,18 +74,18 @@ const Home = () => {
 
 	}, []);
 
-	const content = homeContent.attributes;
+	const content = homeContent.acf;
 
 	return (
 		<Layout pageTitle="Ezra Group - Home">
 			{
-				errorMessage ?
+				! errorMessage ?
 				<Preloader />
 				:
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
+						// backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
 					/>
 
 					<section className={ styles.home__about }>
@@ -107,12 +118,12 @@ const Home = () => {
 							<img
 								className="wow zoomIn" data-wow-delay=".6s"
 								alt="illustration"
-								src={ cmsUrl + content?.about.image.data.attributes.url }
+								// src={ cmsUrl + content?.about.image.data.attributes.url }
 							/>
 						</div>
 					</section>
 
-					<section className={ styles.home__subsidiaries }>
+					{/* <section className={ styles.home__subsidiaries }>
 						<div className={ styles.home__subsidiaries_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
 								{ content?.subsidiaries.tagline }
@@ -190,7 +201,7 @@ const Home = () => {
 								))
 							}
 						</div>
-					</section>
+					</section> */}
 				</main>
 			}
 		</Layout>
