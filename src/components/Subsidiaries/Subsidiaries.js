@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
 /**
@@ -34,7 +35,9 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 				<img className="wow zoomIn" data-wow-delay=".3s" src={ subsidiaryIconUrl } alt={ title } />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					<Link to={ `/subsidiary/${ slugify( title ) }/${ id }` }>
-						{ title }
+						<ReactMarkdown>
+							{ title }
+						</ReactMarkdown>
 					</Link>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
