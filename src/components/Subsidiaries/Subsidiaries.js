@@ -11,7 +11,7 @@ import Button from "../Button/Button";
 import { generateExcerpt, cmsUrl, slugify } from "../../_helpers/utils";
 import styles from "./Subsidiaries.module.scss";
 
-const Subsidiaries = ( { id, icon, title, description } ) => {
+const Subsidiaries = ( { id, icon, title, excerpt } ) => {
 	return (
 		<div className={ styles.subsidiaries }>
 			<div className={ styles.subsidiaries__inner }>
@@ -22,8 +22,8 @@ const Subsidiaries = ( { id, icon, title, description } ) => {
 					</Link>
 				</h3>
 				<p className="wow fadeInUp" data-wow-delay=".5s">
-					{ generateExcerpt( description, 0, 120 ) }
-					{ description.length > 120 ? "..." : "" }
+					{ generateExcerpt( excerpt, 0, 120 ) }
+					{ excerpt.length > 120 ? "..." : "" }
 				</p>
 				<Button variant="arrow" text="Read More" page={ `/subsidiary/${ slugify( title ) }/${ id }` } />
 			</div>

@@ -13,7 +13,7 @@ import Stats from "../../components/Stats";
 import Subsidiaries from "../../components/Subsidiaries";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
-import { axiosInstance, cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
 
@@ -24,22 +24,35 @@ const Home = () => {
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ subsidiaryIconId, setSubsidiaryIconId ] = useState( '' );
+	const [ subsidiaryIconUrl, setSubsidiaryIconUrl ] = useState( '' );
 	const [ statistics, setStatistics ] = useState( [] );
 	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	const fetchPageContent = async ( e ) => {
+	const fetchPageContent = async () => {
 		await axiosInstance({
 			method: 'get',
 			url: `pages/12`
-		}).then(( result ) => {
-			setPageContent( result.data );
-			setHeroBackgroudId( result.data.acf.hero.background_image );
-			setAboutImageId( result.data.acf.about.image );
+		}).then(( page ) => {
+			setPageContent( page.data );
+			setHeroBackgroudId( page.data.acf.hero.background_image );
+			setAboutImageId( page.data.acf.about.image );
+		}).catch( fetchPageFail => {
+			setErrorMessage( fetchPageFail.data.message );
+		});
+	};
+
+	const fetchSubsidiaries = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `subsidiary`
+		}).then(( subs ) => {
+			setSubsidiaries( subs );
 		}).catch( error => {
 			setErrorMessage( error.data.message );
 		});
-	};
+	}
   
 	const fetchHeroBackground = async () => {
 		await axiosInstance({
@@ -47,8 +60,8 @@ const Home = () => {
 			url: `media/${ heroBackgroundId }`
 		}).then(( background ) => {
 			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
-		}).catch( error => {
-			setErrorMessage( error.data.message );
+		}).catch( fetchHeroBackgroundFail => {
+			setErrorMessage( fetchHeroBackgroundFail.data.message );
 		});
 	};
 
@@ -58,13 +71,17 @@ const Home = () => {
 			url: `media/${ aboutImageId }`
 		}).then(( image ) => {
 			setAboutImageUrl( image.data.media_details.sizes.full.source_url );
-		}).catch( error => {
-			setErrorMessage( error.data.message );
+		}).catch( fetchAboutImageFail => {
+			setErrorMessage( fetchAboutImageFail.data.message );
 		});
 	};
 
 	useEffect(()=>{
 		fetchPageContent();
+
+		if ( pageContent ) {
+			fetchSubsidiaries();
+		}
 
 		if ( heroBackgroundId ) {
 			fetchHeroBackground();
@@ -73,6 +90,12 @@ const Home = () => {
 		if ( aboutImageId ) {
 			fetchAboutImage();
 		}
+
+		// console.log( 
+		// 	subsidiaries.data.map( ( item ) => (
+		// 		item.title.rendered
+		// 	))
+		// );
 
 	}, [ heroBackgroundId, aboutImageId ])
 
@@ -126,7 +149,7 @@ const Home = () => {
 						</div>
 					</section>
 
-					{/* <section className={ styles.home__subsidiaries }>
+					<section className={ styles.home__subsidiaries }>
 						<div className={ styles.home__subsidiaries_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
 								{ content?.subsidiaries.tagline }
@@ -144,21 +167,21 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__subsidiaries_cards }>
-							{ subsidiaries.length &&
-								subsidiaries.map( ( subsidiary ) => (
+							{ subsidiaries.data &&
+								subsidiaries.data.map( ( item ) => (
 									<Subsidiaries
-										key={ subsidiary.id }
-										id={ subsidiary.id }
-										icon={ subsidiary.attributes.icon.data.attributes.url }
-										title={ subsidiary.attributes.title }
-										description={ subsidiary.attributes.description }
+										key={ item.id }
+										id={ item.id }
+										// icon={ item.attributes.icon.data.attributes.url }
+										title={ item.title.rendered }
+										excerpt={ item.acf.excerpt }
 									/>
 								))
 							}
 						</div>
 					</section>
 
-					<section className={ styles.home__stats }>
+					{/* <section className={ styles.home__stats }>
 						<div className={ styles.home__stats_cards }>
 							{ statistics.length &&
 								statistics.map( ( stat ) => (
@@ -171,9 +194,9 @@ const Home = () => {
 								))
 							}
 						</div>
-					</section>
+					</section> */}
 
-					<section className={ styles.home__values }>
+					{/* <section className={ styles.home__values }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ content?.values.tagline }
 						</small>
