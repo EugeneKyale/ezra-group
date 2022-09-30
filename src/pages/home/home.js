@@ -18,74 +18,77 @@ import { axiosInstance, cmsUrl } from "../../_helpers/utils";
 import styles from "./home.module.scss";
 
 const Home = () => {
-	const [ homeContent, setHomeContent ] = useState( [] );
+	const [ pageContent, setPageContent ] = useState( [] );
+	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
+	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
+	const [ aboutImageId, setAboutImageId ] = useState( '' );
+	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
 	const [ statistics, setStatistics ] = useState( [] );
 	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	useEffect( () => {
-
-		axiosInstance({
+	const fetchPageContent = async ( e ) => {
+		await axiosInstance({
 			method: 'get',
 			url: `pages/12`
-		}).then( result => {
-			setHomeContent( result.data );
+		}).then(( result ) => {
+			setPageContent( result.data );
+			setHeroBackgroudId( result.data.acf.hero.background_image );
+			setAboutImageId( result.data.acf.about.image );
 		}).catch( error => {
-			setErrorMessage( error.message );
+			setErrorMessage( error.data.message );
 		});
-
-
-		// axiosInstance({
-		// 	method: 'get',
-		// 	url: `home?populate=hero.backgroundImage,about.image,subsidiaries,values`
-		// }).then( result => {
-		// 	setHomeContent( result.data.data );
-		// }).catch( error => {
-		// 	setErrorMessage( error.message );
-		// });
-
-		axiosInstance({
+	};
+  
+	const fetchHeroBackground = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `subsidiaries?populate=icon&sort[0]=id:asc`
-		}).then( result => {
-			setSubsidiaries( result.data.data );
+			url: `media/${ heroBackgroundId }`
+		}).then(( background ) => {
+			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
 		}).catch( error => {
-			setErrorMessage( error.message );
+			setErrorMessage( error.data.message );
 		});
+	};
 
-		axiosInstance({
+	const fetchAboutImage = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `statistics?populate=icon`
-		}).then( result => {
-			setStatistics( result.data.data );
+			url: `media/${ aboutImageId }`
+		}).then(( image ) => {
+			setAboutImageUrl( image.data.media_details.sizes.full.source_url );
 		}).catch( error => {
-			setErrorMessage( error.message );
+			setErrorMessage( error.data.message );
 		});
+	};
 
-		axiosInstance({
-			method: 'get',
-			url: `values?populate=icon`
-		}).then( result => {
-			setValues( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
-		});
+	useEffect(()=>{
+		fetchPageContent();
 
-	}, []);
+		if ( heroBackgroundId ) {
+			fetchHeroBackground();
+		}
 
-	const content = homeContent.acf;
+		if ( aboutImageId ) {
+			fetchAboutImage();
+		}
+
+	}, [ heroBackgroundId, aboutImageId ])
+
+
+	const content = pageContent.acf;
 
 	return (
 		<Layout pageTitle="Ezra Group - Home">
 			{
-				! errorMessage ?
-				<Preloader />
+				errorMessage ?
+				<Preloader error={ errorMessage } />
 				:
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						// backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ heroBackgroundUrl }
 					/>
 
 					<section className={ styles.home__about }>
@@ -118,7 +121,7 @@ const Home = () => {
 							<img
 								className="wow zoomIn" data-wow-delay=".6s"
 								alt="illustration"
-								// src={ cmsUrl + content?.about.image.data.attributes.url }
+								src={ aboutImageUrl }
 							/>
 						</div>
 					</section>
