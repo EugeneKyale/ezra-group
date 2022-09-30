@@ -24,8 +24,6 @@ const Home = () => {
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
-	const [ subsidiaryIconId, setSubsidiaryIconId ] = useState( '' );
-	const [ subsidiaryIconUrl, setSubsidiaryIconUrl ] = useState( '' );
 	const [ statistics, setStatistics ] = useState( [] );
 	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
@@ -53,7 +51,7 @@ const Home = () => {
 			setErrorMessage( error.data.message );
 		});
 	}
-  
+
 	const fetchHeroBackground = async () => {
 		await axiosInstance({
 			method: 'get',
@@ -90,12 +88,6 @@ const Home = () => {
 		if ( aboutImageId ) {
 			fetchAboutImage();
 		}
-
-		// console.log( 
-		// 	subsidiaries.data.map( ( item ) => (
-		// 		item.title.rendered
-		// 	))
-		// );
 
 	}, [ heroBackgroundId, aboutImageId ])
 
@@ -172,7 +164,7 @@ const Home = () => {
 									<Subsidiaries
 										key={ item.id }
 										id={ item.id }
-										// icon={ item.attributes.icon.data.attributes.url }
+										iconId={ item.acf.icon }
 										title={ item.title.rendered }
 										excerpt={ item.acf.excerpt }
 									/>
