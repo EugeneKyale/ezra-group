@@ -129,16 +129,15 @@ const About = () => {
 								/>
 
 								<div className={ styles.about__history_left_bottom_cards }>
-									{/* { statistics.length &&
-										statistics.map( ( stat ) => (
+									{ content?.history.stats &&
+										content?.history.stats.map( ( stat ) => (
 											<Stats
 												key={ stat.id }
-												icon={ stat.attributes.icon.data.attributes.url }
-												title={ stat.attributes.title }
-												number={ stat.attributes.number }
+												title={ stat.title }
+												description={ stat.description }
 											/>
 										))
-									} */}
+									}
 								</div>
 							</div>
 						</div>

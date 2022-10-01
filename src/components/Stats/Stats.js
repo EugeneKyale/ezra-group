@@ -29,7 +29,7 @@ const Stats = ( { iconId, title, description } ) => {
 
 	return (
 		<div className={ styles.stats }>
-			<img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="" />
+			{ statIconUrl && <img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="" /> }
 
 			<div className={ styles.stats__details }>
 				<h3 className="wow fadeInUp" data-wow-delay=".3s">
