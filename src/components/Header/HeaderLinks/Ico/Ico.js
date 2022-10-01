@@ -25,6 +25,7 @@ const Ico = ( { id } ) => {
 	useEffect(()=>{
 		fetchSubsidiaryIcon();
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ id ])
 
 	return (

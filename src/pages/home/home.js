@@ -87,6 +87,7 @@ const Home = () => {
 			fetchAboutImage();
 		}
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ heroBackgroundId, aboutImageId ])
 
 

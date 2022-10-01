@@ -27,6 +27,7 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 	useEffect(()=>{
 		fetchSubsidiaryIcon();
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ iconId ])
 
 	return (

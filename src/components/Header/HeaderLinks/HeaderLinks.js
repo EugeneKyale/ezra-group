@@ -62,6 +62,7 @@ const HeaderLinks = () => {
 
 		prevOpen.current = openSubsidiaries;
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ openSubsidiaries ] );
 
 	return (
