@@ -143,46 +143,48 @@ const About = () => {
 						</div>
 					</section>
 
-					{/* <section className={ styles.about__mission }>
+					<section className={ styles.about__mission }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ content?.mission.tagline }
+							{ content?.values.tagline }
 						</small>
 						<div className={ styles.about__mission_top }>
 							<div className={ styles.about__mission_top_left }>
 								<h2 className="wow fadeInUp" data-wow-delay=".3s">
-									{ content?.mission.title }
+									{ content?.values.title }
 								</h2>
 							</div>
 
 							<div className={ styles.about__mission_top_right + " wow fadeInUp" } data-wow-delay=".5s">
 								<ReactMarkdown>
-									{ content?.mission.description }
+									{ content?.values.description }
 								</ReactMarkdown>
 							</div>
 						</div>
 
 						<div className={ styles.about__mission_cards }>
-							{ content?.mission.card.length &&
-								content?.mission.card.map( ( card ) => (
+							{ content?.values.value &&
+								content?.values.value.map( ( card ) => (
 									<div key={ card.id } className={ styles.about__mission_cards_component }>
 										<div className={ styles.about__mission_cards_component__inner }>
 											<div className={ styles.about__mission_cards_component__inner_top }>
-												<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + card.icon.data.attributes.url } alt="" />
+												
 											</div>
 											<h3 className="wow fadeInUp" data-wow-delay=".4s">
 												{ card.title }
 											</h3>
-											<p className="wow fadeInUp" data-wow-delay=".5s">
-												<ReactMarkdown>
-													{ card.description }
-												</ReactMarkdown>
-											</p>
+											<div 
+												className="wow fadeInUp" 
+												data-wow-delay=".5s"
+												dangerouslySetInnerHTML={{
+													__html: card.description
+												}}
+											/>
 										</div>
 									</div>
 								))
 							}
 						</div>
-					</section> */}
+					</section>
 
 					{/* <section className={ styles.about__team }>
 						<div className={ styles.about__team_top }>
