@@ -17,42 +17,80 @@ import { axiosInstance, cmsUrl } from "../../_helpers/utils";
 import styles from "./about.module.scss";
 
 const About = () => {
-	const [ aboutContent, setAboutContent ] = useState( [] );
-	const [ teamMembers, setTeamMembers ] = useState( [] );
-	const [ statistics, setStatistics ] = useState( [] );
+	const [ pageContent, setPageContent ] = useState( [] );
+	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
+	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
+	const [ aboutImageId, setAboutImageId ] = useState( '' );
+	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
+	const [ subsidiaries, setSubsidiaries ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchPageContent = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `about?populate=hero.backgroundImage,history.image,mission.card.icon,team`
-		}).then( result => {
-			setAboutContent( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `pages/120`
+		}).then(( page ) => {
+			setPageContent( page.data );
+			setHeroBackgroudId( page.data.acf.hero.background_image );
+			setAboutImageId( page.data.acf.about.image );
+		}).catch( fetchPageFail => {
+			setErrorMessage( fetchPageFail.data.message );
 		});
+	};
 
-		axiosInstance({
+	const fetchSubsidiaries = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `statistics?populate=icon`
-		}).then( result => {
-			setStatistics( result.data.data );
+			url: `subsidiary`
+		}).then(( subs ) => {
+			setSubsidiaries( subs );
 		}).catch( error => {
-			setErrorMessage( error.message );
+			setErrorMessage( error.data.message );
 		});
+	}
 
-		axiosInstance({
+	const fetchHeroBackground = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `teams?populate=photo,social.icon&sort[0]=id:asc`
-		}).then( result => {
-			setTeamMembers( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `media/${ heroBackgroundId }`
+		}).then(( background ) => {
+			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
+		}).catch( fetchHeroBackgroundFail => {
+			setErrorMessage( fetchHeroBackgroundFail.data.message );
 		});
+	};
 
-	}, []);
+	const fetchAboutImage = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ aboutImageId }`
+		}).then(( image ) => {
+			setAboutImageUrl( image.data.media_details.sizes.full.source_url );
+		}).catch( fetchAboutImageFail => {
+			setErrorMessage( fetchAboutImageFail.data.message );
+		});
+	};
 
-	const content = aboutContent.attributes;
+	useEffect(()=>{
+		fetchPageContent();
+
+		if ( pageContent ) {
+			fetchSubsidiaries();
+		}
+
+		if ( heroBackgroundId ) {
+			fetchHeroBackground();
+		}
+
+		if ( aboutImageId ) {
+			fetchAboutImage();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ heroBackgroundId, aboutImageId ]);
+
+
+	const content = pageContent.acf;
 
 	return (
 		<Layout pageTitle="About">
@@ -63,7 +101,7 @@ const About = () => {
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ heroBackgroundUrl }
 					/>
 
 					<section className={ styles.about__history }>
@@ -91,7 +129,7 @@ const About = () => {
 								/>
 
 								<div className={ styles.about__history_left_bottom_cards }>
-									{ statistics.length &&
+									{/* { statistics.length &&
 										statistics.map( ( stat ) => (
 											<Stats
 												key={ stat.id }
@@ -100,13 +138,13 @@ const About = () => {
 												number={ stat.attributes.number }
 											/>
 										))
-									}
+									} */}
 								</div>
 							</div>
 						</div>
 					</section>
 
-					<section className={ styles.about__mission }>
+					{/* <section className={ styles.about__mission }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ content?.mission.tagline }
 						</small>
@@ -145,9 +183,9 @@ const About = () => {
 								))
 							}
 						</div>
-					</section>
+					</section> */}
 
-					<section className={ styles.about__team }>
+					{/* <section className={ styles.about__team }>
 						<div className={ styles.about__team_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
 								{ content?.team.tagline }
@@ -177,7 +215,7 @@ const About = () => {
 								))
 							}
 						</div>
-					</section>
+					</section> */}
 				</main>
 			}
 		</Layout>

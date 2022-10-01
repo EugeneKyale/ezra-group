@@ -88,7 +88,7 @@ const Home = () => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ heroBackgroundId, aboutImageId ])
+	}, [ heroBackgroundId, aboutImageId ]);
 
 
 	const content = pageContent.acf;
