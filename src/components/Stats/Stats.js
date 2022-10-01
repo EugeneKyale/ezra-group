@@ -1,26 +1,42 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 /**
  * Internal Dependencies
  */
-import { cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 import styles from "./Stats.module.scss";
 
-const Stats = ( { icon, title, number } ) => {
+const Stats = ( { iconId, title, description } ) => {
+	const [ statIconUrl, setStatIconUrl ] = useState( '' );
+
+	const fetchStatIcon = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ iconId }`
+		}).then(( icon ) => {
+			setStatIconUrl( icon.data.media_details.sizes.full.source_url );
+		});
+	};
+
+	useEffect(()=>{
+		fetchStatIcon();
+
+	}, [ iconId ])
+
 	return (
 		<div className={ styles.stats }>
-			<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + icon } alt={ title } />
+			<img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="icon" />
 
 			<div className={ styles.stats__details }>
 				<h3 className="wow fadeInUp" data-wow-delay=".3s">
-					{ number }
+					{ title }
 				</h3>
 
 				<p className="wow fadeInUp" data-wow-delay=".5s">
-					{ title }
+					{ description }
 				</p>
 			</div>
 		</div>

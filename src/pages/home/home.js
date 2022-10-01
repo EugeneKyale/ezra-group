@@ -24,8 +24,6 @@ const Home = () => {
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
-	const [ statistics, setStatistics ] = useState( [] );
-	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
@@ -173,20 +171,20 @@ const Home = () => {
 						</div>
 					</section>
 
-					{/* <section className={ styles.home__stats }>
+					<section className={ styles.home__stats }>
 						<div className={ styles.home__stats_cards }>
-							{ statistics.length &&
-								statistics.map( ( stat ) => (
+							{ content?.statistics.length &&
+								content?.statistics.map( ( stat ) => (
 									<Stats
 										key={ stat.id }
-										icon={ stat.attributes.icon.data.attributes.url }
-										title={ stat.attributes.title }
-										number={ stat.attributes.number }
+										iconId={ stat.icon }
+										title={ stat.title }
+										description={ stat.description }
 									/>
 								))
 							}
 						</div>
-					</section> */}
+					</section>
 
 					{/* <section className={ styles.home__values }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
