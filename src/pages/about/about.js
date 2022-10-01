@@ -20,9 +20,7 @@ const About = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
 	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
-	const [ aboutImageId, setAboutImageId ] = useState( '' );
-	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
-	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ team, setTeam ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
@@ -32,20 +30,19 @@ const About = () => {
 		}).then(( page ) => {
 			setPageContent( page.data );
 			setHeroBackgroudId( page.data.acf.hero.background_image );
-			setAboutImageId( page.data.acf.about.image );
 		}).catch( fetchPageFail => {
 			setErrorMessage( fetchPageFail.data.message );
 		});
 	};
 
-	const fetchSubsidiaries = async () => {
+	const fetchTeam = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `subsidiary`
-		}).then(( subs ) => {
-			setSubsidiaries( subs );
-		}).catch( error => {
-			setErrorMessage( error.data.message );
+			url: `team?filter[orderby]=date&order=asc`
+		}).then(( res ) => {
+			setTeam( res.data );
+		}).catch( fetchTeamFail => {
+			setErrorMessage( fetchTeamFail.data.message );
 		});
 	}
 
@@ -60,34 +57,17 @@ const About = () => {
 		});
 	};
 
-	const fetchAboutImage = async () => {
-		await axiosInstance({
-			method: 'get',
-			url: `media/${ aboutImageId }`
-		}).then(( image ) => {
-			setAboutImageUrl( image.data.media_details.sizes.full.source_url );
-		}).catch( fetchAboutImageFail => {
-			setErrorMessage( fetchAboutImageFail.data.message );
-		});
-	};
-
 	useEffect(()=>{
 		fetchPageContent();
-
-		if ( pageContent ) {
-			fetchSubsidiaries();
-		}
 
 		if ( heroBackgroundId ) {
 			fetchHeroBackground();
 		}
 
-		if ( aboutImageId ) {
-			fetchAboutImage();
-		}
+		fetchTeam();
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ heroBackgroundId, aboutImageId ]);
+	}, [ heroBackgroundId ]);
 
 
 	const content = pageContent.acf;
@@ -167,7 +147,7 @@ const About = () => {
 									<div key={ card.id } className={ styles.about__mission_cards_component }>
 										<div className={ styles.about__mission_cards_component__inner }>
 											<div className={ styles.about__mission_cards_component__inner_top }>
-												
+
 											</div>
 											<h3 className="wow fadeInUp" data-wow-delay=".4s">
 												{ card.title }
@@ -186,7 +166,7 @@ const About = () => {
 						</div>
 					</section>
 
-					{/* <section className={ styles.about__team }>
+					<section className={ styles.about__team }>
 						<div className={ styles.about__team_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
 								{ content?.team.tagline }
@@ -204,19 +184,18 @@ const About = () => {
 						</div>
 
 						<div className={ styles.about__team_cards }>
-							{ teamMembers.length &&
-								teamMembers.map( ( member ) => (
+							{ team &&
+								team.map( ( member ) => (
 									<Team
 										key={ member.id }
-										photo={ member.attributes.photo.data.attributes.url }
-										name={ member.attributes.name }
-										position={ member.attributes.position }
-										social={ member.attributes.social }
+										photo={ member.featured_media }
+										name={ member.title.rendered }
+										position={ member.acf.position }
 									/>
 								))
 							}
 						</div>
-					</section> */}
+					</section>
 				</main>
 			}
 		</Layout>
