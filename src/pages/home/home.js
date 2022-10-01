@@ -186,7 +186,7 @@ const Home = () => {
 						</div>
 					</section>
 
-					{/* <section className={ styles.home__values }>
+					<section className={ styles.home__values }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ content?.values.tagline }
 						</small>
@@ -205,19 +205,19 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__values_cards }>
-							{ values.length &&
-								values.map( ( value, idx ) => (
+							{ content?.values.values.length &&
+								content?.values.values.map( ( value, idx ) => (
 									<Values
 										key={ value.id }
-										idx={idx }
-										icon={ value.attributes.icon.data.attributes.url }
-										title={ value.attributes.title }
-										description={ value.attributes.description }
+										idx={ idx }
+										iconId={ value.icon }
+										title={ value.title }
+										description={ value.description }
 									/>
 								))
 							}
 						</div>
-					</section> */}
+					</section>
 				</main>
 			}
 		</Layout>
