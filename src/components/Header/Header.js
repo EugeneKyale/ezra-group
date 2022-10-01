@@ -76,7 +76,7 @@ export default function Header( props ) {
 	const brandComponent = (
 		<Link to="/">
 			<img
-				alt="Logo"
+				alt=""
 				src={ toAbsoluteUrl( "/logo.jpg" ) }
 				style={{ height: "50px", width: "auto", objectFit: "contain" }}
 			/>

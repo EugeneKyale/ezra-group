@@ -24,13 +24,14 @@ const Values = ( { idx, iconId, title, description } ) => {
 	useEffect(()=>{
 		fetchValueIcon();
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ iconId ])
 
 	return (
 		<div className={ styles.values }>
 			<div className={ styles.values__inner }>
 				<div className={ styles.values__inner_top }>
-					<img className="wow zoomIn" data-wow-delay=".3s" src={ valueIconUrl } alt="icon" />
+					<img className="wow zoomIn" data-wow-delay=".3s" src={ valueIconUrl } alt="" />
 
 					<h1>
 						0{ idx + 1 }

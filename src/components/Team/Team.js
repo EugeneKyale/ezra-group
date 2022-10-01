@@ -13,7 +13,7 @@ const Team = ( { photo, name, position, social } ) => {
 	return (
 		<div className={ styles.team }>
 			<div className={ styles.team__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + photo } alt={ name } />
+				<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + photo } alt="" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					{ name }
 				</h3>
@@ -24,7 +24,7 @@ const Team = ( { photo, name, position, social } ) => {
 					{ social.length &&
 						social.map( ( media ) => (
 							<a className="wow zoomIn" data-wow-delay=".6s" href={ media.url } target="_blank" rel="noreferrer">
-								<img src={ cmsUrl + media.icon.data.attributes.url } alt={ media.title } />
+								<img src={ cmsUrl + media.icon.data.attributes.url } alt="" />
 							</a>
 						))
 					}

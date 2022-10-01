@@ -32,7 +32,7 @@ const Ico = ( { id } ) => {
 		<img
 			className={ styles.ico } 
 			src={ subsidiaryIconUrl }
-			alt="icon" 
+			alt="" 
 		/>
 	);
 };

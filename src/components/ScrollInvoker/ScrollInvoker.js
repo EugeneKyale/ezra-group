@@ -22,7 +22,7 @@ const ScrollInvoker = () => {
 		>
 			<img
 				className={ styles.ico }
-				alt="scroll invoker"
+				alt=""
 				src={ toAbsoluteUrl( "/scroll-invoker.webp" ) }
 			/>
 		</Link>

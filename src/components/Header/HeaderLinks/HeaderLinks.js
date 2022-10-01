@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import { NavLink } from "react-router-dom";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
@@ -132,7 +133,9 @@ const HeaderLinks = () => {
 														margin: "0 15px"
 													}}
 												>
-													{ subsidiary.title.rendered }
+													<ReactMarkdown>
+														{ subsidiary.title.rendered }
+													</ReactMarkdown>
 												</NavLink>
 											</MenuItem>
 										))}

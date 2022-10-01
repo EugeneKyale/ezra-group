@@ -24,11 +24,12 @@ const Stats = ( { iconId, title, description } ) => {
 	useEffect(()=>{
 		fetchStatIcon();
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ iconId ])
 
 	return (
 		<div className={ styles.stats }>
-			<img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="icon" />
+			<img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="" />
 
 			<div className={ styles.stats__details }>
 				<h3 className="wow fadeInUp" data-wow-delay=".3s">

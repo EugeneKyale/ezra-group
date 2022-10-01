@@ -33,7 +33,7 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 	return (
 		<div className={ styles.subsidiaries }>
 			<div className={ styles.subsidiaries__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ subsidiaryIconUrl } alt={ title } />
+				<img className="wow zoomIn" data-wow-delay=".3s" src={ subsidiaryIconUrl } alt="" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					<Link to={ `/subsidiary/${ slugify( title ) }/${ id }` }>
 						<ReactMarkdown>

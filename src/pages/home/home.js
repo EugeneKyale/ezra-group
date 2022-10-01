@@ -134,7 +134,7 @@ const Home = () => {
 						<div className={ styles.home__about_right }>
 							<img
 								className="wow zoomIn" data-wow-delay=".6s"
-								alt="illustration"
+								alt=""
 								src={ aboutImageUrl }
 							/>
 						</div>

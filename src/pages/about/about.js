@@ -130,7 +130,7 @@ const About = () => {
 									<div key={ card.id } className={ styles.about__mission_cards_component }>
 										<div className={ styles.about__mission_cards_component__inner }>
 											<div className={ styles.about__mission_cards_component__inner_top }>
-												<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + card.icon.data.attributes.url } alt={ card.title } />
+												<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + card.icon.data.attributes.url } alt="" />
 											</div>
 											<h3 className="wow fadeInUp" data-wow-delay=".4s">
 												{ card.title }
