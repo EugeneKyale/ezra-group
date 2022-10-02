@@ -19,44 +19,64 @@ import styles from "./project.module.scss";
 
 const Project = () => {
 	const [ projectDetails, setProjectDetails ] = useState( [] );
+	const [ projectImageId, setProjectImageId ] = useState( '' );
+	const [ projectImageUrl, setProjectImageUrl ] = useState( '' );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	let projectId = useParams().id;
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchProject = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `projects/${ projectId }?populate=coverImage,infoCards.icon,projectDetails`
+			url: `project/${ projectId }`
 		}).then( result => {
-			setProjectDetails( result.data.data.attributes );
+			setProjectDetails( result.data );
+			setProjectImageId( result.data.featured_media );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
+	}
 
-	}, [ projectId ]);
+	const fetchProjectImage = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ projectImageId }`
+		}).then(( res ) => {
+			setProjectImageUrl( res.data.media_details.sizes.full.source_url );
+		});
+	};
 
-	const { title, excerpt, coverImage, infoCards } = projectDetails;
+	useEffect( () => {
+		fetchProject();
+
+		if ( projectImageId ) {
+			fetchProjectImage();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ projectId, projectImageId ]);
 
 	return (
-		<Layout pageTitle={ title }>
+		<Layout pageTitle={ projectDetails.title?.rendered }>
 			{
 				errorMessage ?
 				<Preloader />
 				:
 				<main className={ styles.project }>
 					<Hero
-						title={ title }
-						backgroundImage={ coverImage?.data.attributes.url }
+						title={ projectDetails.title?.rendered }
+						backgroundImage={ projectImageUrl }
 					/>
+
 					<div className={ styles.project__inner }>
 						<div className={ styles.project__inner_left + " wow fadeInUp" } data-wow-delay=".3s">
 							<ReactMarkdown>
-								{ excerpt }
+								{ projectDetails.acf?.excerpt }
 							</ReactMarkdown>
 						</div>
 
 						<div className={ styles.project__inner_right + " wow fadeInUp" } data-wow-delay=".5s">
-							<div className={ styles.project__inner_right_card }>
+							{/* <div className={ styles.project__inner_right_card }>
 								{ infoCards?.map( ( card ) => (
 										<Stats
 											key={ card.id }
@@ -66,19 +86,24 @@ const Project = () => {
 										/>
 									))
 								}
-							</div>
+							</div> */}
 						</div>
 					</div>
 
 					<div className={ styles.project__inner }>
 						<div className={ styles.project__inner_bottom }>
-							{ projectDetails.projectDetails?.map( ( detail ) => (
-								<div className={ styles.project__inner_bottom_inner + " wow fadeInUp" } data-wow-delay=".5s">
-									<ReactMarkdown>
-										{ detail.description }
-									</ReactMarkdown>
-								</div>
-							))}
+							{ 
+								projectDetails.acf?.details && 
+							  		projectDetails.acf?.details.map( ( item ) => (
+									<div 
+										className={ styles.project__inner_bottom_inner + " wow fadeInUp" } 
+										data-wow-delay=".5s" 
+										dangerouslySetInnerHTML={{
+											__html: item.detail
+										}}
+									/>
+								))
+							}
 						</div>
 					</div>
 
