@@ -53,7 +53,7 @@ const Subsidiary = () => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ subsidiaryImageId ]);
+	}, [ subsidiaryId, subsidiaryImageId ]);
 
 	return (
 		<Layout pageTitle={ subsidiaryDetails.title?.rendered }>
