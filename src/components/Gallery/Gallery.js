@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
@@ -13,19 +13,38 @@ import 'lightgallery/css/lg-thumbnail.css';
 /**
  * Internal Dependencies
  */
+import { axiosInstance } from "../../_helpers/utils";
 import styles from "./Gallery.module.scss";
 
-const Gallery = ( { title } ) => {
+const Gallery = ( { ids } ) => {
+    const [ galleryImageId, setGalleryImageId ] = useState( '' );
+	const [ galleryImageUrl, setGalleryImageUrl ] = useState( '' );
 
-	const onInit = () => {
-        console.log('lightGallery has been initialized');
-    };
+    const fetchGalleryUrls = async () => {
+        ids && ids.map( ( id ) => (
+            setGalleryImageId( id )
+        ));
+        
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ galleryImageId }`
+		}).then( res => {
+			setGalleryImageUrl( res.data.media_details.sizes.full.source_url );
+		});
+	}
+
+    useEffect( () => {
+		fetchGalleryUrls();
+        console.log( galleryImageId );
+        console.log( galleryImageUrl );
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ galleryImageId ]);
 
 	return (
 		<div className={ styles.gallery }>
             <LightGallery
                 className={ styles.gallery__inner }
-                onInit={ onInit }
                 speed={ 500 }
                 plugins={ [ lgThumbnail, lgZoom ] }
             >

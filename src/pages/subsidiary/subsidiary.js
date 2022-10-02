@@ -108,7 +108,7 @@ const Subsidiary = () => {
 						<h2>
 							View Photo Gallery
 						</h2>
-						{/* <Gallery /> */}
+						<Gallery ids={ subsidiaryDetails.acf?.gallery } />
 					</div>
 				</main>
 			}
