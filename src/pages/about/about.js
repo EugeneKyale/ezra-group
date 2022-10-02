@@ -12,7 +12,7 @@ import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
 import Team from "../../components/Team";
 import Preloader from "../../components/Preloader";
-import { axiosInstance, cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./about.module.scss";
 

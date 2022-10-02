@@ -83,9 +83,9 @@ const MenuConfig = {
 			},
 			{
 				id: 3,
-				title: "LinkedIn",
-				url: "#",
-				icon: "/icons/linkedin.svg"
+				title: "Instagram",
+				url: "https://www.instagram.com/ezragroupofcompanies/",
+				icon: "/icons/instagram.png"
 			}
 		],
 	}

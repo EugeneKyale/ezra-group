@@ -7,7 +7,7 @@
 	&__top {
 		padding: 60px $padding 30px;
 		display: grid;
-		grid-template-columns: 1.5fr 1fr 1fr 1fr; 
+		grid-template-columns: 1.5fr 1fr 1fr 1.2fr; 
 		grid-template-rows: 1fr;
 		gap: 50px;
 		grid-template-areas:
@@ -46,6 +46,10 @@
 			&:hover {
 				color: $link;
 			}
+		}
+
+		&_contact {
+			line-height: 2;
 		}
 
 		&_socials {
