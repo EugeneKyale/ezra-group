@@ -112,15 +112,18 @@ const Project = () => {
 						</div>
 					</div>
 
-					<div className={ styles.project__gallery }>
-						<small>
-							Project Gallery
-						</small>
-						<h2>
-							View Photo Gallery
-						</h2>
-						<Gallery />
-					</div>
+					{
+						projectDetails.acf?.gallery &&
+						<div className={ styles.project__gallery }>
+							<small>
+								Project Gallery
+							</small>
+							<h2>
+								View Photo Gallery
+							</h2>
+							<Gallery ids={ projectDetails.acf?.gallery } />
+						</div>
+					}
 				</main>
 			}
 		</Layout>

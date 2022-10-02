@@ -94,22 +94,23 @@ const Subsidiary = () => {
 
 						<div 
 							className={ styles.subsidiary__inner_right }
-						>
-							<ReactMarkdown>
-								{ subsidiaryDetails.acf?.description }
-							</ReactMarkdown>
+							dangerouslySetInnerHTML={{
+								__html: subsidiaryDetails.acf?.description
+							}}
+						/>
+					</div>
+					{
+						subsidiaryDetails.acf?.gallery &&
+						<div className={ styles.subsidiary__gallery }>
+							<small>
+								Gallery
+							</small>
+							<h2>
+								View Photo Gallery
+							</h2>
+							<Gallery ids={ subsidiaryDetails.acf?.gallery } />
 						</div>
-					</div>
-					
-					<div className={ styles.subsidiary__gallery }>
-						<small>
-							Gallery
-						</small>
-						<h2>
-							View Photo Gallery
-						</h2>
-						<Gallery ids={ subsidiaryDetails.acf?.gallery } />
-					</div>
+					}
 				</main>
 			}
 		</Layout>
