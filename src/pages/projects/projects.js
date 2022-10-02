@@ -15,32 +15,60 @@ import { axiosInstance } from "../../_helpers/utils";
 import styles from "./projects.module.scss";
 
 const Projects = () => {
-	const [ projects, setProjects ] = useState( [] );
 	const [ pageContent, setPageContent ] = useState( [] );
+	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
+	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
+	const [ projects, setProjects ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchPageContent = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `projects-page?populate=hero.backgroundImage`
-		}).then( result => {
-			setPageContent( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `pages/285`
+		}).then(( page ) => {
+			setPageContent( page.data );
+			setHeroBackgroudId( page.data.acf.hero.background_image );
+		}).catch( fetchPageFail => {
+			setErrorMessage( fetchPageFail.data.message );
 		});
-		
-		axiosInstance({
+	};
+
+	const fetchProjects = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `projects?populate=coverImage,category&sort[0]=id:asc`
-		}).then( result => {
-			setProjects( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `project`
+		}).then(( res ) => {
+			setProjects( res.data );
+		}).catch( fetchProjectsFail => {
+			setErrorMessage( fetchProjectsFail.data.message );
 		});
+	}
 
-	}, []);
+	const fetchHeroBackground = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ heroBackgroundId }`
+		}).then(( background ) => {
+			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
+		}).catch( fetchHeroBackgroundFail => {
+			setErrorMessage( fetchHeroBackgroundFail.data.message );
+		});
+	};
 
-	const content = pageContent.attributes;
+	useEffect(()=>{
+		fetchPageContent();
+
+		if ( heroBackgroundId ) {
+			fetchHeroBackground();
+		}
+
+		fetchProjects();
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ heroBackgroundId ]);
+
+
+	const content = pageContent.acf;
 
 	return (
 		<Layout pageTitle="Projects">
@@ -51,19 +79,19 @@ const Projects = () => {
 				<main className={ styles.projects }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ heroBackgroundUrl }
 					/>
 
 					<section className={ styles.projects__cards }>
 						<div className={ styles.projects__cards_inner }>
-							{ projects.length &&
+							{ projects &&
 								projects.map( ( project ) => (
 									<Project
 										key={ project.id }
 										id={ project.id }
-										coverImage={ project.attributes.coverImage.data.attributes.url }
-										title={ project.attributes.title }
-										category={ project.attributes.category?.data.attributes.Title }
+										coverImage={ project.featured_media }
+										title={ project.title.rendered }
+										category={ project.acf.category }
 									/>
 								))
 							}
