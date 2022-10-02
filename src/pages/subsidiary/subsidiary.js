@@ -18,34 +18,53 @@ import styles from "./subsidiary.module.scss";
 
 const Subsidiary = () => {
 	const [ subsidiaryDetails, setSubsidiaryDetails ] = useState( [] );
+	const [ subsidiaryImageId, setSubsidiaryImageId ] = useState( '' );
+	const [ subsidiaryImageUrl, setSubsidiaryImageUrl ] = useState( '' );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	let subsidiaryId = useParams().id;
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchSubsidiary = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `subsidiaries/${ subsidiaryId }?populate=coverImage,services`
+			url: `subsidiary/${ subsidiaryId }`
 		}).then( result => {
-			setSubsidiaryDetails( result.data.data.attributes );
+			setSubsidiaryDetails( result.data );
+			setSubsidiaryImageId( result.data.featured_media );
 		}).catch( error => {
 			setErrorMessage( error.message );
 		});
+	}
 
-	}, [ subsidiaryId ]);
+	const fetchSubsidiaryImage = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ subsidiaryImageId }`
+		}).then(( res ) => {
+			setSubsidiaryImageUrl( res.data.media_details.sizes.full.source_url );
+		});
+	};
 
-	const { title, description, coverImage, services, cta } = subsidiaryDetails;
+	useEffect( () => {
+		fetchSubsidiary();
+
+		if ( subsidiaryImageId ) {
+			fetchSubsidiaryImage();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ subsidiaryImageId ]);
 
 	return (
-		<Layout pageTitle={ title }>
+		<Layout pageTitle={ subsidiaryDetails.title?.rendered }>
 			{
 				errorMessage ?
 				<Preloader />
 				:
 				<main className={ styles.subsidiary }>
 					<Hero
-						title={ title }
-						backgroundImage={ coverImage?.data.attributes.url }
+						title={ subsidiaryDetails.title?.rendered }
+						backgroundImage={ subsidiaryImageUrl }
 					/>
 					<div className={ styles.subsidiary__inner }>
 						<div className={ styles.subsidiary__inner_left }>
@@ -54,26 +73,30 @@ const Subsidiary = () => {
 									Services
 								</h3>
 								{ 
-									services?.map( ( service ) => (
-										<div key={ services.id } className={ styles.subsidiary__inner_left_top_services }>
-											{ service.service }  <span> &rarr; </span>
-										</div>
+									subsidiaryDetails.acf?.services &&
+										subsidiaryDetails.acf?.services.map( ( item, idx ) => (
+											<div key={ idx } className={ styles.subsidiary__inner_left_top_services }>
+												{ item.service }  <span> &rarr; </span>
+											</div>
 									))
 								}
 							</div>
 
 							<div className={ styles.subsidiary__inner_left_bottom }>
-								<div className={ styles.subsidiary__inner_left_bottom_details }>
-									<ReactMarkdown>
-										{ cta }
-									</ReactMarkdown>
-								</div>
+								<div 
+									className={ styles.subsidiary__inner_left_bottom_details }
+									dangerouslySetInnerHTML={{
+										__html: subsidiaryDetails.acf?.cta
+									}}
+								/>
 							</div>
 						</div>
 
-						<div className={ styles.subsidiary__inner_right }>
+						<div 
+							className={ styles.subsidiary__inner_right }
+						>
 							<ReactMarkdown>
-								{ description }
+								{ subsidiaryDetails.acf?.description }
 							</ReactMarkdown>
 						</div>
 					</div>
@@ -85,7 +108,7 @@ const Subsidiary = () => {
 						<h2>
 							View Photo Gallery
 						</h2>
-						<Gallery />
+						{/* <Gallery /> */}
 					</div>
 				</main>
 			}
