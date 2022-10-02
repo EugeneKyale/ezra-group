@@ -76,17 +76,22 @@ const Project = () => {
 						</div>
 
 						<div className={ styles.project__inner_right + " wow fadeInUp" } data-wow-delay=".5s">
-							{/* <div className={ styles.project__inner_right_card }>
-								{ infoCards?.map( ( card ) => (
-										<Stats
-											key={ card.id }
-											icon={ card.icon.data.attributes.url }
-											title={ card.description }
-											number={ card.title }
-										/>
-									))
-								}
-							</div> */}
+							{
+								projectDetails.acf?.milestones &&
+								<div className={ styles.project__inner_right_card }>
+									{ 
+										projectDetails.acf?.milestones && 
+											projectDetails.acf?.milestones.map( ( milestone ) => (
+												<Stats
+													key={ milestone.id }
+													iconId={ milestone.icon }
+													title={ milestone.title }
+													description={ milestone.description }
+												/>
+										))
+									}
+								</div>
+							}
 						</div>
 					</div>
 
