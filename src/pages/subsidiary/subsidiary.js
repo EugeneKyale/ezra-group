@@ -2,7 +2,6 @@
  * External Dependencies
  */
 import React, { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 
 /**

@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
