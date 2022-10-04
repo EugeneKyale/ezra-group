@@ -3,6 +3,7 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 /**
  * Internal Dependencies
@@ -31,9 +32,10 @@ const Footer = () => {
 					</h4>
 					{ MenuConfig.footer.socialPages.map( ( social ) => (
 						<div className={ styles.footer__top_socials_single } key={ social.id }>
-							<img
-							src={ toAbsoluteUrl( social.icon ) }
-							alt={ social.title }
+							<LazyLoadImage
+								effect="blur"
+								src={ toAbsoluteUrl( social.icon ) }
+								alt={ social.title }
 							/>
 							<a href={ social.url } target="_blank" rel="noopener noreferrer"> { social.title } </a>
 						</div>

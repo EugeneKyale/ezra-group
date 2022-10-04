@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useEffect } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
@@ -75,7 +76,8 @@ export default function Header( props ) {
 
 	const brandComponent = (
 		<Link to="/">
-			<img
+			<LazyLoadImage
+				effect="blur"
 				alt=""
 				src={ toAbsoluteUrl( "/logo.jpg" ) }
 				style={{ height: "50px", width: "auto", objectFit: "contain" }}

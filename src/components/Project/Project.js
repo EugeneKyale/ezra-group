@@ -3,6 +3,7 @@
  */
 import React, { useEffect, useState }  from "react";
 import { Link } from "react-router-dom";
+import { BackgroundImage } from "react-image-and-background-image-fade";
 
 /**
  * Internal Dependencies
@@ -29,11 +30,10 @@ const Project = ( { id, category, title, coverImage } ) => {
 	}, [ coverImage ])
 
 	return (
-		<div 
+		<BackgroundImage 
 			className={ styles.project }
-			style= {{
-				background: `url( ${ projectCoverImageUrl } )`
-			}}
+			src={ projectCoverImageUrl }
+			lazyLoad
 		>
 			<div className={ styles.project__inner }>
 				<Link to={ `/project/${ slugify( title ) }/${ id }` }>
@@ -45,7 +45,7 @@ const Project = ( { id, category, title, coverImage } ) => {
 					</h5>
 				</Link>
 			</div>
-		</div>
+		</BackgroundImage>
 	);
 };
 

@@ -3,6 +3,7 @@
  */
 import React from "react";
 import { Link } from "react-scroll";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 /**
  * Internal Dependencies
@@ -20,10 +21,11 @@ const ScrollInvoker = () => {
 			duration={ 500 }
 			style={{ cursor: "pointer" }}
 		>
-			<img
+			<LazyLoadImage
+				effect="blur"
 				className={ styles.ico }
 				alt=""
-				src={ toAbsoluteUrl( "/scroll-invoker.webp" ) }
+				src={ toAbsoluteUrl( "/icons/submenu" ) }
 			/>
 		</Link>
 	);

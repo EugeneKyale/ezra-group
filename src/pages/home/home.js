@@ -3,6 +3,7 @@
  */
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 /**
  * Internal Dependencies
@@ -16,6 +17,7 @@ import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Home = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
@@ -132,10 +134,12 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__about_right }>
-							<img
-								className="wow zoomIn" data-wow-delay=".6s"
+							<LazyLoadImage
+								effect="blur"
+								className="wow zoomIn" 
+								data-wow-delay=".6s"
 								alt=""
-								src={ aboutImageUrl }
+								src={ aboutImageUrl }					
 							/>
 						</div>
 					</section>

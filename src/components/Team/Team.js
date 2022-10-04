@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useEffect, useState }  from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 /**
  * Internal Dependencies
@@ -30,7 +31,7 @@ const Team = ( { photo, name, position, social } ) => {
 	return (
 		<div className={ styles.team }>
 			<div className={ styles.team__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ teamAvatarUrl } alt="" />
+				<LazyLoadImage effect="blur" className="wow zoomIn" data-wow-delay=".3s" src={ teamAvatarUrl } alt="" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					{ name }
 				</h3>
@@ -41,7 +42,7 @@ const Team = ( { photo, name, position, social } ) => {
 					{ social &&
 						social.map( ( media ) => (
 							<a className="wow zoomIn" data-wow-delay=".6s" href={ media.url } target="_blank" rel="noreferrer">
-								<img src="" alt="" />
+								<LazyLoadImage effect="blur" src="" alt="" />
 							</a>
 						))
 					}

@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useEffect, useState } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 /**
  * Internal Dependencies
@@ -29,7 +30,8 @@ const Ico = ( { id } ) => {
 	}, [ id ]);
 
 	return (
-		<img
+		<LazyLoadImage
+			effect="blur"
 			className={ styles.ico } 
 			src2={ subsidiaryIconUrl }
 			src={ toAbsoluteUrl( '/icons/submenu.png' ) }

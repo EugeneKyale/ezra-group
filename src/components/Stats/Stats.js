@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 /**
  * Internal Dependencies
@@ -29,7 +30,7 @@ const Stats = ( { iconId, title, description } ) => {
 
 	return (
 		<div className={ styles.stats }>
-			{ statIconUrl && <img className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="" /> }
+			{ statIconUrl && <LazyLoadImage effect="blur" className="wow zoomIn" data-wow-delay=".3s" src={ statIconUrl } alt="" /> }
 
 			<div className={ styles.stats__details }>
 				<h3 className="wow fadeInUp" data-wow-delay=".3s">
