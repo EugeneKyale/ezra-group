@@ -31,7 +31,7 @@ const Ico = ( { id } ) => {
 	return (
 		<img
 			className={ styles.ico } 
-			// src={ subsidiaryIconUrl }
+			src2={ subsidiaryIconUrl }
 			src={ toAbsoluteUrl( '/icons/submenu.png' ) }
 			alt="" 
 		/>

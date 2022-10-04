@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
  * Internal Dependencies
  */
 import Button from "../Button/Button";
-import { generateExcerpt, slugify, axiosInstance } from "../../_helpers/utils";
+import { generateExcerpt, slugify, axiosInstance, toAbsoluteUrl } from "../../_helpers/utils";
 import styles from "./Subsidiaries.module.scss";
 
 const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
@@ -33,7 +33,13 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 	return (
 		<div className={ styles.subsidiaries }>
 			<div className={ styles.subsidiaries__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ subsidiaryIconUrl } alt="" />
+				<img 
+					className="wow zoomIn" 
+					data-wow-delay=".3s" 
+					src2={ subsidiaryIconUrl }
+					src={ toAbsoluteUrl( '/icons/submenu.png' ) }
+					alt="" 
+				/>
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					<Link to={ `/subsidiary/${ slugify( title ) }/${ id }` }>
 						<ReactMarkdown>
