@@ -1,0 +1,85 @@
+@import "../../_globals/variables";
+
+.csr {
+	&__cards {
+		
+		&_inner {
+			&_wrapper {
+				padding: 100px $padding;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				@media only screen and (max-width: 767px) {
+					flex-direction: column-reverse;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					flex-direction: column-reverse;
+				}
+				
+				&:nth-child(even) {
+					flex-direction: row-reverse;
+					background-color: #f7f7f7;
+
+					@media only screen and (max-width: 767px) {
+						flex-direction: column-reverse;
+					}
+
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						flex-direction: column-reverse;
+					}
+				}
+
+				&_left {
+					width: 48%;
+
+					@media only screen and (max-width: 767px) {
+						width: 100%;
+					}
+	
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						width: 100%;
+					}
+
+					h3 {
+						font-size: clamp(20px, 1.65vw, 25px);
+					}
+
+					&_description {
+						margin-top: 20px;
+						
+						h1,
+						h2,
+						h3,
+						h4,
+						h5,
+						h6 {
+							font-size: clamp(18px, 1.25vw, 22px);
+							margin: 25px 0;
+							line-height: 1.2;
+						}
+				
+						p {
+							text-align: justify;
+							margin: 15px 0;
+						}
+					}
+				}
+
+				&_right {
+					width: 48%;
+					padding: 50px 0;
+
+					@media only screen and (max-width: 767px) {
+						width: 100%;
+					}
+	
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

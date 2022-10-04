@@ -12,6 +12,7 @@ import About from "./pages/about";
 import Subsidiary from "./pages/subsidiary";
 import Projects from "./pages/projects";
 import Project from "./pages/project";
+import Csr from "./pages/csr";
 import Privacy from "./pages/privacy";
 import Four0Four from "./pages/404";
 
@@ -25,6 +26,7 @@ const App = () => {
 			<Route exact path="/subsidiary/:slug/:id" element={ <Subsidiary /> } />
 			<Route exact path="/project/:slug/:id" element={ <Project /> } />
 			<Route exact path="/projects" element={ <Projects /> } />
+			<Route exact path="/csr" element={ <Csr /> } />
 			<Route exact path="/privacy" element={ <Privacy /> } />
 			<Route path="*" element={ <Four0Four /> } />
 		</Routes>
