@@ -82,6 +82,22 @@ const Projects = () => {
 						backgroundImage={ heroBackgroundUrl }
 					/>
 
+					<section className={ styles.projects__overview }>
+						<small className="wow fadeInUp" data-wow-delay=".5s">
+							{ content?.overview.tagline }
+						</small>
+						<h2 className="wow fadeInUp" data-wow-delay=".3s">
+							{ content?.overview.title }
+						</h2>
+						<div
+							className="wow fadeInUp" 
+							data-wow-delay=".5s"
+							dangerouslySetInnerHTML={{
+								__html: content?.overview.description
+							}}
+						/>
+					</section>
+
 					<section className={ styles.projects__cards }>
 						<div className={ styles.projects__cards_inner }>
 							{ projects &&
