@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Preloader from "../../components/Preloader";
+import SlickSlider from "../../components/Slider";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./csr.module.scss";
@@ -101,7 +102,7 @@ const Csr = () => {
 											/>
 										</div>
 										<div className={ styles.csr__cards_inner_wrapper_right }>
-											
+											<SlickSlider ids={ initiative.acf.gallery } />
 										</div>
 									</div>
 								))

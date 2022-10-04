@@ -1,0 +1,17 @@
+@import "../../../_globals/variables";
+
+.photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	margin: 15px;
+	border-radius: $border-radius;
+
+	@media only screen and (max-width: 767px) {
+		width: 75vw !important;
+	}
+
+	@media only screen and (min-width: 768px) and (max-width: 1024px) {
+		width: 37vw !important;
+	}
+}
