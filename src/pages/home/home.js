@@ -3,6 +3,7 @@
  */
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 /**
  * Internal Dependencies
@@ -13,68 +14,97 @@ import Stats from "../../components/Stats";
 import Subsidiaries from "../../components/Subsidiaries";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
-import { axiosInstance, cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Home = () => {
-	const [ homeContent, setHomeContent ] = useState( [] );
+	const [ pageContent, setPageContent ] = useState( [] );
+	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
+	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
+	const [ aboutImageId, setAboutImageId ] = useState( '' );
+	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ subsidiaries, setSubsidiaries ] = useState( [] );
-	const [ statistics, setStatistics ] = useState( [] );
-	const [ values, setValues ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchPageContent = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `home?populate=hero.backgroundImage,about.image,subsidiaries,values`
-		}).then( result => {
-			setHomeContent( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `pages/12`
+		}).then(( page ) => {
+			setPageContent( page.data );
+			setHeroBackgroudId( page.data.acf.hero.background_image );
+			setAboutImageId( page.data.acf.about.image );
+		}).catch( fetchPageFail => {
+			setErrorMessage( fetchPageFail.data.message );
 		});
+	};
 
-		axiosInstance({
+	const fetchSubsidiaries = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `subsidiaries?populate=icon&sort[0]=id:asc`
-		}).then( result => {
-			setSubsidiaries( result.data.data );
+			url: `subsidiary`
+		}).then(( subs ) => {
+			setSubsidiaries( subs );
 		}).catch( error => {
-			setErrorMessage( error.message );
+			setErrorMessage( error.data.message );
 		});
+	}
 
-		axiosInstance({
+	const fetchHeroBackground = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `statistics?populate=icon`
-		}).then( result => {
-			setStatistics( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `media/${ heroBackgroundId }`
+		}).then(( background ) => {
+			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
+		}).catch( fetchHeroBackgroundFail => {
+			setErrorMessage( fetchHeroBackgroundFail.data.message );
 		});
+	};
 
-		axiosInstance({
+	const fetchAboutImage = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `values?populate=icon`
-		}).then( result => {
-			setValues( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `media/${ aboutImageId }`
+		}).then(( image ) => {
+			setAboutImageUrl( image.data.media_details.sizes.full.source_url );
+		}).catch( fetchAboutImageFail => {
+			setErrorMessage( fetchAboutImageFail.data.message );
 		});
+	};
 
-	}, []);
+	useEffect(()=>{
+		fetchPageContent();
 
-	const content = homeContent.attributes;
+		if ( pageContent ) {
+			fetchSubsidiaries();
+		}
+
+		if ( heroBackgroundId ) {
+			fetchHeroBackground();
+		}
+
+		if ( aboutImageId ) {
+			fetchAboutImage();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ heroBackgroundId, aboutImageId ]);
+
+
+	const content = pageContent.acf;
 
 	return (
 		<Layout pageTitle="Ezra Group - Home">
 			{
 				errorMessage ?
-				<Preloader />
+				<Preloader error={ errorMessage } />
 				:
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ heroBackgroundUrl }
 					/>
 
 					<section className={ styles.home__about }>
@@ -104,10 +134,12 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__about_right }>
-							<img
-								className="wow zoomIn" data-wow-delay=".6s"
-								alt="illustration"
-								src={ cmsUrl + content?.about.image.data.attributes.url }
+							<LazyLoadImage
+								effect="blur"
+								className="wow zoomIn" 
+								data-wow-delay=".6s"
+								alt=""
+								src={ aboutImageUrl }					
 							/>
 						</div>
 					</section>
@@ -130,14 +162,14 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__subsidiaries_cards }>
-							{ subsidiaries.length &&
-								subsidiaries.map( ( subsidiary ) => (
+							{ subsidiaries.data &&
+								subsidiaries.data.map( ( item ) => (
 									<Subsidiaries
-										key={ subsidiary.id }
-										id={ subsidiary.id }
-										icon={ subsidiary.attributes.icon.data.attributes.url }
-										title={ subsidiary.attributes.title }
-										description={ subsidiary.attributes.description }
+										key={ item.id }
+										id={ item.id }
+										iconId={ item.acf.icon }
+										title={ item.title.rendered }
+										excerpt={ item.acf.excerpt }
 									/>
 								))
 							}
@@ -146,13 +178,13 @@ const Home = () => {
 
 					<section className={ styles.home__stats }>
 						<div className={ styles.home__stats_cards }>
-							{ statistics.length &&
-								statistics.map( ( stat ) => (
+							{ content?.statistics.length &&
+								content?.statistics.map( ( stat ) => (
 									<Stats
 										key={ stat.id }
-										icon={ stat.attributes.icon.data.attributes.url }
-										title={ stat.attributes.title }
-										number={ stat.attributes.number }
+										iconId={ stat.icon }
+										title={ stat.title }
+										description={ stat.description }
 									/>
 								))
 							}
@@ -178,14 +210,14 @@ const Home = () => {
 						</div>
 
 						<div className={ styles.home__values_cards }>
-							{ values.length &&
-								values.map( ( value, idx ) => (
+							{ content?.values.values.length &&
+								content?.values.values.map( ( value, idx ) => (
 									<Values
 										key={ value.id }
-										idx={idx }
-										icon={ value.attributes.icon.data.attributes.url }
-										title={ value.attributes.title }
-										description={ value.attributes.description }
+										idx={ idx }
+										iconId={ value.icon }
+										title={ value.title }
+										description={ value.description }
 									/>
 								))
 							}

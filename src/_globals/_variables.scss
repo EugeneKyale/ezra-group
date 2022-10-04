@@ -5,15 +5,16 @@ $accent: #080d1c;
 $link: #DAA520;
 $white: #FFF;
 $heading: #000;
-$text: #000;
+$text: #454545;
 $grey: #454545;
 $background: #eaedf3;
 $light-background: #f7f7f7;
 
-$body-font: 'Catamaran', sans-serif;
-$heading-font: 'Smooch Sans', sans-serif;
 
-$box-shadow: rgba(10, 10, 10, 0.2) 0px 7px 29px 0px;
+$heading-font: 'Montserrat', sans-serif; //'Smooch Sans', sans-serif
+$body-font: 'Montserrat', sans-serif; //'Catamaran', sans-serif
+
+$box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.10);
 $border-radius: 6px;
 
 /* Fluid Layout */

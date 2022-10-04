@@ -2,12 +2,12 @@
 
 .footer {
 	background-color: $heading;
-	color: #F1F1F1;
+	color: $white;
 
 	&__top {
 		padding: 60px $padding 30px;
 		display: grid;
-		grid-template-columns: 1.5fr 1fr 1fr 1fr; 
+		grid-template-columns: 1.5fr 1fr 1fr 1.2fr; 
 		grid-template-rows: 1fr;
 		gap: 50px;
 		grid-template-areas:
@@ -30,20 +30,26 @@
 		}
 
 		h4 {
+			color: $white;
+			font-size: clamp(16px, 1.2vw, 18px);
 			margin-bottom: 15px;
 		}
 
 		p {
-			font-size: clamp(16px, 1.1vw, 18px);
+			font-size: clamp(15px, 1vw, 18px);
 		}
 
 		a {
 			color: $white;
-			font-size: clamp(16px, 1.1vw, 18px);
+			font-size: clamp(15px, 1vw, 18px);
 
 			&:hover {
 				color: $link;
 			}
+		}
+
+		&_contact {
+			line-height: 2;
 		}
 
 		&_socials {
@@ -74,7 +80,7 @@
 	&__copyright {
 		color: $white;
 		border-top: .5px $white solid;
-		font-size: clamp(16px, 1vw, 18px);
+		font-size: clamp(15px, 1vw, 18px);
 		padding: 15px $padding;
 		display: flex;
 		justify-content: center;

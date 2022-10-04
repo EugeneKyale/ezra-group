@@ -1,27 +1,175 @@
 @import "../../_globals/variables";
 
 .subsidiary {
-	margin-top: 80px;
-	padding: 50px $padding 100px;
+	&__inner {
+		padding: 50px $padding 100px;
+		display: flex;
+		justify-content: space-between;
 
-	h1 {
-		margin: 15px 0;
-		font-size: clamp(60px, 5vw, 80px);
+		@media only screen and (max-width: 767px) {
+			flex-direction: column-reverse;
+		}
+
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+		}
+
+		&_left {
+			width: 25%;
+
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+			}
+	
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 40%;
+			}
+
+			&_top {
+				position: relative;
+				border-radius: $border-radius;
+				padding: 40px 35px 60px;
+				box-shadow: $box-shadow;
+				background-color: #eff4f2;
+				border: .5px solid $grey;
+
+				h3 {
+					font-size: clamp(20px, 1.2vw, 25px);
+					margin-bottom: 30px;
+					position: relative;
+					padding-bottom: 15px;
+					text-transform: uppercase;
+
+					&::before {
+						position: absolute;
+						content: '';
+						left: 0px;
+						bottom: 0px;
+						width: 65px;
+						height: 3px;
+						background-color: $heading;
+					}
+
+					&::after {
+						position: absolute;
+						content: '';
+						left: 68px;
+						bottom: 0px;
+						width: 20px;
+						height: 3px;
+						background-color: $secondary;
+					}
+				}
+				&_services {
+					margin-top: 10px;
+					background-color: $white;
+					padding: 5px 10px;
+					border-left: 3px solid $secondary;
+					font-size: clamp(14px, 1vw, 18px);
+					font-weight: 500;
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+
+			&_bottom {
+				background-color: $heading;
+				margin-top: 30px;
+				border: .5px solid $background;
+				border-radius: $border-radius;
+
+				&_details {
+					padding: 50px 30px;
+					text-align: center;
+
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						padding: 30px 20px;
+					}
+
+					h1,
+					h2,
+					h3,
+					h4,
+					h5,
+					h6 {
+						color: $white;
+						font-size: clamp(20px, 1.5vw, 25px);
+						margin: 20px 0;
+						line-height: 1.2;
+					}
+
+					h4 {
+						font-size: clamp(16px, 1vw, 20px);
+					}
+
+					p {
+						color: $white;
+						margin: 10px 0;
+					}
+
+					a {
+						color: $white;
+
+						&:hover {
+							color: $secondary;
+						}
+					}
+				}
+			}
+		}
+
+		&_right {
+			width: 70%;
+
+			@media only screen and (max-width: 767px) {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+	
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				width: 55%;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin: 25px 0;
+				line-height: 1.2;
+			}
+	
+			h2 {
+				font-size: clamp(23px, 1.8vw, 26px);
+			}
+	
+			p {
+				text-align: justify;
+				margin: 15px 0;
+			}
+
+			img {
+				height: 350px;
+				width: 100%;
+				object-fit: cover;
+				border-radius: $border-radius;
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					height: 250px;
+				}
+			}
+		}
 	}
 
-	&__inner {
+	&__gallery {
+		padding: 0 $padding 100px;
+
+		small {
+			margin-left: 20px;
+		}
+
 		h2 {
-			font-size: clamp(30px, 2vw, 45px);
-			margin: 20px 0;
-		}
-	
-		P {
-			margin: 15px 0;		
-		}
-	
-		ul {
-			list-style-type: disc;
-			padding-inline-start: 20px;
+			margin: 10px 0 20px 20px;
 		}
 	}
 }

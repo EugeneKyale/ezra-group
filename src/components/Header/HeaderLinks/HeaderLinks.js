@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import { NavLink } from "react-router-dom";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
@@ -14,6 +15,7 @@ import MenuList from "@material-ui/core/MenuList";
  * Internal Dependencies
  */
 import { axiosInstance, slugify } from "../../../_helpers/utils";
+import Ico from "./Ico";
 
 import styles from "./HeaderLinks.module.scss";
 
@@ -43,22 +45,25 @@ const HeaderLinks = () => {
 
 	const prevOpen = useRef( openSubsidiaries );
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchSubsidiaries = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `subsidiaries?populate=icon&sort[0]=id:asc`
-		}).then( result => {
-			setSubsidiaries( result.data.data );
-		}).catch( error => {
-			console.log( error.message );
+			url: `subsidiary`
+		}).then(( subs ) => {
+			setSubsidiaries( subs );
 		});
+	}
+
+	useEffect( () => {
+		fetchSubsidiaries();
 	
 		if ( prevOpen.current === true && openSubsidiaries === false ) {
-		anchorRef.current.focus();
+			anchorRef.current.focus();
 		}
 
 		prevOpen.current = openSubsidiaries;
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ openSubsidiaries ] );
 
 	return (
@@ -79,7 +84,7 @@ const HeaderLinks = () => {
 							onClick={ handleToggle }
 							to={ false }
 						>
-							Subsidiaries <i className={ styles.headerLinks__arrowDown }></i>
+							Subsidiaries {/* <i className={ styles.headerLinks__arrowDown }></i> */}
 						</NavLink>
 						<NavLink
 							activeClassName={styles.headerLinks__menuActive}
@@ -107,26 +112,30 @@ const HeaderLinks = () => {
 							{ ...TransitionProps }
 							style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
 						>
-							<Paper>
+							<Paper style={{ borderRadius: '6px' }}>
 								<ClickAwayListener onClickAway={ handleClose }>
-									<MenuList 
+									<MenuList
+										className={ styles.headerLinks__list } 
 										id="menu-list-grow" 
 										autoFocusItem={ openSubsidiaries } 
 										onKeyDown={ handleListKeyDown }
 									>
-										{ subsidiaries.length && subsidiaries.map( ( subsidiary ) => (
-											<MenuItem key={ subsidiary.id }>
+										{ subsidiaries.data && subsidiaries.data.map( ( subsidiary ) => (
+											<MenuItem key={ subsidiary.id } className={ styles.headerLinks__inner }>
+												<Ico id={ subsidiary.acf.icon } />
 												<NavLink
+													className={ styles.headerLinks__item }
 													activeClassName={ styles.headerLinks__menuActive }
-													to={ `/subsidiary/${ slugify( subsidiary.attributes.title ) }/${ subsidiary.id }` }
+													to={ `/subsidiary/${ slugify( subsidiary.title.rendered ) }/${ subsidiary.id }` }
 													style={{
 														color: "#0c1e31",
 														fontSize: "16px",
-														fontWeight: "500",
 														margin: "0 15px"
 													}}
 												>
-													{ subsidiary.attributes.title }
+													<ReactMarkdown>
+														{ subsidiary.title.rendered }
+													</ReactMarkdown>
 												</NavLink>
 											</MenuItem>
 										))}

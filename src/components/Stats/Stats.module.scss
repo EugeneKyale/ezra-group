@@ -33,6 +33,10 @@
 
 	&__details {
 
+		h3 {
+			line-height: 1;
+		}
+
 		p {
 			font-size: clamp(16px, 1vw, 18px);
 		}

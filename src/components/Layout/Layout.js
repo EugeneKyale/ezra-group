@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
  * Internal Dependencies
  */
 import Header from "../Header";
-// import HeaderLinks from "../Header/HeaderLinks";
+import HeaderLinks from "../Header/HeaderLinks";
 import Footer from "../Footer/";
 
 const dashboardRoutes = [];
@@ -20,7 +20,7 @@ export default function Layout( { pageTitle, children } ) {
 				color="transparent"
 				routes={ dashboardRoutes }
 				brand="Ezra Group"
-				// rightLinks={ <HeaderLinks /> }
+				rightLinks={ <HeaderLinks /> }
 				fixed
 				changeColorOnScroll={{
 					height: 100,

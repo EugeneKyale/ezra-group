@@ -1,19 +1,37 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useEffect, useState }  from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 /**
  * Internal Dependencies
  */
-import { cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 import styles from "./Team.module.scss";
 
 const Team = ( { photo, name, position, social } ) => {
+	const [ teamAvatarUrl, setTeamAvatarUrl ] = useState( '' );
+
+	const fetchTeamAvatar = async () => {
+		await axiosInstance({
+			method: 'get',
+			url: `media/${ photo }`
+		}).then(( avatar ) => {
+			setTeamAvatarUrl( avatar.data.media_details.sizes.full.source_url );
+		});
+	};
+
+	useEffect(()=>{
+		fetchTeamAvatar();
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ photo ])
+
 	return (
 		<div className={ styles.team }>
 			<div className={ styles.team__inner }>
-				<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + photo } alt={ name } />
+				<LazyLoadImage effect="blur" className="wow zoomIn" data-wow-delay=".3s" src={ teamAvatarUrl } alt="" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					{ name }
 				</h3>
@@ -21,10 +39,10 @@ const Team = ( { photo, name, position, social } ) => {
 					{ position }
 				</p>
 				<div className={ styles.team__inner_social }>
-					{ social.length &&
+					{ social &&
 						social.map( ( media ) => (
 							<a className="wow zoomIn" data-wow-delay=".6s" href={ media.url } target="_blank" rel="noreferrer">
-								<img src={ cmsUrl + media.icon.data.attributes.url } alt={ media.title } />
+								<LazyLoadImage effect="blur" src="" alt="" />
 							</a>
 						))
 					}

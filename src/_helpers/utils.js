@@ -2,9 +2,9 @@ import axios from "axios";
 
 export const toAbsoluteUrl = ( pathname ) => process.env.PUBLIC_URL + pathname;
 
-export const cmsUrl = "https://ezra-group-strapi-cms-bruq2.ondigitalocean.app";
+export const cmsUrl = "http://139.59.25.79/";
 
-export const baseUrl = "https://ezra-group-strapi-cms-bruq2.ondigitalocean.app/api/";
+export const baseUrl = "http://139.59.25.79/wp-json/wp/v2/";
 
 /**
  * Convert any date into dd-mm-yyyy

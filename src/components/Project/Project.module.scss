@@ -35,13 +35,16 @@
 
 		p {
 			color: $secondary;
-			font-size: clamp(13px, .9vw, 17px);
+			font-size: clamp(12px, .7vw, 16px);
+			margin-bottom: 5px;
 			font-weight: 600 ;
 			text-transform: uppercase;
 		}
 
 		h5 {
+			font-size: clamp(16px, 1.2vw, 20px);
 			font-weight: 700;
+			line-height: 1.2;
 		}
 	}
 }

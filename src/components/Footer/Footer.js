@@ -1,34 +1,19 @@
 /**
  * External Dependencies
  */
-import React, { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown"; 
+import React from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 /**
  * Internal Dependencies
  */
-import { axiosInstance, toAbsoluteUrl } from "../../_helpers/utils";
+import { toAbsoluteUrl } from "../../_helpers/utils";
 import MenuConfig from "../../_helpers/MenuConfig";
 
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
-	const [ footerContent, setFooterContent ] = useState( [] );
-
-	useEffect( () => {
-		axiosInstance({
-			method: 'get',
-			url: `footer?populate=footer`
-		}).then( result => {
-			setFooterContent( result.data.data );
-		}).catch( error => {
-			console.log( error.message );
-		});
-
-	}, []);
-
-	const content = footerContent.attributes;
 
 	return (
 		<footer className={ styles.footer }>
@@ -38,7 +23,7 @@ const Footer = () => {
 						About Us
 					</h4>
 					<p>
-						{ content?.footer.aboutText }
+						The Ezra Group is already seen as a catalyst for change in their new home country, where they have committed to creating a lasting legacy as they transform the country's landscape.
 					</p>
 				</div>
 				<div className={ styles.footer__top_socials }>
@@ -47,9 +32,10 @@ const Footer = () => {
 					</h4>
 					{ MenuConfig.footer.socialPages.map( ( social ) => (
 						<div className={ styles.footer__top_socials_single } key={ social.id }>
-							<img
-							src={ toAbsoluteUrl( social.icon ) }
-							alt={ social.title }
+							<LazyLoadImage
+								effect="blur"
+								src={ toAbsoluteUrl( social.icon ) }
+								alt={ social.title }
 							/>
 							<a href={ social.url } target="_blank" rel="noopener noreferrer"> { social.title } </a>
 						</div>
@@ -74,9 +60,27 @@ const Footer = () => {
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
 						Contact
 					</h4>
-					<ReactMarkdown>
-					{ content?.footer.contactDetails }
-					</ReactMarkdown>
+					<>
+						<p>				
+							Block Hai Jebel Munuki
+						</p>
+
+						<p>				
+							Garden No.18 Juba, South Sudan
+						</p>
+
+						<a href="mailto:info@ezraenterprise.com">				
+							info@ezraenterprise.com
+						</a>
+						<br />
+						<a href="tel:+211911008088">
+							( +211 ) 911 008 088
+						</a>
+						<br />
+						<a href="tel:+212929008088">
+							( +212 ) 929 008 088
+						</a>
+					</>
 				</div>
 			</div>
 

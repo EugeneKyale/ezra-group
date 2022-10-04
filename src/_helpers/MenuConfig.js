@@ -45,11 +45,6 @@ const MenuConfig = {
 				title: "News",
 				page: "/news",
 			},
-			{
-				id: 3,
-				title: "Gallery",
-				page: "/gallery",
-			},
 		],
 		quicklinks: [
 			{
@@ -83,9 +78,9 @@ const MenuConfig = {
 			},
 			{
 				id: 3,
-				title: "LinkedIn",
-				url: "#",
-				icon: "/icons/linkedin.svg"
+				title: "Instagram",
+				url: "https://www.instagram.com/ezragroupofcompanies/",
+				icon: "/icons/instagram.png"
 			}
 		],
 	}

@@ -12,47 +12,65 @@ import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
 import Team from "../../components/Team";
 import Preloader from "../../components/Preloader";
-import { axiosInstance, cmsUrl } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./about.module.scss";
 
 const About = () => {
-	const [ aboutContent, setAboutContent ] = useState( [] );
-	const [ teamMembers, setTeamMembers ] = useState( [] );
-	const [ statistics, setStatistics ] = useState( [] );
+	const [ pageContent, setPageContent ] = useState( [] );
+	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
+	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
+	const [ team, setTeam ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
-	useEffect( () => {
-		axiosInstance({
+	const fetchPageContent = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `about?populate=hero.backgroundImage,history.image,mission.card.icon,team`
-		}).then( result => {
-			setAboutContent( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `pages/120`
+		}).then(( page ) => {
+			setPageContent( page.data );
+			setHeroBackgroudId( page.data.acf.hero.background_image );
+		}).catch( fetchPageFail => {
+			setErrorMessage( fetchPageFail.data.message );
 		});
+	};
 
-		axiosInstance({
+	const fetchTeam = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `statistics?populate=icon`
-		}).then( result => {
-			setStatistics( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `team?filter[orderby]=date&order=asc`
+		}).then(( res ) => {
+			setTeam( res.data );
+		}).catch( fetchTeamFail => {
+			setErrorMessage( fetchTeamFail.data.message );
 		});
+	}
 
-		axiosInstance({
+	const fetchHeroBackground = async () => {
+		await axiosInstance({
 			method: 'get',
-			url: `teams?populate=photo,social.icon&sort[0]=id:asc`
-		}).then( result => {
-			setTeamMembers( result.data.data );
-		}).catch( error => {
-			setErrorMessage( error.message );
+			url: `media/${ heroBackgroundId }`
+		}).then(( background ) => {
+			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
+		}).catch( fetchHeroBackgroundFail => {
+			setErrorMessage( fetchHeroBackgroundFail.data.message );
 		});
+	};
 
-	}, []);
+	useEffect(()=>{
+		fetchPageContent();
 
-	const content = aboutContent.attributes;
+		if ( heroBackgroundId ) {
+			fetchHeroBackground();
+		}
+
+		fetchTeam();
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ heroBackgroundId ]);
+
+
+	const content = pageContent.acf;
 
 	return (
 		<Layout pageTitle="About">
@@ -63,7 +81,7 @@ const About = () => {
 				<main className={ styles.home }>
 					<Hero
 						title={ content?.hero.title }
-						backgroundImage={ cmsUrl + content?.hero.backgroundImage.data.attributes.url }
+						backgroundImage={ heroBackgroundUrl }
 					/>
 
 					<section className={ styles.about__history }>
@@ -91,13 +109,12 @@ const About = () => {
 								/>
 
 								<div className={ styles.about__history_left_bottom_cards }>
-									{ statistics.length &&
-										statistics.map( ( stat ) => (
+									{ content?.history.stats &&
+										content?.history.stats.map( ( stat ) => (
 											<Stats
 												key={ stat.id }
-												icon={ stat.attributes.icon.data.attributes.url }
-												title={ stat.attributes.title }
-												number={ stat.attributes.number }
+												title={ stat.title }
+												description={ stat.description }
 											/>
 										))
 									}
@@ -108,36 +125,40 @@ const About = () => {
 
 					<section className={ styles.about__mission }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ content?.mission.tagline }
+							{ content?.values.tagline }
 						</small>
 						<div className={ styles.about__mission_top }>
 							<div className={ styles.about__mission_top_left }>
 								<h2 className="wow fadeInUp" data-wow-delay=".3s">
-									{ content?.mission.title }
+									{ content?.values.title }
 								</h2>
 							</div>
 
 							<div className={ styles.about__mission_top_right + " wow fadeInUp" } data-wow-delay=".5s">
 								<ReactMarkdown>
-									{ content?.mission.description }
+									{ content?.values.description }
 								</ReactMarkdown>
 							</div>
 						</div>
 
 						<div className={ styles.about__mission_cards }>
-							{ content?.mission.card.length &&
-								content?.mission.card.map( ( card ) => (
+							{ content?.values.value &&
+								content?.values.value.map( ( card ) => (
 									<div key={ card.id } className={ styles.about__mission_cards_component }>
 										<div className={ styles.about__mission_cards_component__inner }>
 											<div className={ styles.about__mission_cards_component__inner_top }>
-												<img className="wow zoomIn" data-wow-delay=".3s" src={ cmsUrl + card.icon.data.attributes.url } alt={ card.title } />
+
 											</div>
 											<h3 className="wow fadeInUp" data-wow-delay=".4s">
 												{ card.title }
 											</h3>
-											<p className="wow fadeInUp" data-wow-delay=".5s">
-												{ card.description }
-											</p>
+											<div 
+												className="wow fadeInUp" 
+												data-wow-delay=".5s"
+												dangerouslySetInnerHTML={{
+													__html: card.description
+												}}
+											/>
 										</div>
 									</div>
 								))
@@ -163,14 +184,13 @@ const About = () => {
 						</div>
 
 						<div className={ styles.about__team_cards }>
-							{ teamMembers.length &&
-								teamMembers.map( ( member ) => (
+							{ team &&
+								team.map( ( member ) => (
 									<Team
 										key={ member.id }
-										photo={ member.attributes.photo.data.attributes.url }
-										name={ member.attributes.name }
-										position={ member.attributes.position }
-										social={ member.attributes.social }
+										photo={ member.featured_media }
+										name={ member.title.rendered }
+										position={ member.acf.position }
 									/>
 								))
 							}

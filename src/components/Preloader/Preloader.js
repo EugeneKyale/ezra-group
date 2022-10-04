@@ -8,11 +8,11 @@ import React from "react";
  */
 import styles from "./Preloader.module.scss";
 
-const Preloader = () => {
+const Preloader = ( { error } ) => {
 	return(
 		<div className={ styles.preloader }>
 			<h3>
-				Please wait as we fetch the site's content
+				{ error }
 			</h3>
 			<lottie-player
 				className={ styles.preloader__icon }

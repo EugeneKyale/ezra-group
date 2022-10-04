@@ -1,8 +1,8 @@
 body {
 	font-family: $body-font;
-	font-size: clamp(18px, 1.25vw, 22px);
+	font-size: clamp(16px, 1vw, 20px);
 	color: $text;
-	line-height: 25px;
+	line-height: 1.5;
 
 	a {
 		text-decoration: none;
@@ -22,38 +22,38 @@ h5,
 h6 {
 	font-family: $heading-font;
 	font-weight: 700;
+	color: $heading;
 	letter-spacing: 1px;
 	line-height: .9;
 }
 
 h1 {
-	font-size: clamp(80px, 7vw, 95px);
+	font-size: clamp(40px, 4vw, 70px);
+	line-height: 1.1;
 }
 
 h2 {
-	font-size: clamp(60px, 5vw, 80px);
-}
-
-h3 {
 	font-size: clamp(30px, 2vw, 45px);
 }
 
-h4 {
+h3 {
 	font-size: clamp(23px, 1.8vw, 26px);
+}
+
+h4 {
+	font-size: clamp(20px, 1.65vw, 25px);
 	font-weight: 600;
 }
 
 h5 {
-	font-size: clamp(20px, 1.65vw, 26px);
+	font-size: clamp(18px, 1.25vw, 22px);
 	font-weight: 600;
 }
 
 ul {
-	list-style: none;
-
-	li {
-		padding-left: 10px;
-	}
+	list-style-type: disc;
+	padding-inline-start: 20px;
+	margin: 20px 0;
 }
 
 article {
@@ -68,7 +68,7 @@ article {
 
 small {
 	color: $secondary;
-	font-size: clamp(14px, 1vw, 18px);
-	font-weight: 600 ;
+	font-size: clamp(14px, .9vw, 18px);
+	font-weight: 600;
 	text-transform: uppercase;
 }

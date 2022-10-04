@@ -7,7 +7,7 @@
 		position: relative;
 		overflow: hidden;
 		text-align: center;
-		padding: 15px 35px 50px;
+		padding: 15px 30px 50px;
 		background-color: $white;
 		border-radius: $border-radius;
 
@@ -44,6 +44,8 @@
 		}
 
 		h3 {
+			font-size: clamp(18px, 1.25vw, 22px);
+			line-height: 1.1;
 			margin-top: 85px;
 			margin-bottom: 15px;
 
@@ -57,7 +59,7 @@
 		}
 		
 		p {
-			font-size: clamp(14px, 1.1vw, 18px);
+			font-size: clamp(14px, 1vw, 18px);
 			margin-bottom: 15px;
 		}
 	}
