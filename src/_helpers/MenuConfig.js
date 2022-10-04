@@ -45,11 +45,6 @@ const MenuConfig = {
 				title: "News",
 				page: "/news",
 			},
-			{
-				id: 3,
-				title: "Corporate Videos",
-				page: "/corporate-videos",
-			},
 		],
 		quicklinks: [
 			{
