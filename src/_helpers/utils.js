@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const toAbsoluteUrl = ( pathname ) => process.env.PUBLIC_URL + pathname;
 
-export const cmsUrl = "https://ezra-group-strapi-cms-bruq2.ondigitalocean.app";
+export const cmsUrl = "https://ezra-group.eugene.co.ke/";
 
 export const baseUrl = "http://localhost:10054/wp-json/wp/v2/";
 

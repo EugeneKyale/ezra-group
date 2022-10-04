@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 /**
  * Internal Dependencies
  */
-import { axiosInstance } from "../../../../_helpers/utils";
+import { axiosInstance, toAbsoluteUrl } from "../../../../_helpers/utils";
 
 import styles from "./Ico.module.scss";
 
@@ -26,12 +26,13 @@ const Ico = ( { id } ) => {
 		fetchSubsidiaryIcon();
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ id ])
+	}, [ id ]);
 
 	return (
 		<img
 			className={ styles.ico } 
-			src={ subsidiaryIconUrl }
+			// src={ subsidiaryIconUrl }
+			src={ toAbsoluteUrl( '/icons/submenu.png' ) }
 			alt="" 
 		/>
 	);
