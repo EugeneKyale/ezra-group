@@ -43,9 +43,9 @@ const Footer = () => {
 				</div>
 				<div className={ styles.footer__top_media }>
 					<h4 className="wow fadeInUp" data-wow-delay=".3s">
-						Media
+						Quicklinks
 					</h4>
-					{ MenuConfig.footer.media.map( ( link ) => (
+					{ MenuConfig.footer.quicklinks.map( ( link ) => (
 						<div
 							key={ link.id }
 							className={ styles.footer__top_links }

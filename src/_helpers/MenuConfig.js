@@ -49,18 +49,23 @@ const MenuConfig = {
 		quicklinks: [
 			{
 				id: 1,
-				title: "Lorem Ipsum",
-				page: "/",
+				title: "About",
+				page: "/about",
 			},
 			{
 				id: 2,
-				title: "Lorem Ipsum",
-				page: "/",
+				title: "News",
+				page: "/news",
 			},
 			{
 				id: 3,
-				title: "Lorem Ipsum",
-				page: "/",
+				title: "Projects",
+				page: "/projects",
+			},
+			{
+				id: 4,
+				title: "CSR Initiatives",
+				page: "/csr",
 			},
 		],
 		socialPages: [

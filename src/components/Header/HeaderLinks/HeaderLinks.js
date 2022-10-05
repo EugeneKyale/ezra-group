@@ -96,7 +96,13 @@ const HeaderLinks = () => {
 							activeClassName={styles.headerLinks__menuActive}
 							to="/csr"
 						>
-							CSR
+							CSR Initiatives
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/news"
+						>
+							News
 						</NavLink>
 						<NavLink
 							activeClassName={styles.headerLinks__menuActive}
