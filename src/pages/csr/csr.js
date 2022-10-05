@@ -37,7 +37,7 @@ const Csr = () => {
 	const fetchInitiatives = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `csr`
+			url: `csr?filter[orderby]=date&order=asc`
 		}).then(( res ) => {
 			setInitiatives( res.data );
 		}).catch( fetchInitiativesFail => {
