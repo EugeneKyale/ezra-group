@@ -4,17 +4,16 @@
 	&__cards {
 		&_inner {
 			&_wrapper {
-				padding: 100px $padding;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
 
 				@media only screen and (max-width: 767px) {
-					flex-direction: column-reverse;
+					flex-direction: column;
 				}
 
 				@media only screen and (min-width: 768px) and (max-width: 1024px) {
-					flex-direction: column-reverse;
+					flex-direction: column;
 				}
 				
 				&:nth-child(even) {
@@ -22,23 +21,26 @@
 					background-color: #f7f7f7;
 
 					@media only screen and (max-width: 767px) {
-						flex-direction: column-reverse;
+						flex-direction: column;
 					}
 
 					@media only screen and (min-width: 768px) and (max-width: 1024px) {
-						flex-direction: column-reverse;
+						flex-direction: column;
 					}
 				}
 
 				&_left {
-					width: 48%;
+					width: 50%;
+					padding: 100px;
 
 					@media only screen and (max-width: 767px) {
-						width: 100%;
+						width: auto;
+						padding: 80px $padding;
 					}
 	
 					@media only screen and (min-width: 768px) and (max-width: 1024px) {
-						width: 100%;
+						width: auto;
+						padding: 80px $padding;
 					}
 
 					h3 {
@@ -67,8 +69,7 @@
 				}
 
 				&_right {
-					width: 48%;
-					padding: 50px 0;
+					width: 50%;
 
 					@media only screen and (max-width: 767px) {
 						width: 100%;

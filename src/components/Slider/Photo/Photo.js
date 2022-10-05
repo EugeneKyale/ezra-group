@@ -29,13 +29,12 @@ const Photo = ( { id } ) => {
 	}, [ id ])
 
 	return (
-		<a href={ galleryImageUrl }>
-			<img
-				className={ styles.photo }
-				alt=""
-				src={ galleryImageUrl }
-			/>
-		</a>
+		<div 
+			className={ styles.photo }
+			style={{
+				backgroundImage: `url( ${ galleryImageUrl } )`
+			}}
+		></div>
 	);
 };
 

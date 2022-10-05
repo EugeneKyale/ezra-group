@@ -16,6 +16,7 @@ const SlickSlider = ( { ids } ) => {
 
     const settings = {
         dots: false,
+        arrows: false,
         infinite: true,
         speed: 1000,
         slidesToShow: 1,
