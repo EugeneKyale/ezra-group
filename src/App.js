@@ -14,6 +14,7 @@ import Projects from "./pages/projects";
 import Project from "./pages/project";
 import Csr from "./pages/csr";
 import Posts from "./pages/posts";
+import Post from "./pages/post";
 import Four0Four from "./pages/404";
 
 import "./App.scss";
@@ -28,6 +29,7 @@ const App = () => {
 			<Route exact path="/projects" element={ <Projects /> } />
 			<Route exact path="/csr" element={ <Csr /> } />
 			<Route exact path="/news" element={ <Posts /> } />
+			<Route exact path="/news/:slug/:id" element={ <Post /> } />
 			<Route path="*" element={ <Four0Four /> } />
 		</Routes>
 	);
