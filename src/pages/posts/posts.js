@@ -90,6 +90,7 @@ const Posts = () => {
 										key={ post.id }
 										id={ post.id }
 										coverImage={ post.featured_media }
+										published={ post.date }
 										title={ post.title.rendered }
 										excerpt={ post.excerpt.rendered }
 									/>

@@ -20,12 +20,17 @@
 		h3 {
 			font-size: clamp(18px, 1.45vw, 22px);
 			line-height: 1.2;
+			margin-top: 5px;
 		}
 
 		p,
 		a {
 			font-size: clamp(14px, .9vw, 18px);
 			margin: 10px 0;
+		}
+
+		small {
+			font-size: 13px;
 		}
 	} 
 }

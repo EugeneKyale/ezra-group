@@ -8,10 +8,10 @@ import { BackgroundImage } from "react-image-and-background-image-fade";
  * Internal Dependencies
  */
 import Button from "../Button";
-import { axiosInstance, slugify, generateExcerpt } from "../../_helpers/utils";
+import { axiosInstance, slugify, generateExcerpt, formatDate } from "../../_helpers/utils";
 import styles from "./Post.module.scss";
 
-const Post = ( { id, title, coverImage, excerpt } ) => {
+const Post = ( { id, title, coverImage, excerpt, published } ) => {
 	const [ postCoverImageUrl, setPostCoverImageUrl ] = useState( '' );
 
 	const fetchPostCoverImage = async () => {
@@ -37,6 +37,9 @@ const Post = ( { id, title, coverImage, excerpt } ) => {
 				lazyLoad
 			/>
 			<div className={ styles.post__inner }>
+				<small>
+					{ formatDate( published ) }
+				</small>
 				<h3 className="wow fadeInUp" data-wow-delay=".3s">
 					{ generateExcerpt( title, 0, 40 ) }
 					{ title.length > 40 ? "..." : "" }
