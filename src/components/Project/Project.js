@@ -18,8 +18,8 @@ const Project = ( { id, category, title, coverImage } ) => {
 		await axiosInstance({
 			method: 'get',
 			url: `media/${ coverImage }`
-		}).then(( avatar ) => {
-			setProjectCoverImageUrl( avatar.data.media_details.sizes.full.source_url );
+		}).then(( image ) => {
+			setProjectCoverImageUrl( image.data.media_details.sizes.full.source_url );
 		});
 	};
 

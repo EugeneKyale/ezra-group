@@ -8,9 +8,9 @@ import React, { useState, useEffect } from "react";
  */
 import Layout from "../../components/Layout/Layout";
 import Hero from "../../components/Hero/Hero";
-import Button from "../../components/Button";
+import Post from "../../components/Post";
 import Preloader from "../../components/Preloader/Preloader";
-import { axiosInstance, generateExcerpt, slugify } from "../../_helpers/utils";
+import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./posts.module.scss";
 
@@ -86,19 +86,13 @@ const Posts = () => {
 						<div className={ styles.posts__cards_inner }>
 							{ posts &&
 								posts.map( ( post ) => (
-									<div key={ post.id }>
-										<h3 className="wow fadeInUp" data-wow-delay=".3s">
-											{ post.title.rendered }
-										</h3>
-										<div 
-											className="wow fadeInUp" 
-											data-wow-delay=".5s"
-											dangerouslySetInnerHTML={{
-												__html: generateExcerpt( post.content.rendered, 0, 200 ) 
-											}}
-										/>
-										<Button variant="arrow" text="Read More" page={ `/news/${ slugify( post.title.rendered ) }/${ post.id }` } />
-									</div>
+									<Post
+										key={ post.id }
+										id={ post.id }
+										coverImage={ post.featured_media }
+										title={ post.title.rendered }
+										excerpt={ post.excerpt.rendered }
+									/>
 								))
 							}
 						</div>
