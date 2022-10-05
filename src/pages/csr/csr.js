@@ -72,7 +72,7 @@ const Csr = () => {
 	const content = pageContent.acf;
 
 	return (
-		<Layout pageTitle="Initiatives">
+		<Layout pageTitle="CSR Initiatives">
 			{
 				errorMessage ?
 				<Preloader />
