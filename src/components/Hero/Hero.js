@@ -2,6 +2,7 @@
  * External Dependencies
 */
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 /**
  * Internal Dependencies
@@ -19,7 +20,9 @@ const Hero = ( { title, backgroundImage } ) => {
 				}}
 			>
 				<h1 className="wow fadeInUp" data-wow-delay=".3s">
-					{ title }
+					<ReactMarkdown>
+						{ title }
+					</ReactMarkdown>
 				</h1>
 			</div> 
 		:
