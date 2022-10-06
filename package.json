@@ -15,6 +15,7 @@
     "classnames": "^2.3.1",
     "emailjs-com": "^3.2.0",
     "formik": "^2.2.9",
+    "google-map-react": "^2.2.0",
     "lightgallery": "^2.6.1",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15",

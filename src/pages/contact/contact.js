@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
+import Map from "../../components/Map";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
@@ -66,6 +67,7 @@ const Contact = () => {
 						title={ content?.hero.title }
 						backgroundImage={ heroBackgroundUrl }
 					/>
+					<Map />
 				</main>
 			}
 		</Layout>
