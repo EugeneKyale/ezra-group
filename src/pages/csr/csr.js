@@ -89,13 +89,14 @@ const Csr = () => {
 								initiatives.map( ( initiative ) => (
 									<div key={ initiative.id } className={ styles.csr__cards_inner_wrapper }>
 										<div className={ styles.csr__cards_inner_wrapper_left }>
-											<h3>
+											<h3 className="wow fadeInUp" data-wow-delay=".3s">
 												<ReactMarkdown>
 														{ initiative.title.rendered }
 												</ReactMarkdown>
 											</h3>
 											<div
-												className={ styles.csr__cards_inner_wrapper_left_description }
+												className={ styles.csr__cards_inner_wrapper_left_description + " wow fadeInUp" }
+												data-wow-delay=".5s"
 												dangerouslySetInnerHTML={{
 													__html: initiative.acf.description
 												}}

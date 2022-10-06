@@ -67,13 +67,13 @@ const Post = () => {
 						backgroundImage={ postImageUrl }
 					/>
 					<div className={ styles.post__meta }>
-						<p>
+						<p className="wow fadeInUp" data-wow-delay=".3s">
 							<b> Date Published </b> <br /> { formatDate( postDetails?.date ) }
 						</p>
-						<p>
+						<p className="wow fadeInUp" data-wow-delay=".5s">
 							<b> Author </b> <br /> Ezra Group
 						</p>
-						<div>
+						<div className="wow fadeInUp" data-wow-delay=".7s">
 							<b> Share on </b>
 							<div className={ styles.post__meta_share }>
 								<FacebookShareButton
