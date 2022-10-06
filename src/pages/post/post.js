@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React, { useState, useEffect } from "react";
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 import { useParams } from "react-router-dom";
 
 /**
@@ -10,7 +11,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Preloader from "../../components/Preloader";
-import { axiosInstance } from "../../_helpers/utils";
+import { axiosInstance, formatDate } from "../../_helpers/utils";
 
 import styles from "./post.module.scss";
 
@@ -21,6 +22,7 @@ const Post = () => {
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	let postId = useParams().id;
+	let shareUrl = window.location.href;
 
 	const fetchPost = async () => {
 		await axiosInstance({
@@ -65,6 +67,65 @@ const Post = () => {
 						backgroundImage={ postImageUrl }
 					/>
 					<div className={ styles.post__meta }>
+						<p>
+							<b> Date Published </b> <br /> { formatDate( postDetails?.date ) }
+						</p>
+						<p>
+							<b> Author </b> <br /> Ezra Group
+						</p>
+						<div>
+							<b> Share on </b>
+							<div className={ styles.post__meta_share }>
+								<FacebookShareButton
+									url={ shareUrl }
+									quote={ postDetails.title?.rendered }
+									hashtag={ "#EzraGroup" }
+									description={ postDetails.excerpt?.rendered }
+									className={ styles.post__meta_share_icon }
+								>
+									<FacebookIcon 
+										size={ 32 } 
+										borderRadius="6px"
+									/>
+								</FacebookShareButton>
+
+								<TwitterShareButton
+									title={ postDetails.title?.rendered }
+									url={  shareUrl }
+									hashtags={ [ "EzraGroup", "Building a Legacy Together" ] }
+									className={ styles.post__meta_share_icon }
+								>
+									<TwitterIcon
+										size={ 32 }
+										borderRadius="6px"
+									/>
+								</TwitterShareButton>
+
+								<LinkedinShareButton
+									className={ styles.post__meta_share_icon }
+									url={  shareUrl }
+									title={ postDetails.title?.rendered }
+									summary={ postDetails.excerpt?.rendered }
+									source="Ezra Group Website"
+								>
+									<LinkedinIcon
+										size={ 32 } 
+										borderRadius="6px"
+									/>
+								</LinkedinShareButton>
+
+								<WhatsappShareButton
+									className={ styles.post__meta_share_icon }
+									url={  shareUrl }
+									title={ postDetails.title?.rendered }
+								>
+									<WhatsappIcon
+										size={ 32 } 
+										borderRadius="6px"
+									/>
+								</WhatsappShareButton>
+							</div>
+						</div>
 					</div>
 
 					<div 
