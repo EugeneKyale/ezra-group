@@ -104,12 +104,6 @@ const HeaderLinks = () => {
 						>
 							News
 						</NavLink>
-						<NavLink
-							activeClassName={styles.headerLinks__menuActive}
-							to="/contact"
-						>
-							Contact
-						</NavLink>
 					</div>
 
 					<Popper open={ openSubsidiaries } anchorEl={ anchorRef.current } role={ undefined } transition disablePortal>

@@ -15,7 +15,6 @@ import Project from "./pages/project";
 import Csr from "./pages/csr";
 import Posts from "./pages/posts";
 import Post from "./pages/post";
-import Contact from "./pages/contact";
 import Four0Four from "./pages/404";
 
 import "./App.scss";
@@ -31,7 +30,6 @@ const App = () => {
 			<Route exact path="/csr" element={ <Csr /> } />
 			<Route exact path="/news" element={ <Posts /> } />
 			<Route exact path="/news/:slug/:id" element={ <Post /> } />
-			<Route exact path="/contact" element={ <Contact /> } />
 			<Route path="*" element={ <Four0Four /> } />
 		</Routes>
 	);
