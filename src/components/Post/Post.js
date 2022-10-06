@@ -2,7 +2,6 @@
  * External Dependencies
  */
 import React, { useEffect, useState }  from "react";
-import { BackgroundImage } from "react-image-and-background-image-fade";
 
 /**
  * Internal Dependencies
@@ -31,10 +30,11 @@ const Post = ( { id, title, coverImage, excerpt, published } ) => {
 
 	return (
 		<div className={ styles.post }>
-			<BackgroundImage 
+			<div 
 				className={ styles.post__image }
-				src={ postCoverImageUrl }
-				lazyLoad
+				style={{
+					backgroundImage: `url( ${ postCoverImageUrl } )`
+				}}
 			/>
 			<div className={ styles.post__inner }>
 				<small>
