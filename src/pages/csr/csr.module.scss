@@ -1,0 +1,85 @@
+@import "../../_globals/variables";
+
+.csr {
+	&__cards {
+		&_inner {
+			&_wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				@media only screen and (max-width: 767px) {
+					flex-direction: column;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					flex-direction: column;
+				}
+				
+				&:nth-child(even) {
+					flex-direction: row-reverse;
+					background-color: #f7f7f7;
+
+					@media only screen and (max-width: 767px) {
+						flex-direction: column;
+					}
+
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						flex-direction: column;
+					}
+				}
+
+				&_left {
+					width: 50%;
+					padding: 100px;
+
+					@media only screen and (max-width: 767px) {
+						width: auto;
+						padding: 80px $padding;
+					}
+	
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						width: auto;
+						padding: 80px $padding;
+					}
+
+					h3 {
+						line-height: 1.2;
+					}
+
+					&_description {
+						margin-top: 20px;
+						
+						h1,
+						h2,
+						h3,
+						h4,
+						h5,
+						h6 {
+							font-size: clamp(18px, 1.25vw, 22px);
+							margin: 25px 0;
+							line-height: 1.2;
+						}
+				
+						p {
+							text-align: justify;
+							margin: 15px 0;
+						}
+					}
+				}
+
+				&_right {
+					width: 50%;
+
+					@media only screen and (max-width: 767px) {
+						width: 100%;
+					}
+	
+					@media only screen and (min-width: 768px) and (max-width: 1024px) {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

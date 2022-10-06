@@ -8,23 +8,22 @@ import React, { useState, useEffect } from "react";
  */
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
-import Project from "../../components/Project";
+import Map from "../../components/Map";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
-import styles from "./projects.module.scss";
+import styles from "./contact.module.scss";
 
-const Projects = () => {
+const Contact = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
 	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
-	const [ projects, setProjects ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `pages/285`
+			url: `pages/524`
 		}).then(( page ) => {
 			setPageContent( page.data );
 			setHeroBackgroudId( page.data.acf.hero.background_image );
@@ -32,17 +31,6 @@ const Projects = () => {
 			setErrorMessage( fetchPageFail.data.message );
 		});
 	};
-
-	const fetchProjects = async () => {
-		await axiosInstance({
-			method: 'get',
-			url: `project`
-		}).then(( res ) => {
-			setProjects( res.data );
-		}).catch( fetchProjectsFail => {
-			setErrorMessage( fetchProjectsFail.data.message );
-		});
-	}
 
 	const fetchHeroBackground = async () => {
 		await axiosInstance({
@@ -62,8 +50,6 @@ const Projects = () => {
 			fetchHeroBackground();
 		}
 
-		fetchProjects();
-
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ heroBackgroundId ]);
 
@@ -71,52 +57,21 @@ const Projects = () => {
 	const content = pageContent.acf;
 
 	return (
-		<Layout pageTitle="Projects">
+		<Layout pageTitle="Contact">
 			{
 				errorMessage ?
 				<Preloader />
 				:
-				<main className={ styles.projects }>
+				<main className={ styles.contact }>
 					<Hero
 						title={ content?.hero.title }
 						backgroundImage={ heroBackgroundUrl }
 					/>
-
-					<section className={ styles.projects__overview }>
-						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ content?.overview.tagline }
-						</small>
-						<h2 className="wow fadeInUp" data-wow-delay=".3s">
-							{ content?.overview.title }
-						</h2>
-						<div
-							className="wow fadeInUp" 
-							data-wow-delay=".5s"
-							dangerouslySetInnerHTML={{
-								__html: content?.overview.description
-							}}
-						/>
-					</section>
-
-					<section className={ styles.projects__cards }>
-						<div className={ styles.projects__cards_inner }>
-							{ projects &&
-								projects.map( ( project ) => (
-									<Project
-										key={ project.id }
-										id={ project.id }
-										coverImage={ project.featured_media }
-										title={ project.title.rendered }
-										category={ project.acf.category }
-									/>
-								))
-							}
-						</div>
-					</section>
+					<Map />
 				</main>
 			}
 		</Layout>
 	);
 };
 
-export default Projects;
+export default Contact;

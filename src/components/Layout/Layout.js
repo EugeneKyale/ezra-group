@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 
 /**
@@ -10,10 +10,32 @@ import { Helmet } from "react-helmet";
 import Header from "../Header";
 import HeaderLinks from "../Header/HeaderLinks";
 import Footer from "../Footer/";
+import { toAbsoluteUrl } from "../../_helpers/utils";
+
+import styles from "./Layout.module.scss";
 
 const dashboardRoutes = [];
 
 export default function Layout( { pageTitle, children } ) {
+	const [ showScroll, setShowScroll ] = useState( false )
+
+	const checkScrollTop = () => {
+		if ( !showScroll && window.pageYOffset > 600 ) {
+			setShowScroll( true );
+		} else if ( showScroll && window.pageYOffset <= 600 ) {
+			setShowScroll( false );
+		}
+	};
+  
+	const scrollTop = () => {
+		window.scrollTo({ 
+			top: 0, 
+			behavior: 'smooth' 
+		});
+	};
+  
+	window.addEventListener( 'scroll', checkScrollTop )
+
 	return (
 		<>
 			<Header
@@ -34,6 +56,18 @@ export default function Layout( { pageTitle, children } ) {
 					</title>
 				</Helmet>
 				{ children }
+				<img
+					alt=""
+					src={ toAbsoluteUrl(
+						"/icons/scrollTop.svg"
+					)}
+					className={ styles.layout__scrollTop }
+					onClick={ scrollTop }
+					style={{ 
+						height: 40, 
+						display: showScroll ? 'flex' : 'none' 
+					}}
+				/>
 			<Footer />
 		</>
 	);

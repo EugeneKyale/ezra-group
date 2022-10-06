@@ -15,7 +15,7 @@ export const baseUrl = "http://139.59.25.79/wp-json/wp/v2/";
  */
 export const formatDate = ( date ) => {
 	let d = new Date( date );
-	let monthNumber = "" + ( d.getMonth() + 1 );
+	let monthNumber = "" + ( d.getMonth() );
 	let monthNames = [
 		"January",
 		"February",

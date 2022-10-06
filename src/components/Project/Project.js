@@ -3,7 +3,6 @@
  */
 import React, { useEffect, useState }  from "react";
 import { Link } from "react-router-dom";
-import { BackgroundImage } from "react-image-and-background-image-fade";
 
 /**
  * Internal Dependencies
@@ -18,8 +17,8 @@ const Project = ( { id, category, title, coverImage } ) => {
 		await axiosInstance({
 			method: 'get',
 			url: `media/${ coverImage }`
-		}).then(( avatar ) => {
-			setProjectCoverImageUrl( avatar.data.media_details.sizes.full.source_url );
+		}).then(( image ) => {
+			setProjectCoverImageUrl( image.data.media_details.sizes.full.source_url );
 		});
 	};
 
@@ -30,10 +29,11 @@ const Project = ( { id, category, title, coverImage } ) => {
 	}, [ coverImage ])
 
 	return (
-		<BackgroundImage 
+		<div 
 			className={ styles.project }
-			src={ projectCoverImageUrl }
-			lazyLoad
+			style={{
+				backgroundImage: `url( ${ projectCoverImageUrl } )`
+			}}
 		>
 			<div className={ styles.project__inner }>
 				<Link to={ `/project/${ slugify( title ) }/${ id }` }>
@@ -45,7 +45,7 @@ const Project = ( { id, category, title, coverImage } ) => {
 					</h5>
 				</Link>
 			</div>
-		</BackgroundImage>
+		</div>
 	);
 };
 

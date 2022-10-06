@@ -1,0 +1,36 @@
+@import "../../_globals/variables";
+
+.post {
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+	box-shadow: $box-shadow;
+
+	&__image {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 200px;
+	}
+
+	&__inner {
+		padding: 30px;
+
+		h3 {
+			font-size: clamp(18px, 1.45vw, 22px);
+			line-height: 1.2;
+			margin-top: 5px;
+		}
+
+		p,
+		a {
+			font-size: clamp(14px, .9vw, 18px);
+			margin: 10px 0;
+		}
+
+		small {
+			font-size: 13px;
+		}
+	} 
+}

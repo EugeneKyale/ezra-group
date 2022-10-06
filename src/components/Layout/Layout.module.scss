@@ -1,0 +1,32 @@
+.layout {
+    &__scrollTop {
+        position: fixed;
+        bottom: 20px;
+        right: 50px;
+        float: right;
+        height: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        animation: fadeIn 0.3s;
+        transition: opacity 0.4s;
+        opacity: 0.5;
+
+        @media only screen and (max-width: 767px) {
+            right: 20px;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+    }
+}

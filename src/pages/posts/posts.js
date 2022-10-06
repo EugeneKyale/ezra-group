@@ -6,25 +6,25 @@ import React, { useState, useEffect } from "react";
 /**
  * Internal Dependencies
  */
-import Layout from "../../components/Layout";
-import Hero from "../../components/Hero";
-import Project from "../../components/Project";
-import Preloader from "../../components/Preloader";
+import Layout from "../../components/Layout/Layout";
+import Hero from "../../components/Hero/Hero";
+import Post from "../../components/Post";
+import Preloader from "../../components/Preloader/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
 
-import styles from "./projects.module.scss";
+import styles from "./posts.module.scss";
 
-const Projects = () => {
+const Posts = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
 	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
-	const [ projects, setProjects ] = useState( [] );
+	const [ posts, setPosts ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `pages/285`
+			url: `pages/516`
 		}).then(( page ) => {
 			setPageContent( page.data );
 			setHeroBackgroudId( page.data.acf.hero.background_image );
@@ -33,14 +33,14 @@ const Projects = () => {
 		});
 	};
 
-	const fetchProjects = async () => {
+	const fetchPosts = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `project`
+			url: `posts`
 		}).then(( res ) => {
-			setProjects( res.data );
-		}).catch( fetchProjectsFail => {
-			setErrorMessage( fetchProjectsFail.data.message );
+			setPosts( res.data );
+		}).catch( fetchPostsFail => {
+			setErrorMessage( fetchPostsFail.data.message );
 		});
 	}
 
@@ -62,7 +62,7 @@ const Projects = () => {
 			fetchHeroBackground();
 		}
 
-		fetchProjects();
+		fetchPosts();
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ heroBackgroundId ]);
@@ -71,43 +71,28 @@ const Projects = () => {
 	const content = pageContent.acf;
 
 	return (
-		<Layout pageTitle="Projects">
+		<Layout pageTitle="News Articles">
 			{
 				errorMessage ?
 				<Preloader />
 				:
-				<main className={ styles.projects }>
+				<main className={ styles.posts }>
 					<Hero
 						title={ content?.hero.title }
 						backgroundImage={ heroBackgroundUrl }
 					/>
 
-					<section className={ styles.projects__overview }>
-						<small className="wow fadeInUp" data-wow-delay=".5s">
-							{ content?.overview.tagline }
-						</small>
-						<h2 className="wow fadeInUp" data-wow-delay=".3s">
-							{ content?.overview.title }
-						</h2>
-						<div
-							className="wow fadeInUp" 
-							data-wow-delay=".5s"
-							dangerouslySetInnerHTML={{
-								__html: content?.overview.description
-							}}
-						/>
-					</section>
-
-					<section className={ styles.projects__cards }>
-						<div className={ styles.projects__cards_inner }>
-							{ projects &&
-								projects.map( ( project ) => (
-									<Project
-										key={ project.id }
-										id={ project.id }
-										coverImage={ project.featured_media }
-										title={ project.title.rendered }
-										category={ project.acf.category }
+					<section className={ styles.posts__cards }>
+						<div className={ styles.posts__cards_inner }>
+							{ posts &&
+								posts.map( ( post ) => (
+									<Post
+										key={ post.id }
+										id={ post.id }
+										coverImage={ post.featured_media }
+										published={ post.date }
+										title={ post.title.rendered }
+										excerpt={ post.excerpt.rendered }
 									/>
 								))
 							}
@@ -119,4 +104,4 @@ const Projects = () => {
 	);
 };
 
-export default Projects;
+export default Posts;
