@@ -64,8 +64,16 @@ const Post = () => {
 						title={ postDetails.title?.rendered }
 						backgroundImage={ postImageUrl }
 					/>
-					<div className={ styles.post }>
+					<div className={ styles.post__meta }>
 					</div>
+
+					<div 
+						className={ styles.post__content + " wow fadeInUp" }
+						data-wow-delay=".5s"
+						dangerouslySetInnerHTML={{
+							__html: postDetails.content?.rendered
+						}}
+					/>
 				</main>
 			}
 		</Layout>
