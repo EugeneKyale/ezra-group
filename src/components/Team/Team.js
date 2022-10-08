@@ -31,7 +31,7 @@ const Team = ( { photo, name, position, social } ) => {
 	return (
 		<div className={ styles.team }>
 			<div className={ styles.team__inner }>
-				<LazyLoadImage effect="blur" className="wow zoomIn" data-wow-delay=".3s" src={ teamAvatarUrl } alt="" />
+				<img className="wow zoomIn" data-wow-delay=".3s" src={ teamAvatarUrl } alt="" />
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">
 					{ name }
 				</h3>
