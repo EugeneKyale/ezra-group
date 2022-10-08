@@ -71,6 +71,39 @@ const HeaderLinks = () => {
 			<div className={ styles.headerLinks__items }>
 				<div className={ styles.headerLinks__items }>
 					<div className={ styles.footer__topLinks }>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/about"
+						>
+							About
+						</NavLink>
+						<NavLink
+							ref={ anchorRef }
+							aria-controls={ openSubsidiaries ? 'menu-list-grow' : undefined }
+							aria-haspopup="true"
+							onClick={ handleToggle }
+							to={ false }
+						>
+							Subsidiaries {/* <i className={ styles.headerLinks__arrowDown }></i> */}
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/projects"
+						>
+							Projects
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/csr"
+						>
+							CSR Initiatives
+						</NavLink>
+						<NavLink
+							activeClassName={styles.headerLinks__menuActive}
+							to="/news"
+						>
+							News
+						</NavLink>
 					</div>
 
 					<Popper open={ openSubsidiaries } anchorEl={ anchorRef.current } role={ undefined } transition disablePortal>
