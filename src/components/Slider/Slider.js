@@ -32,7 +32,7 @@ const SlickSlider = ( { ids } ) => {
         <Slider { ...settings }>
             { ids &&
                 ids.map( ( id ) => (
-                    <Photo id={ id } />
+                    <Photo key={ id } id={ id } />
                 ))
             }
         </Slider>
