@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
  * Internal Dependencies
  */
 import Button from "../Button/Button";
-import { generateExcerpt, slugify, axiosInstance, toAbsoluteUrl } from "../../_helpers/utils";
+import { generateExcerpt, slugify, axiosInstance } from "../../_helpers/utils";
 import styles from "./Subsidiaries.module.scss";
 
 const Subsidiaries = ( { id, iconId, title, excerpt } ) => {

@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 /**
  * Internal Dependencies
  */
-import { axiosInstance, toAbsoluteUrl } from "../../../../_helpers/utils";
+import { axiosInstance } from "../../../../_helpers/utils";
 
 import styles from "./Ico.module.scss";
 
