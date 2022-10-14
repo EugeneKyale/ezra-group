@@ -67,6 +67,16 @@ const Contact = () => {
 						title={ content?.hero.title }
 						backgroundImage={ heroBackgroundUrl }
 					/>
+					<section className={ styles.contact__details }>
+						<div className={ styles.contact__details_left }>
+							<h2 className="wow fadeInUp" data-wow-delay=".3s">
+								{ content?.details.title }
+							</h2>
+						</div>
+						<div className={ styles.contact__details_right }>
+				
+						</div>
+					</section>
 					<Map />
 				</main>
 			}
