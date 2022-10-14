@@ -23,7 +23,7 @@ const Contact = () => {
 	const fetchPageContent = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `pages/524`
+			url: `pages/560`
 		}).then(( page ) => {
 			setPageContent( page.data );
 			setHeroBackgroudId( page.data.acf.hero.background_image );
