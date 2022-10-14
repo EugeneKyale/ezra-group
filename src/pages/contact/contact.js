@@ -11,7 +11,7 @@ import Hero from "../../components/Hero";
 import Map from "../../components/Map";
 import Preloader from "../../components/Preloader";
 import ContactForm from "../../components/ContactForm";
-import { axiosInstance } from "../../_helpers/utils";
+import { axiosInstance, toAbsoluteUrl } from "../../_helpers/utils";
 
 import styles from "./contact.module.scss";
 
@@ -68,14 +68,71 @@ const Contact = () => {
 						title={ content?.hero.title }
 						backgroundImage={ heroBackgroundUrl }
 					/>
-					<section className={ styles.contact__details }>
-						<div className={ styles.contact__details_left }>
-							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ content?.details.title }
-							</h2>
+
+					<h3 className={ styles.contact__intro }>
+						Feel free to ask questions or share your message with us.	
+					</h3>
+					<section className={ styles.contact__cards }>
+						<div className={ styles.contact__cards_flex }>
+							<img
+								className="wow zoomIn" 
+								data-wow-delay=".3s"
+								src={ toAbsoluteUrl( "/icons/phone.png" ) }
+								alt="Mobile"
+							/>
+							<div>
+								<h4 className="wow fadeInUp" data-wow-delay=".4s">
+									Mobile
+								</h4>
+								<p className="wow fadeInUp" data-wow-delay=".5s">
+									<a href="tel:+211911008088">
+										( +211 ) 911 008 088
+									</a>
+									<br />
+									<a href="tel:+212929008088">
+										( +212 ) 929 008 088
+									</a>
+								</p>
+							</div>
 						</div>
-						<div className={ styles.contact__details_right }>
-						
+						<div>
+							<div className={ styles.contact__cards_flex }>
+								<img
+									className="wow zoomIn" 
+									data-wow-delay=".3s"
+									src={ toAbsoluteUrl( "/icons/mail.png" ) }
+									alt="Email"
+								/>
+								<div>
+									<h4 className="wow fadeInUp" data-wow-delay=".4s">
+										Email
+									</h4>
+									<p className="wow fadeInUp" data-wow-delay=".5s">
+										<a href="mailto:info@ezraenterprise.com">				
+											info@ezraenterprise.com
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div className={ styles.contact__cards_flex }>
+								<img
+									className="wow zoomIn" 
+									data-wow-delay=".3s"
+									src={ toAbsoluteUrl( "/icons/address.png" ) }
+									alt="Address"
+								/>
+								<div>
+									<h4 className="wow fadeInUp" data-wow-delay=".4s">
+										Address
+									</h4>
+									<p className="wow fadeInUp" data-wow-delay=".5s">
+										Block Hai Jebel Munuki <br />
+										Garden 18 Juba, South Sudan
+									</p>
+								</div>
+							</div>
 						</div>
 					</section>
 
