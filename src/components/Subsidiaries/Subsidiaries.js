@@ -36,8 +36,7 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 				<img 
 					className="wow zoomIn" 
 					data-wow-delay=".3s" 
-					src2={ subsidiaryIconUrl }
-					src={ toAbsoluteUrl( '/icons/submenu.png' ) }
+					src={ subsidiaryIconUrl }
 					alt="" 
 				/>
 				<h3 className="wow fadeInUp" data-wow-delay=".4s">

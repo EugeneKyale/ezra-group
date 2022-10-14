@@ -33,8 +33,7 @@ const Ico = ( { id } ) => {
 		<LazyLoadImage
 			effect="blur"
 			className={ styles.ico } 
-			src2={ subsidiaryIconUrl }
-			src={ toAbsoluteUrl( '/icons/submenu.png' ) }
+			src={ subsidiaryIconUrl }
 			alt="" 
 		/>
 	);
