@@ -10,6 +10,7 @@ import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Map from "../../components/Map";
 import Preloader from "../../components/Preloader";
+import ContactForm from "../../components/ContactForm";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./contact.module.scss";
@@ -74,8 +75,12 @@ const Contact = () => {
 							</h2>
 						</div>
 						<div className={ styles.contact__details_right }>
-				
+						
 						</div>
+					</section>
+
+					<section className={ styles.contact__form }>
+						<ContactForm />
 					</section>
 					<Map />
 				</main>
