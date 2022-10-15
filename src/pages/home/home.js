@@ -11,7 +11,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
-import Subsidiary from "../../components/Subsidiary";
+import Post from "../../components/Post";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
 import Button from "../../components/Button";
@@ -26,7 +26,7 @@ const Home = () => {
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
-	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ posts, setPosts ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
@@ -42,12 +42,12 @@ const Home = () => {
 		});
 	};
 
-	const fetchSubsidiaries = async () => {
+	const fetchPosts = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `subsidiary`
+			url: `posts?filter[orderby]=date&order=desc&per_page=3`
 		}).then(( subs ) => {
-			setSubsidiaries( subs );
+			setPosts( subs );
 		}).catch( error => {
 			setErrorMessage( error.data.message );
 		});
@@ -79,7 +79,7 @@ const Home = () => {
 		fetchPageContent();
 
 		if ( pageContent ) {
-			fetchSubsidiaries();
+			fetchPosts();
 		}
 
 		if ( heroBackgroundId ) {
@@ -161,32 +161,33 @@ const Home = () => {
 						</div>
 					</section>
 
-					<section className={ styles.home__subsidiaries }>
-						<div className={ styles.home__subsidiaries_top }>
+					<section className={ styles.home__posts }>
+						<div className={ styles.home__posts_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
-								{ content?.subsidiaries.tagline }
+								{ content?.posts.tagline }
 							</small>
 							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ content?.subsidiaries.title }
+								{ content?.posts.title }
 							</h2>
 							<div
 								className="wow fadeInUp" 
 								data-wow-delay=".5s"
 								dangerouslySetInnerHTML={{
-									__html: content?.subsidiaries.description
+									__html: content?.posts.description
 								}}
 							/>
 						</div>
 
-						<div className={ styles.home__subsidiaries_cards }>
-							{ subsidiaries.data &&
-								subsidiaries.data.map( ( item ) => (
-									<Subsidiary
+						<div className={ styles.home__posts_cards }>
+							{ posts.data &&
+								posts.data.map( ( item ) => (
+									<Post
 										key={ item.id }
 										id={ item.id }
-										iconId={ item.acf.icon }
+										coverImage={ item.featured_media }
+										published={ item.date }
 										title={ item.title.rendered }
-										excerpt={ item.acf.excerpt }
+										excerpt={ item.excerpt.rendered }
 									/>
 								))
 							}
