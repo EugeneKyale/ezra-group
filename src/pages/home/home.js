@@ -14,6 +14,7 @@ import Stats from "../../components/Stats";
 import Subsidiaries from "../../components/Subsidiaries";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
+import Button from "../../components/Button";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
@@ -130,6 +131,22 @@ const Home = () => {
 										__html: content?.about.highlights
 									}}
 								/>
+
+								<div className={ styles.home__about_left_bottom_right }>
+									<Stats
+										iconId={ 187 }
+										title="The Future of Solar Energy"
+										description="(88) 5700-24-51"
+									/>
+									
+									<div className={ styles.home__about_left_bottom_right_btn }>
+										<Button 
+											variant="primary" 
+											text="More about us" 
+											page={ `/about` } 
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
 
