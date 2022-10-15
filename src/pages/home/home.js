@@ -139,7 +139,7 @@ const Home = () => {
 										description={ content?.about.cta.description }
 									/>
 
-									<div className={ styles.home__about_left_bottom_right_btn }>
+									<div className={ styles.home__about_left_bottom_right_btn + ` wow fadeInUp` } data-wow-delay=".5s">
 										<Button 
 											variant="primary" 
 											text="More about us" 
