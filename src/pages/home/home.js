@@ -11,7 +11,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
-import Subsidiaries from "../../components/Subsidiaries";
+import Subsidiary from "../../components/Subsidiary";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
 import Button from "../../components/Button";
@@ -181,7 +181,7 @@ const Home = () => {
 						<div className={ styles.home__subsidiaries_cards }>
 							{ subsidiaries.data &&
 								subsidiaries.data.map( ( item ) => (
-									<Subsidiaries
+									<Subsidiary
 										key={ item.id }
 										id={ item.id }
 										iconId={ item.acf.icon }

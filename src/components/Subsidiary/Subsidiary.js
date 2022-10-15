@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
  */
 import Button from "../Button/Button";
 import { generateExcerpt, slugify, axiosInstance } from "../../_helpers/utils";
-import styles from "./Subsidiaries.module.scss";
+import styles from "./Subsidiary.module.scss";
 
-const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
+const Subsidiary = ( { id, iconId, title, excerpt } ) => {
 	const [ subsidiaryIconUrl, setSubsidiaryIconUrl ] = useState( '' );
 
 	const fetchSubsidiaryIcon = async () => {
@@ -31,8 +31,8 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 	}, [ iconId ])
 
 	return (
-		<div className={ styles.subsidiaries }>
-			<div className={ styles.subsidiaries__inner }>
+		<div className={ styles.subsidiary }>
+			<div className={ styles.subsidiary__inner }>
 				<img 
 					className="wow zoomIn" 
 					data-wow-delay=".3s" 
@@ -56,4 +56,4 @@ const Subsidiaries = ( { id, iconId, title, excerpt } ) => {
 	);
 };
 
-export default Subsidiaries;
+export default Subsidiary;
