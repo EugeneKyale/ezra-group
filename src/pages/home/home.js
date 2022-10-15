@@ -134,11 +134,11 @@ const Home = () => {
 
 								<div className={ styles.home__about_left_bottom_right }>
 									<Stats
-										iconId={ 187 }
-										title="The Future of Solar Energy"
-										description="(88) 5700-24-51"
+										iconId={ content?.about.cta.icon }
+										title={ content?.about.cta.title }
+										description={ content?.about.cta.description }
 									/>
-									
+
 									<div className={ styles.home__about_left_bottom_right_btn }>
 										<Button 
 											variant="primary" 
