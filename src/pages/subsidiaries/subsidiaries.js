@@ -24,7 +24,7 @@ const Subsidiaries = () => {
 	const fetchPageContent = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `pages/285`
+			url: `pages/590`
 		}).then(( page ) => {
 			setPageContent( page.data );
 			setHeroBackgroudId( page.data.acf.hero.background_image );
