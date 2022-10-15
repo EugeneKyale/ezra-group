@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
  * Internal Dependencies
  */
 import Layout from "../../components/Layout";
-import Hero from "../../components/Hero";
+import Carousel from "../../components/Carousel";
 import Stats from "../../components/Stats";
 import Post from "../../components/Post";
 import Values from "../../components/Values";
@@ -103,9 +103,9 @@ const Home = () => {
 				<Preloader error={ errorMessage } />
 				:
 				<main className={ styles.home }>
-					<Hero
+					<Carousel
 						title={ content?.hero.title }
-						backgroundImage={ heroBackgroundUrl }
+						subtitle="Building a Legacy Together"
 					/>
 
 					<section className={ styles.home__about }>

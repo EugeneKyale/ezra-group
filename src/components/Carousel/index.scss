@@ -1,0 +1,10 @@
+@import "../../_globals/variables";
+
+.hero-slider-previous,
+.hero-slider-next {
+	display: none;
+}
+
+.hero-slider-overlay {
+	background: linear-gradient( rgba(0, 0, 0, 0.5 ),rgba( 0, 0, 0, 0.5 ) );
+}
