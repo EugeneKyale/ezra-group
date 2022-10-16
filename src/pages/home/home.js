@@ -22,8 +22,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Home = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
-	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
-	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
 	const [ posts, setPosts ] = useState( [] );
@@ -35,7 +33,6 @@ const Home = () => {
 			url: `pages/12`
 		}).then(( page ) => {
 			setPageContent( page.data );
-			setHeroBackgroudId( page.data.acf.hero.background_image );
 			setAboutImageId( page.data.acf.about.image );
 		}).catch( fetchPageFail => {
 			setErrorMessage( fetchPageFail.data.message );
@@ -52,17 +49,6 @@ const Home = () => {
 			setErrorMessage( error.data.message );
 		});
 	}
-
-	const fetchHeroBackground = async () => {
-		await axiosInstance({
-			method: 'get',
-			url: `media/${ heroBackgroundId }`
-		}).then(( background ) => {
-			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
-		}).catch( fetchHeroBackgroundFail => {
-			setErrorMessage( fetchHeroBackgroundFail.data.message );
-		});
-	};
 
 	const fetchAboutImage = async () => {
 		await axiosInstance({
@@ -82,16 +68,12 @@ const Home = () => {
 			fetchPosts();
 		}
 
-		if ( heroBackgroundId ) {
-			fetchHeroBackground();
-		}
-
 		if ( aboutImageId ) {
 			fetchAboutImage();
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ heroBackgroundId, aboutImageId ]);
+	}, [ aboutImageId ]);
 
 
 	const content = pageContent.acf;
@@ -105,7 +87,8 @@ const Home = () => {
 				<main className={ styles.home }>
 					<Carousel
 						title={ content?.hero.title }
-						subtitle="Building a Legacy Together"
+						subtitle={ content?.hero.subtitle }
+						images={ content?.hero.images }
 					/>
 
 					<section className={ styles.home__about }>
