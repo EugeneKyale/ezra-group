@@ -16,6 +16,7 @@ import "./index.scss";
 const Carousel = ( { title, subtitle, images } ) => {
 	return (
 		<HeroSlider
+			autoplay
 			height={ "100vh" }
 			controller={{
 				initialSlide: 1,
