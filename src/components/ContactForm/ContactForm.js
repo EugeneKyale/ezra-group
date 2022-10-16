@@ -135,7 +135,11 @@ const ContactForm = () => {
 							)}
 
 						<div className={ styles.contactForm__button }>
-							<Button type="submit" disabled={ isSubmitting }>
+							<Button 
+								type="submit" 
+								disabled2={ isSubmitting }
+								disabled
+							>
 								{ isSubmitting ? <Spinner /> : "Submit" }
 							</Button>
 						</div>
