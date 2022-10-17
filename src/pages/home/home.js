@@ -9,11 +9,12 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
  * Internal Dependencies
  */
 import Layout from "../../components/Layout";
-import Hero from "../../components/Hero";
+import Carousel from "../../components/Carousel";
 import Stats from "../../components/Stats";
-import Subsidiaries from "../../components/Subsidiaries";
+import Post from "../../components/Post";
 import Values from "../../components/Values";
 import Preloader from "../../components/Preloader";
+import Button from "../../components/Button";
 import { axiosInstance } from "../../_helpers/utils";
 
 import styles from "./home.module.scss";
@@ -21,11 +22,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Home = () => {
 	const [ pageContent, setPageContent ] = useState( [] );
-	const [ heroBackgroundId, setHeroBackgroudId ] = useState( '' );
-	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
 	const [ aboutImageId, setAboutImageId ] = useState( '' );
 	const [ aboutImageUrl, setAboutImageUrl ] = useState( '' );
-	const [ subsidiaries, setSubsidiaries ] = useState( [] );
+	const [ posts, setPosts ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
 
 	const fetchPageContent = async () => {
@@ -34,34 +33,22 @@ const Home = () => {
 			url: `pages/12`
 		}).then(( page ) => {
 			setPageContent( page.data );
-			setHeroBackgroudId( page.data.acf.hero.background_image );
 			setAboutImageId( page.data.acf.about.image );
 		}).catch( fetchPageFail => {
 			setErrorMessage( fetchPageFail.data.message );
 		});
 	};
 
-	const fetchSubsidiaries = async () => {
+	const fetchPosts = async () => {
 		await axiosInstance({
 			method: 'get',
-			url: `subsidiary`
+			url: `posts?filter[orderby]=date&order=desc&per_page=3`
 		}).then(( subs ) => {
-			setSubsidiaries( subs );
+			setPosts( subs );
 		}).catch( error => {
 			setErrorMessage( error.data.message );
 		});
 	}
-
-	const fetchHeroBackground = async () => {
-		await axiosInstance({
-			method: 'get',
-			url: `media/${ heroBackgroundId }`
-		}).then(( background ) => {
-			setHeroBackgroudUrl( background.data.media_details.sizes.full.source_url );
-		}).catch( fetchHeroBackgroundFail => {
-			setErrorMessage( fetchHeroBackgroundFail.data.message );
-		});
-	};
 
 	const fetchAboutImage = async () => {
 		await axiosInstance({
@@ -78,11 +65,7 @@ const Home = () => {
 		fetchPageContent();
 
 		if ( pageContent ) {
-			fetchSubsidiaries();
-		}
-
-		if ( heroBackgroundId ) {
-			fetchHeroBackground();
+			fetchPosts();
 		}
 
 		if ( aboutImageId ) {
@@ -90,7 +73,7 @@ const Home = () => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ heroBackgroundId, aboutImageId ]);
+	}, [ aboutImageId ]);
 
 
 	const content = pageContent.acf;
@@ -102,9 +85,10 @@ const Home = () => {
 				<Preloader error={ errorMessage } />
 				:
 				<main className={ styles.home }>
-					<Hero
+					<Carousel
 						title={ content?.hero.title }
-						backgroundImage={ heroBackgroundUrl }
+						subtitle={ content?.hero.subtitle }
+						images={ content?.hero.images }
 					/>
 
 					<section className={ styles.home__about }>
@@ -130,6 +114,22 @@ const Home = () => {
 										__html: content?.about.highlights
 									}}
 								/>
+
+								<div className={ styles.home__about_left_bottom_right }>
+									<Stats
+										iconId={ content?.about.cta.icon }
+										title={ content?.about.cta.title }
+										description={ content?.about.cta.description }
+									/>
+
+									<div className={ styles.home__about_left_bottom_right_btn + ` wow fadeInUp` } data-wow-delay=".5s">
+										<Button 
+											variant="primary" 
+											text="More about us" 
+											page={ `/about` } 
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -144,32 +144,33 @@ const Home = () => {
 						</div>
 					</section>
 
-					<section className={ styles.home__subsidiaries }>
-						<div className={ styles.home__subsidiaries_top }>
+					<section className={ styles.home__posts }>
+						<div className={ styles.home__posts_top }>
 							<small className="wow fadeInUp" data-wow-delay=".5s">
-								{ content?.subsidiaries.tagline }
+								{ content?.posts.tagline }
 							</small>
 							<h2 className="wow fadeInUp" data-wow-delay=".3s">
-								{ content?.subsidiaries.title }
+								{ content?.posts.title }
 							</h2>
 							<div
 								className="wow fadeInUp" 
 								data-wow-delay=".5s"
 								dangerouslySetInnerHTML={{
-									__html: content?.subsidiaries.description
+									__html: content?.posts.description
 								}}
 							/>
 						</div>
 
-						<div className={ styles.home__subsidiaries_cards }>
-							{ subsidiaries.data &&
-								subsidiaries.data.map( ( item ) => (
-									<Subsidiaries
+						<div className={ styles.home__posts_cards }>
+							{ posts.data &&
+								posts.data.map( ( item ) => (
+									<Post
 										key={ item.id }
 										id={ item.id }
-										iconId={ item.acf.icon }
+										coverImage={ item.featured_media }
+										published={ item.date }
 										title={ item.title.rendered }
-										excerpt={ item.acf.excerpt }
+										excerpt={ item.excerpt.rendered }
 									/>
 								))
 							}

@@ -1,3 +1,92 @@
 @import "../../_globals/variables";
 
-.contact {}
+.contact {
+	h3 {
+		text-align: center;
+		line-height: 1.2;
+	}
+
+	&__intro {
+		padding: 80px $padding 0;
+		max-width: 70%;
+		margin: 0 auto;
+	
+		@media only screen and (max-width: 767px) {
+			max-width: 100%;
+			padding: 50px $padding 0;
+		}
+	
+	
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+			max-width: 100%;
+		}
+	}
+	&__cards {
+		padding: 50px $padding;
+		display: flex;
+		justify-content: space-between;
+		max-width: 70%;
+		margin: 0 auto;
+
+		@media only screen and (max-width: 767px) {
+			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+			gap: 30px 0;
+			grid-template-areas:
+				".";
+		}
+
+
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-rows: 1fr;
+			gap: 30px;
+			grid-template-areas:
+				". .";
+		}
+
+		&_flex {
+			display: flex;
+
+			img {
+				width: 40px;
+				height: 40px;
+				object-fit: contain;
+				margin-right: 20px;
+			}
+	
+			h4 {
+				font-size: clamp(18px, 1.25vw, 22px);
+				font-weight: bold;
+				margin-bottom: 5px;
+				line-height: 1;
+			}
+	
+			a {
+				color: $primary;
+	
+				&:hover {
+					color: $secondary;
+				}
+			}
+		}
+	}
+
+	&__form {
+		padding: 0 $padding 80px;
+		max-width: 70%;
+		margin: 0 auto;
+	
+		@media only screen and (max-width: 767px) {
+			max-width: 100%;
+		}
+	
+	
+		@media only screen and (min-width: 768px) and (max-width: 1024px) {
+			max-width: 100%;
+		}
+	}
+}

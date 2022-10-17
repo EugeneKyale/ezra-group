@@ -75,7 +75,7 @@ const Subsidiary = () => {
 									subsidiaryDetails.acf?.services &&
 										subsidiaryDetails.acf?.services.map( ( item, idx ) => (
 											<div key={ idx } className={ styles.subsidiary__inner_left_top_services }>
-												{ item.service }  <span> &rarr; </span>
+												{ item.service }
 											</div>
 									))
 								}

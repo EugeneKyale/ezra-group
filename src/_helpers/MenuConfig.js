@@ -64,7 +64,7 @@ const MenuConfig = {
 			},
 			{
 				id: 4,
-				title: "CSR Initiatives",
+				title: "CSR",
 				page: "/csr",
 			},
 		],

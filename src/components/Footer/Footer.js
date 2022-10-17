@@ -66,7 +66,7 @@ const Footer = () => {
 						</p>
 
 						<p>				
-							Garden No.18 Juba, South Sudan
+							Garden 18 Juba, South Sudan
 						</p>
 
 						<a href="mailto:info@ezraenterprise.com">				

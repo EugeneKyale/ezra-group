@@ -11,7 +11,7 @@ import { toAbsoluteUrl } from "../../_helpers/utils";
 
 const Icon = () => <img
     alt=""
-    src={ toAbsoluteUrl( "/icons/map.svg" ) }
+    src={ toAbsoluteUrl( "/icons/google-maps.png" ) }
     style={{
         width: "40px"
     }}

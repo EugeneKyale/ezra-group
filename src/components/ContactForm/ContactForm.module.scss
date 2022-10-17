@@ -1,0 +1,116 @@
+@import "../../_globals/variables";
+
+.contactForm {
+	
+	&__form {
+
+		::placeholder {
+			color: #454545;
+			font-family: $body-font;
+			font-size: clamp(16px, 1.1vw, 20px);
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=tel],
+		textarea {
+			color: $text;
+			font-family: $body-font;
+			font-size: clamp(16px, 1.1vw, 20px);
+			border: 1px $primary solid;
+			padding: 7px 15px;
+			margin: 10px 0;
+			background: $white 0% 0% no-repeat padding-box;
+			opacity: 1;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&Flex {
+			display: flex;
+			justify-content: space-between;
+
+			@media only screen and (max-width: 767px) {
+				display: block;
+			}
+
+			div {
+				width: 48%;
+
+				@media only screen and (max-width: 767px) {
+					width: 100%;
+				}
+			}
+
+			input[type=text],
+			input[type=email],
+			input[type=tel] {
+				width: 100%;
+
+				@media only screen and (max-width: 767px) {
+					width: 73.5vw;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					max-width: 35.5vw;
+				}
+			}
+		}
+
+		&Full {
+			width: 100%;
+
+			textarea {
+				width: 100%;
+
+				@media only screen and (max-width: 767px) {
+					width: 73.5vw;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 1024px) {
+					max-width: 78vw;
+				}
+			}
+		}
+
+		&_invalid {
+			color: red;
+			width: 100% !important;
+		}
+	}
+
+	&__button {
+
+		button {
+			color: $white;
+			font-family: $body-font;
+			font-size: clamp(13px, 1vw, 18px);
+			font-weight: 500;
+			padding: 10px 20px;
+			box-shadow: none;
+			display: block;
+			cursor: pointer;
+			outline: none;
+			border: none;
+			border-radius: 4px;
+			background: linear-gradient(to right, $secondary 50%, $primary 50%);
+			background-size: 200% 100%;
+			background-color: $primary;
+			background-position: right bottom;
+			transition: all .3s ease-out;
+			margin-top: -15px;
+
+			&:disabled {
+				cursor: not-allowed;
+			}
+
+			&:hover {
+				color: $white;
+				background-color: $secondary;
+				background-position: left bottom;
+			}
+		}
+	}
+}
