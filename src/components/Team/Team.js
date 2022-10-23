@@ -3,6 +3,7 @@
  */
 import React, { useEffect, useState }  from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Modal from "react-modal";
 
 /**
  * Internal Dependencies
@@ -12,6 +13,26 @@ import styles from "./Team.module.scss";
 
 const Team = ( { photo, name, position, social } ) => {
 	const [ teamAvatarUrl, setTeamAvatarUrl ] = useState( '' );
+	const [ isModalOpen, setIsModalOpen ] = useState( false );
+
+	const defaultModalStyles = {
+		content: {
+			top: '50%',
+			left: '50%',
+			right: 'auto',
+			bottom: 'auto',
+			marginRight: '-50%',
+			transform: 'translate(-50%, -50%)',
+		},
+	};
+
+	const openModal = () => {
+		setIsModalOpen( true );
+	}
+
+	const closeModal = () => {
+		setIsModalOpen( false );
+	}
 
 	const fetchTeamAvatar = async () => {
 		await axiosInstance({
@@ -46,6 +67,25 @@ const Team = ( { photo, name, position, social } ) => {
 							</a>
 						))
 					}
+				</div>
+				<div>
+					<button onClick={ openModal }>
+						Read Bio
+					</button>
+
+					<Modal
+						isOpen={ isModalOpen }
+						onRequestClose={ closeModal }
+						style={ defaultModalStyles }
+						contentLabel={ name }
+					>
+						<button onClick={ closeModal }>
+							Close
+						</button>
+						<h3>
+							{ name }
+						</h3>
+					</Modal>
 				</div>
 			</div>
 		</div>
