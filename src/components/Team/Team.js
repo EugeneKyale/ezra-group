@@ -28,7 +28,8 @@ const Team = ( { photo, name, position, social, bio } ) => {
 			marginTop: '50px',
 			borderRadius: '6px',
 			boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.10)',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			paddingBottom: '30px'
 		},
 	};
 
@@ -76,9 +77,11 @@ const Team = ( { photo, name, position, social, bio } ) => {
 				</div>
 
 				<div className={ styles.team__modal }>
-					<button onClick={ openModal }>
-						Read Bio
-					</button>
+					<div className={ styles.team__modal_btn }>
+						<button onClick={ openModal }>
+							Read Bio <span> &rarr; </span>
+						</button>
+					</div>
 
 					<Modal
 						isOpen={ isModalOpen }
@@ -86,9 +89,6 @@ const Team = ( { photo, name, position, social, bio } ) => {
 						style={ defaultModalStyles }
 						contentLabel={ name }
 					>
-						{/* <button onClick={ closeModal }>
-							Close
-						</button> */}
 
 						<div className={ styles.team__modal_wrapper }>
 							<div className={ styles.team__modal_wrapper_left }>
@@ -110,9 +110,11 @@ const Team = ( { photo, name, position, social, bio } ) => {
 										__html: bio
 									}}
 								/>
-								<button onClick={ closeModal }>
-									Close
-								</button>
+								<div className={ styles.team__modal_wrapper_right_btn }>
+									<button onClick={ closeModal }>
+										Close
+									</button>
+								</div>
 							</div>
 						</div>
 					</Modal>
