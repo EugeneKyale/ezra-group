@@ -11,7 +11,7 @@ import Modal from "react-modal";
 import { axiosInstance } from "../../_helpers/utils";
 import styles from "./Team.module.scss";
 
-const Team = ( { photo, name, position, social } ) => {
+const Team = ( { photo, name, position, social, bio } ) => {
 	const [ teamAvatarUrl, setTeamAvatarUrl ] = useState( '' );
 	const [ isModalOpen, setIsModalOpen ] = useState( false );
 
@@ -23,6 +23,12 @@ const Team = ( { photo, name, position, social } ) => {
 			bottom: 'auto',
 			marginRight: '-50%',
 			transform: 'translate(-50%, -50%)',
+			width: '75%',
+			height: '65%',
+			marginTop: '50px',
+			borderRadius: '6px',
+			boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.10)',
+			overflow: 'hidden'
 		},
 	};
 
@@ -68,7 +74,8 @@ const Team = ( { photo, name, position, social } ) => {
 						))
 					}
 				</div>
-				<div>
+
+				<div className={ styles.team__modal }>
 					<button onClick={ openModal }>
 						Read Bio
 					</button>
@@ -79,12 +86,35 @@ const Team = ( { photo, name, position, social } ) => {
 						style={ defaultModalStyles }
 						contentLabel={ name }
 					>
-						<button onClick={ closeModal }>
+						{/* <button onClick={ closeModal }>
 							Close
-						</button>
-						<h3>
-							{ name }
-						</h3>
+						</button> */}
+
+						<div className={ styles.team__modal_wrapper }>
+							<div className={ styles.team__modal_wrapper_left }>
+								<img src={ teamAvatarUrl } alt="" />
+
+								<h3>
+									{ name }
+								</h3>
+
+								<p>
+									{ position }
+								</p>
+							</div>
+
+							<div className={ styles.team__modal_wrapper_right }>
+								<div
+									className={ styles.team__modal_wrapper_right_bio }
+									dangerouslySetInnerHTML={{
+										__html: bio
+									}}
+								/>
+								<button onClick={ closeModal }>
+									Close
+								</button>
+							</div>
+						</div>
 					</Modal>
 				</div>
 			</div>
