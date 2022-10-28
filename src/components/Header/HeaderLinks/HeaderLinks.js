@@ -47,7 +47,7 @@ const HeaderLinks = () => {
 							activeClassName={styles.headerLinks__menuActive}
 							to="/news"
 						>
-							News
+							Press Releases
 						</NavLink>
 						<NavLink
 							activeClassName={styles.headerLinks__menuActive}
