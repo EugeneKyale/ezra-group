@@ -123,11 +123,14 @@ const Home = () => {
 									/>
 
 									<div className={ styles.home__about_left_bottom_right_btn + ` wow fadeInUp` } data-wow-delay=".5s">
-										<Button 
-											variant="primary" 
-											text="More about us" 
-											page={ `/about` } 
-										/>
+										{
+											content?.about.cta.title &&
+											<Button 
+												variant="primary" 
+												text="More about us" 
+												page={ `/about` } 
+											/>
+										}
 									</div>
 								</div>
 							</div>
