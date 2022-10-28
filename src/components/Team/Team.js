@@ -10,6 +10,7 @@ import Modal from "react-modal";
  */
 import { axiosInstance } from "../../_helpers/utils";
 import styles from "./Team.module.scss";
+import "./index.scss";
 
 const Team = ( { photo, name, position, social, bio } ) => {
 	const [ teamAvatarUrl, setTeamAvatarUrl ] = useState( '' );
@@ -24,12 +25,12 @@ const Team = ( { photo, name, position, social, bio } ) => {
 			marginRight: '-50%',
 			transform: 'translate(-50%, -50%)',
 			width: '75%',
-			height: '65%',
+			height: '50%',
 			marginTop: '50px',
 			borderRadius: '6px',
 			boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.10)',
 			overflow: 'hidden',
-			paddingBottom: '30px'
+			paddingBottom: '50px',
 		},
 	};
 
