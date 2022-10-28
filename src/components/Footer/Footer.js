@@ -23,7 +23,7 @@ const Footer = () => {
 						About Us
 					</h4>
 					<p>
-						The Ezra Group is already seen as a catalyst for change in their new home country, where they have committed to creating a lasting legacy as they transform the country's landscape.
+					We are a family-run conglomerate working in oil & gas, construction, power & energy, real estate and transportation. We are an experienced, modern, agile entity, committed to making a difference in South Sudan and beyond.
 					</p>
 				</div>
 				<div className={ styles.footer__top_socials }>
