@@ -28,6 +28,7 @@
     "react-icons": "^4.4.0",
     "react-lazy-load-image-component": "^1.5.5",
     "react-markdown": "^8.0.2",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.2.2",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.0",

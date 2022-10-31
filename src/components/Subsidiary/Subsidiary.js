@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 /**
  * Internal Dependencies
  */
-import Button from "../Button/Button";
+import Button from "../Button";
 import { generateExcerpt, slugify, axiosInstance } from "../../_helpers/utils";
 import styles from "./Subsidiary.module.scss";
 

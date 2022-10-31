@@ -191,6 +191,7 @@ const About = () => {
 										photo={ member.featured_media }
 										name={ member.title.rendered }
 										position={ member.acf.position }
+										bio={ member.acf.bio }
 									/>
 								))
 							}
