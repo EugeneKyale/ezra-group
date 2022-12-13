@@ -82,7 +82,7 @@ const Projects = () => {
 						backgroundImage={ heroBackgroundUrl }
 					/>
 
-					<section className={ styles.projects__overview }>
+					{/* <section className={ styles.projects__overview }>
 						<small className="wow fadeInUp" data-wow-delay=".5s">
 							{ content?.overview.tagline }
 						</small>
@@ -96,7 +96,7 @@ const Projects = () => {
 								__html: content?.overview.description
 							}}
 						/>
-					</section>
+					</section> */}
 
 					<section className={ styles.projects__cards }>
 						<div className={ styles.projects__cards_inner }>
