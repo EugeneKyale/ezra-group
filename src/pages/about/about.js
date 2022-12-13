@@ -93,11 +93,13 @@ const About = () => {
 								{ content?.history.title }
 							</h2>
 
-							<div className="wow fadeInUp" data-wow-delay=".5s">
-								<ReactMarkdown>
-									{ content?.history.description }
-								</ReactMarkdown>
-							</div>
+							<div 
+								className="wow fadeInUp" 
+								data-wow-delay=".5s"
+								dangerouslySetInnerHTML={{
+									__html: content?.history.description
+								}}
+							/>
 							
 							<div className={ styles.about__history_left_bottom }>
 								<div
