@@ -22,6 +22,7 @@ const About = () => {
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
 	const [ team, setTeam ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
+	const [ readMore, setReadMore ] = useState( true );
 
 	const fetchPageContent = async () => {
 		await axiosInstance({
@@ -93,13 +94,35 @@ const About = () => {
 								{ content?.history.title }
 							</h2>
 
-							<div 
-								className="wow fadeInUp" 
-								data-wow-delay=".5s"
-								dangerouslySetInnerHTML={{
-									__html: content?.history.description
-								}}
-							/>
+							{
+								readMore ?
+								<div 
+									className="wow fadeInUp" 
+									data-wow-delay=".5s"
+									dangerouslySetInnerHTML={{ __html: content?.history.description.slice( 0, 985 ) }} 
+								/>
+							:
+								<div 
+									className="wow fadeInUp" 
+									data-wow-delay=".5s"
+									dangerouslySetInnerHTML={{
+										__html: content?.history.description
+									}}
+								/>
+							}
+							{
+								readMore && 
+								<p
+									onClick={ () => setReadMore( false ) }
+									style={{
+										fontWeight: '500',
+										color: '#DAA520',
+										cursor: 'pointer',
+									}}
+								> 
+									Read More...
+								</p>
+							}
 							
 							<div className={ styles.about__history_left_bottom }>
 								<div
