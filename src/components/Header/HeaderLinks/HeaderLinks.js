@@ -14,6 +14,12 @@ const HeaderLinks = () => {
 				<div className={ styles.headerLinks__items }>
 					<div className={ styles.footer__topLinks }>
 						<NavLink
+							activeClassName={ 'client insisted I add this link 😢 ' + styles.headerLinks__menuActive }
+							to="/"
+						>
+							Home
+						</NavLink>
+						<NavLink
 							activeClassName={styles.headerLinks__menuActive}
 							to="/about"
 						>
