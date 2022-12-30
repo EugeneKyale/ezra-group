@@ -67,19 +67,23 @@ const Subsidiary = () => {
 					/>
 					<div className={ styles.subsidiary__inner }>
 						<div className={ styles.subsidiary__inner_left }>
-							<div className={ styles.subsidiary__inner_left_top }>
-								<h3>
-									Services
-								</h3>
-								{ 
-									subsidiaryDetails.acf?.services &&
-										subsidiaryDetails.acf?.services.map( ( item, idx ) => (
-											<div key={ idx } className={ styles.subsidiary__inner_left_top_services }>
-												{ item.service }
-											</div>
-									))
-								}
-							</div>
+							{
+								subsidiaryDetails.acf?.services &&
+								<div className={ styles.subsidiary__inner_left_top }>
+									<h3>
+										Services
+									</h3>
+									{ 
+										subsidiaryDetails.acf?.services &&
+											subsidiaryDetails.acf?.services.map( ( item, idx ) => (
+												<div key={ idx } className={ styles.subsidiary__inner_left_top_services }>
+													{ item.service }
+												</div>
+										))
+									}
+								</div>
+							}
+
 
 							<div className={ styles.subsidiary__inner_left_bottom }>
 								<div 
