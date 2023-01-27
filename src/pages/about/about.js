@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
+import Timeline from "../../components/Timeline";
 import Team from "../../components/Team";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
@@ -96,7 +97,7 @@ const About = () => {
 
 							{
 								readMore ?
-								<div 
+								<div
 									className="wow fadeInUp" 
 									data-wow-delay=".5s"
 									dangerouslySetInnerHTML={{ __html: content?.history.description.slice( 0, 985 ) }} 
@@ -123,6 +124,8 @@ const About = () => {
 									Read More...
 								</p>
 							}
+
+							<Timeline />
 							
 							<div className={ styles.about__history_left_bottom }>
 								<div
