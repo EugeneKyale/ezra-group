@@ -35,6 +35,7 @@
     "react-select": "^5.2.2",
     "react-share": "^4.4.0",
     "react-slick": "^0.28.1",
+    "react-tabs": "^4.2.1",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4",
     "yaml-front-matter": "^4.1.1",

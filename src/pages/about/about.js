@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
 import Stats from "../../components/Stats";
+import Timeline from "../../components/Timeline";
 import Team from "../../components/Team";
 import Preloader from "../../components/Preloader";
 import { axiosInstance } from "../../_helpers/utils";
@@ -22,7 +23,6 @@ const About = () => {
 	const [ heroBackgroundUrl, setHeroBackgroudUrl ] = useState( '' );
 	const [ team, setTeam ] = useState( [] );
 	const [ errorMessage, setErrorMessage ] = useState( '' );
-	const [ readMore, setReadMore ] = useState( true );
 
 	const fetchPageContent = async () => {
 		await axiosInstance({
@@ -94,35 +94,15 @@ const About = () => {
 								{ content?.history.title }
 							</h2>
 
-							{
-								readMore ?
-								<div 
-									className="wow fadeInUp" 
-									data-wow-delay=".5s"
-									dangerouslySetInnerHTML={{ __html: content?.history.description.slice( 0, 985 ) }} 
-								/>
-							:
-								<div 
-									className="wow fadeInUp" 
-									data-wow-delay=".5s"
-									dangerouslySetInnerHTML={{
-										__html: content?.history.description
-									}}
-								/>
-							}
-							{
-								readMore && 
-								<p
-									onClick={ () => setReadMore( false ) }
-									style={{
-										fontWeight: '500',
-										color: '#DAA520',
-										cursor: 'pointer',
-									}}
-								> 
-									Read More...
-								</p>
-							}
+							<div 
+								className="wow fadeInUp" 
+								data-wow-delay=".5s"
+								dangerouslySetInnerHTML={{
+									__html: content?.history.description
+								}}
+							/>
+
+							<Timeline content={ content?.history.timeline } />
 							
 							<div className={ styles.about__history_left_bottom }>
 								<div
