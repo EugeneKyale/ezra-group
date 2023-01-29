@@ -5,6 +5,7 @@
     border: 1px solid $secondary;
     border-radius: $border-radius;
     border-top: none;
+    margin: 50px 0;
 
     .react-tabs__tab-list {
         border: none;
@@ -29,7 +30,7 @@
     }
 
     .react-tabs__tab-panel {
-        padding: 15px 30px;
+        padding: 20px 30px;
 
         &--selected {
 
