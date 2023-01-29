@@ -1,0 +1,38 @@
+@import "../../_globals/variables";
+
+.react-tabs {
+    // box-shadow: $box-shadow;
+    border: 1px solid $secondary;
+    border-radius: $border-radius;
+    border-top: none;
+
+    .react-tabs__tab-list {
+        border: none;
+        display: flex;
+        justify-content: space-between;
+
+        .react-tabs__tab {
+            border: none;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            background-color: $primary;
+            color: $white;
+            padding: 10px 50px;
+            font-weight: 500;
+            font-size: clamp(18px, 1.2vw, 22px);
+
+            &--selected {
+                background-color: $secondary;
+                color: $white;
+            }
+        }
+    }
+
+    .react-tabs__tab-panel {
+        padding: 15px 30px;
+
+        &--selected {
+
+        }
+    }
+}
