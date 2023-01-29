@@ -1,26 +1,45 @@
 @import "../../_globals/variables";
 
 .react-tabs {
-    // box-shadow: $box-shadow;
-    border: 1px solid $secondary;
-    border-radius: $border-radius;
+    border-radius: 8px;
     border-top: none;
     margin: 50px 0;
 
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+
     .react-tabs__tab-list {
+        margin: 0;
         border: none;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
 
         .react-tabs__tab {
+            box-shadow: $box-shadow;
             border: none;
-            border-top-left-radius: $border-radius;
-            border-top-right-radius: $border-radius;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
             background-color: $primary;
             color: $white;
-            padding: 10px 50px;
+            padding: 10px clamp(30px, 2vw, 50px);
             font-weight: 500;
             font-size: clamp(18px, 1.2vw, 22px);
+            margin: 10px 20px 0 0;
+
+            &:last-child {
+                margin: 10px 0 0 0;
+            }
+
+            &:focus:after {
+                background: transparent;
+            }
+
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
 
             &--selected {
                 background-color: $secondary;
@@ -30,10 +49,13 @@
     }
 
     .react-tabs__tab-panel {
-        padding: 20px 30px;
+        box-shadow: $box-shadow;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding: 30px;
 
         &--selected {
-
+            background: transparent;
         }
     }
 }

@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import React, { useState } from "react";
+import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -11,7 +11,6 @@ import "react-tabs/style/react-tabs.css";
 import "./Timeline.scss";
 
 const Timeline = ( { content } ) => {
-	const [ readMore, setReadMore ] = useState( true );
 
 	return (
 		<Tabs>
