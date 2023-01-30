@@ -16,8 +16,8 @@ const Timeline = ( { content } ) => {
 		<Tabs>
 			<TabList>
 				{ content &&
-					content.map( ( item ) => (
-						<Tab>
+					content.map( ( item, idx ) => (
+						<Tab key={ idx }>
 							{ item.year }
 						</Tab>
 					))
@@ -25,8 +25,8 @@ const Timeline = ( { content } ) => {
 			</TabList>
 
 			{ content &&
-				content.map( ( item ) => (
-					<TabPanel>
+				content.map( ( item, idx ) => (
+					<TabPanel key={ idx }>
 						<div
 							dangerouslySetInnerHTML={{
 								__html: item.description
