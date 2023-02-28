@@ -35,6 +35,7 @@ const App = () => {
 				}}
 			>
 				<h1
+					className="wow fadeInUp" data-wow-delay=".3s"
 					style={{
 						textAlign: 'center'
 					}}
