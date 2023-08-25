@@ -77,14 +77,15 @@ export const generateExcerpt = ( text, startingPoint, maxLength ) => {
  * @param string {str} The string that needs to be converted into a slug.
  */
 export function slugify( str ) {
-	str = str.replace(/^\s+|\s+$/g, ""); // trim
+	str = str.replace( /^\s+|\s+$/g, "" ); // trim
 	str = str.toLowerCase();
 
 	/* remove accents, swap ñ for n, etc */
 	var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-	var to = "aaaaeeeeiiiioooouuuunc------";
-	for (var i = 0, l = from.length; i < l; i++) {
-		str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+	var to   = "aaaaeeeeiiiioooouuuunc------";
+
+	for ( var i = 0, l = from.length; i < l; i++ ) {
+		str = str.replace( new RegExp( from.charAt( i ), "g" ), to.charAt( i ) );
 	}
 
 	str = str
