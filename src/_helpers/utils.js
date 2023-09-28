@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const toAbsoluteUrl = ( pathname ) => process.env.PUBLIC_URL + pathname;
 
-export const baseUrl = "https://natnaele4.sg-host.com/wp-json/wp/v2/";
+export const baseUrl = "https://staging-ezra-group.eugene.co.ke/wp-json/wp/v2/";
 
 /**
  * Convert any date into dd-mm-yyyy
